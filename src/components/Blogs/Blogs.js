@@ -2,15 +2,14 @@ import React from "react";
 import Card from "./Card";
 import { ArrayOfObjects } from "./ArrayOfObjects";
 import "./Blogs.css";
-import { Link } from "react-router-dom";
 
-const Blogs = () => {
+const Blogs = ({ headline }) => {
   return (
     <div
-      className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
+      className="d-flex flex-direction-row flex-wrap justify-content-center py-5"
       style={{ width: "100vw" }}
     >
-      <h1 className="mt-3 title">Featured Blogs</h1>
+      <h1 className="pt-3 title ">{headline}</h1>
 
       <div
         className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
@@ -22,7 +21,7 @@ const Blogs = () => {
               img={img}
               content={content}
               title={title}
-              date={`2021-17-02`}
+              date={`Published: 2021-17-02`}
             />
           );
         })}
