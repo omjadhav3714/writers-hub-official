@@ -6,9 +6,8 @@ body {
 /* blog section */
 
 .title {
-  font-family: "Roboto", sans-serif;
-  color: #fff;
-  border-bottom: 3px solid #e07624;
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 3px solid #201f1e;
 }
 
 /* individual card */

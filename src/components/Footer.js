@@ -4,19 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer
-      className='site-footer'
-      style={{
-        backgroundColor: '#1a1b3b',
-        color: 'white',
-      }}
-    >
+    <footer className='site-footer text-dark bg-#fff'>
       <div class='container p-4'>
         <div class='row'>
           <div class='col-lg-6 col-md-12 mb-4 mb-md-0'>
-            <h4 class='text-uppercase'>About us</h4>
+            <h5 class='text-uppercase'>About us</h5>
 
-            <p className='s-3' style={{ fontSize: '22px' }}>
+            <p className='s-3' style={{ fontSize: '18px' }}>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
               atque ea quis molestias. Fugiat pariatur maxime quis culpa
               corporis vitae repudiandae aliquam voluptatem veniam, est atque
@@ -29,14 +23,14 @@ const Footer = () => {
           </div>
 
           <div
-            class='col-lg-3 col-md-6 mb-4 mb-md-0'
-            style={{ fontSize: '22px' }}
+            className='col-lg-3 col-md-6 mb-4 mb-md-0 text-dark'
+            style={{ fontSize: '18px' }}
           >
-            <ul class='list-unstyled'>
+            <ul className='list-unstyled text-dark'>
               <li>
                 <Link
                   href='#!'
-                  class='text-white'
+                  className='text-dark'
                   style={{ textDecoration: 'none' }}
                 >
                   about us
@@ -45,7 +39,7 @@ const Footer = () => {
               <li>
                 <Link
                   href='#!'
-                  class='text-white'
+                  className='text-dark'
                   style={{ textDecoration: 'none' }}
                 >
                   contact us
@@ -54,7 +48,7 @@ const Footer = () => {
               <li>
                 <Link
                   href='#!'
-                  class='text-white'
+                  class='text-dark'
                   style={{ textDecoration: 'none' }}
                 >
                   Contribute
@@ -63,7 +57,7 @@ const Footer = () => {
               <li>
                 <Link
                   href='#!'
-                  class='text-white'
+                  className='text-dark'
                   style={{ textDecoration: 'none' }}
                 >
                   privacy policy
@@ -74,9 +68,9 @@ const Footer = () => {
         </div>
       </div>
       <hr style={{ color: '#e07624' }} />
-      <div class='text-center p-3' style={{ fontSize: '22px' }}>
-        © 2020 Copyright:
-        <Link class='text-white' href='https://mdbootstrap.com/'>
+      <div class='text-center p-3' style={{ fontSize: '18px' }}>
+        © 2020 Copyright :{' '}
+        <Link class='text-dark' href='#' style={{ textDecoration: 'none' }}>
           Writers Hub official
         </Link>
       </div>

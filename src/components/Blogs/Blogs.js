@@ -6,15 +6,15 @@ import './Blogs.css';
 const Blogs = ({ headline }) => {
   return (
     <div
-      className='d-flex flex-direction-row flex-wrap justify-content-center py-5'
+      className='d-flex flex-direction-row flex-wrap justify-content-center py-5 bg-light'
       style={{ width: '100vw' }}
     >
-      <h1
-        className='pt-3 title '
+      <h2
+        className='pt-3 title text-dark'
         style={{ paddingLeft: '10px', fontFamily: 'Dancing Script' }}
       >
         {headline}
-      </h1>
+      </h2>
 
       <div
         className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'

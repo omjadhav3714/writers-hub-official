@@ -1,22 +1,23 @@
 import React from 'react';
 import { MenuDown, VectorPen } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
+import writer from '../images/writer.png';
 
 const Navbar = () => {
   return (
-    <div>
-      <nav
-        class='navbar navbar-expand-md navbar-dark'
-        style={{ backgroundColor: '#2b2c59' }}
-      >
+    <div
+      className='border-bottom border-3'
+      style={{ borderBottom: '3px solid #201f1e' }}
+    >
+      <nav class='navbar navbar-expand-md navbar-light bg-light'>
         <div class='container-fluid'>
           <span className='p-2'>
-            <VectorPen size='40px' color='white' />
+            <img src={writer} alt='' width='55' height='50' />
           </span>
           <Link
             class='navbar-brand'
             to='#'
-            style={{ fontFamily: 'Dancing Script', fontSize: '35px' }}
+            style={{ fontFamily: 'Dancing Script', fontSize: '28px' }}
           >
             Writers Hub
           </Link>
@@ -37,20 +38,20 @@ const Navbar = () => {
             class='collapse navbar-collapse justify-content-end'
             id='navbarNav'
           >
-            <ul class='navbar-nav ml-auto' style={{ fontSize: '25px' }}>
+            <ul class='navbar-nav ml-auto' style={{ fontSize: '18px' }}>
               <li class='nav-item'>
-                <Link class='nav-link active' aria-current='page' href='#'>
-                  Home
+                <Link class='nav-link' aria-current='page' href='#'>
+                  Blogs
                 </Link>
               </li>
               <li class='nav-item'>
                 <Link class='nav-link' href='#'>
-                  Features
+                  Kavita
                 </Link>
               </li>
               <li class='nav-item'>
                 <Link class='nav-link' href='#'>
-                  Pricing
+                  Shayari
                 </Link>
               </li>
             </ul>

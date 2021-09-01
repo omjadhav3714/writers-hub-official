@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Card = ({ img, content, title, date }) => {
   return (
     <div
-      className='card shadow mx-4 my-3 single-card blog-card p-2 flex-1'
+      className='card shadow mx-4 my-3 single-card blog-card p-2 flex-1 bg-dark'
       style={{ width: '350px' }}
     >
       {/* <div
@@ -20,16 +20,13 @@ const Card = ({ img, content, title, date }) => {
         />
       </div> */}
       <div className='card-body p-2'>
-        <p
-          className='card-title fs-3 text-capitalize'
-          style={{ fontWeight: '500' }}
-        >
+        <p className='card-title text-capitalize' style={{ fontSize: '22px' }}>
           {title}
         </p>
         <p className='small'> {date}</p>
         <p
           className='card-text content py-1 mt-0 mb-4 pt-0 text-light fs-5'
-          style={{ maxHeight: '70px', minHeight: '70px' }}
+          style={{ maxHeight: '70px', minHeight: '70px', fontSize: '18px' }}
         >
           {content}
         </p>
