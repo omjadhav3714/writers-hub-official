@@ -1,5 +1,4 @@
 import React from 'react';
-import './navbar.css';
 import { MenuDown, VectorPen } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 
@@ -38,11 +37,11 @@ const Navbar = () => {
             class='collapse navbar-collapse justify-content-end'
             id='navbarNav'
           >
-            <ul class='navbar-nav ml-auto'>
+            <ul class='navbar-nav ml-auto' style={{ fontSize: '25px' }}>
               <li class='nav-item'>
-                <a class='nav-link active' aria-current='page' href='#'>
+                <Link class='nav-link active' aria-current='page' href='#'>
                   Home
-                </a>
+                </Link>
               </li>
               <li class='nav-item'>
                 <Link class='nav-link' href='#'>
@@ -52,16 +51,6 @@ const Navbar = () => {
               <li class='nav-item'>
                 <Link class='nav-link' href='#'>
                   Pricing
-                </Link>
-              </li>
-              <li class='nav-item'>
-                <Link
-                  class='nav-link disabled'
-                  href='#'
-                  tabindex='-1'
-                  aria-disabled='true'
-                >
-                  Disabled
                 </Link>
               </li>
             </ul>

@@ -1,12 +1,12 @@
 import React from 'react';
+import './Carausal.css';
 
 const Carausal = () => {
   return (
     <div
       id='carouselExampleCaptions'
-      className='carousel slide'
+      className='carousel slide carousal-height'
       data-bs-ride='carousel'
-      style={{ height: '600px' }}
     >
       <div class='carousel-indicators'>
         <button
@@ -34,9 +34,8 @@ const Carausal = () => {
         <div class='carousel-item active'>
           <img
             src='https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ldHJ5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
-            class='d-block w-100'
+            class='d-block w-100 carousal-height'
             alt='sdajkhfjkdas'
-            height='600px'
           />
           <div class='carousel-caption d-none d-md-block'>
             <h5>First slide label</h5>
@@ -45,10 +44,9 @@ const Carausal = () => {
         </div>
         <div class='carousel-item' style={{ height: '600px' }}>
           <img
-            src='https://images.unsplash.com/photo-1594311436376-14cb76e46be5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'
-            class='d-block w-100'
+            src='https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVuJTIwYW5kJTIwcGFwZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'
+            class='d-block w-100 carousal-height'
             alt='...'
-            height='600px'
           />
           <div class='carousel-caption d-none d-md-block'>
             <h5>Second slide label</h5>
@@ -57,10 +55,9 @@ const Carausal = () => {
         </div>
         <div class='carousel-item' style={{ height: '600px' }}>
           <img
-            src='https://static.india.com/wp-content/uploads/2020/06/Sunday-Quotes.jpg'
-            class='d-block w-100'
+            src='https://images.unsplash.com/photo-1580127645995-d43fe9598711?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm91bnRhaW4lMjBwZW58ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'
+            class='d-block w-100 carousal-height'
             alt='...'
-            height='600px'
           />
           <div class='carousel-caption d-none d-md-block'>
             <h5>Third slide label</h5>

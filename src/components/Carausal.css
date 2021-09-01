@@ -1,0 +1,11 @@
+.carousal-height {
+  width: 100vw;
+  height: 600px;
+}
+
+@media (max-width: 575px) {
+  .carousal-height {
+    width: 100vw;
+    height: 400px;
+  }
+}

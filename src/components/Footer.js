@@ -73,7 +73,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr />
+      <hr style={{ color: '#e07624' }} />
       <div class='text-center p-3' style={{ fontSize: '22px' }}>
         © 2020 Copyright:
         <Link class='text-white' href='https://mdbootstrap.com/'>
