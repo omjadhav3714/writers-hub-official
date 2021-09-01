@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <div>
-      <nav class='navbar navbar-expand-md navbar-dark menu-bar'>
+      <nav
+        class='navbar navbar-expand-md navbar-dark'
+        style={{ backgroundColor: '#2b2c59' }}
+      >
         <div class='container-fluid'>
           <span className='p-2'>
             <VectorPen size='40px' color='white' />

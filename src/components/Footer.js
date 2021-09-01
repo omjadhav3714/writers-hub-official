@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer
-      className='site-footer bg-dark'
+      className='site-footer'
       style={{
-        backgroundImage: 'linear-gradient(15deg, #42275a 0%, #734b6d 100%)',
+        backgroundColor: '#1a1b3b',
         color: 'white',
       }}
     >
