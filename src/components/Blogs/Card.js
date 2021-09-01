@@ -20,13 +20,13 @@ const Card = ({ img, content, title, date }) => {
         />
       </div> */}
       <div className='card-body p-2'>
-        <p className='card-title text-capitalize' style={{ fontSize: '22px' }}>
+        <p className='card-title text-capitalize' style={{ fontSize: '17px' }}>
           {title}
         </p>
         <p className='small'> {date}</p>
         <p
-          className='card-text content py-1 mt-0 mb-4 pt-0 text-light fs-5'
-          style={{ maxHeight: '70px', minHeight: '70px', fontSize: '18px' }}
+          className='card-text content py-1 mt-0 mb-4 pt-0 text-light'
+          style={{ maxHeight: '70px', minHeight: '70px', fontSize: '17px' }}
         >
           {content}
         </p>

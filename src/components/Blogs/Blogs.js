@@ -9,12 +9,12 @@ const Blogs = ({ headline }) => {
       className='d-flex flex-direction-row flex-wrap justify-content-center py-5 bg-light'
       style={{ width: '100vw' }}
     >
-      <h2
+      <h3
         className='pt-3 title text-dark'
         style={{ paddingLeft: '10px', fontFamily: 'Dancing Script' }}
       >
         {headline}
-      </h2>
+      </h3>
 
       <div
         className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'

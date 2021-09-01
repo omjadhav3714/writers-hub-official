@@ -17,7 +17,7 @@ const Navbar = () => {
           <Link
             class='navbar-brand'
             to='#'
-            style={{ fontFamily: 'Dancing Script', fontSize: '28px' }}
+            style={{ fontFamily: 'Dancing Script', fontSize: '25px' }}
           >
             Writers Hub
           </Link>
@@ -38,7 +38,7 @@ const Navbar = () => {
             class='collapse navbar-collapse justify-content-end'
             id='navbarNav'
           >
-            <ul class='navbar-nav ml-auto' style={{ fontSize: '18px' }}>
+            <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
               <li class='nav-item'>
                 <Link class='nav-link' aria-current='page' href='#'>
                   Blogs
