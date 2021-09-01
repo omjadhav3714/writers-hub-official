@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuDown, VectorPen } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import writer from '../images/writer.png';
 
 const Navbar = () => {
@@ -40,18 +40,23 @@ const Navbar = () => {
           >
             <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
               <li class='nav-item'>
-                <Link class='nav-link' aria-current='page' href='#'>
+                <Link class='nav-link' to='blog' smooth={true} duration={500}>
                   Blogs
                 </Link>
               </li>
               <li class='nav-item'>
-                <Link class='nav-link' href='#'>
-                  Kavita
+                <Link
+                  class='nav-link'
+                  to='shayari'
+                  smooth={true}
+                  duration={500}
+                >
+                  Sayari
                 </Link>
               </li>
               <li class='nav-item'>
-                <Link class='nav-link' href='#'>
-                  Shayari
+                <Link class='nav-link' to='kavita' smooth={true} duration={500}>
+                  kavita
                 </Link>
               </li>
             </ul>
