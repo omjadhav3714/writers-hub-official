@@ -1,6 +1,7 @@
 import React from 'react';
 import './navbar.css';
 import { MenuDown, VectorPen } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -8,11 +9,15 @@ const Navbar = () => {
       <nav class='navbar navbar-expand-md navbar-dark menu-bar'>
         <div class='container-fluid'>
           <span className='p-2'>
-            <VectorPen size='40px' />
+            <VectorPen size='40px' color='white' />
           </span>
-          <a class='navbar-brand' href='#'>
-            Navbar
-          </a>
+          <Link
+            class='navbar-brand'
+            to='#'
+            style={{ fontFamily: 'Dancing Script', fontSize: '35px' }}
+          >
+            Writers Hub
+          </Link>
           <button
             class='navbar-toggler'
             type='button'
@@ -37,24 +42,24 @@ const Navbar = () => {
                 </a>
               </li>
               <li class='nav-item'>
-                <a class='nav-link' href='#'>
+                <Link class='nav-link' href='#'>
                   Features
-                </a>
+                </Link>
               </li>
               <li class='nav-item'>
-                <a class='nav-link' href='#'>
+                <Link class='nav-link' href='#'>
                   Pricing
-                </a>
+                </Link>
               </li>
               <li class='nav-item'>
-                <a
+                <Link
                   class='nav-link disabled'
                   href='#'
                   tabindex='-1'
                   aria-disabled='true'
                 >
                   Disabled
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
