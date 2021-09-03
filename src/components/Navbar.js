@@ -1,9 +1,9 @@
 import React from 'react';
-import { MenuDown, VectorPen } from 'react-bootstrap-icons';
-import { Link } from 'react-scroll';
+import { MenuDown } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 import writer from '../images/writer.png';
 
-const Navbar = () => {
+const Navbar = ({ backButton }) => {
   return (
     <div
       className='border-bottom border-3'
@@ -38,28 +38,38 @@ const Navbar = () => {
             class='collapse navbar-collapse justify-content-end'
             id='navbarNav'
           >
-            <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
-              <li class='nav-item'>
-                <Link class='nav-link' to='blog' smooth={true} duration={500}>
-                  Blogs
-                </Link>
-              </li>
-              <li class='nav-item'>
-                <Link
-                  class='nav-link'
-                  to='shayari'
-                  smooth={true}
-                  duration={500}
-                >
-                  Sayari
-                </Link>
-              </li>
-              <li class='nav-item'>
-                <Link class='nav-link' to='kavita' smooth={true} duration={500}>
-                  kavita
-                </Link>
-              </li>
-            </ul>
+            {!backButton ? (
+              <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
+                <li class='nav-item'>
+                  <Link
+                    class='nav-link'
+                    to='/blogs'
+                    smooth={true}
+                    duration={500}
+                  >
+                    Blogs
+                  </Link>
+                </li>
+                <li class='nav-item'>
+                  <Link class='nav-link' to='/shayaris'>
+                    Sayari
+                  </Link>
+                </li>
+                <li class='nav-item'>
+                  <Link class='nav-link' to='/kavitas'>
+                    kavita
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
+                <li class='nav-item'>
+                  <Link class='nav-link' to='/'>
+                    Home
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </nav>

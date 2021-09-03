@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './Card';
 import { ArrayOfObjects } from './ArrayOfObjects';
 import './Blogs.css';
+import { Link } from 'react-router-dom';
 
 const Blogs = ({ headline }) => {
   return (
@@ -14,6 +15,12 @@ const Blogs = ({ headline }) => {
         style={{ paddingLeft: '20px', fontFamily: 'Dancing Script' }}
       >
         {headline}
+      </h2>
+      <h2
+        className='d-flex pt-3 title text-dark justify-content-end'
+        style={{ paddingLeft: '20px', fontFamily: 'Dancing Script' }}
+      >
+        more
       </h2>
 
       <div
