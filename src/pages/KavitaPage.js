@@ -18,7 +18,7 @@ const KavitaPage = () => {
           <h2 style={{ fontFamily: 'Dancing Script' }}>Kavitas</h2>
         </div>
         <div
-          className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+          className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
           style={{ width: '100vw' }}
         >
           {ArrayOfObjects.map(({ img, content, title }) => {

@@ -5,6 +5,7 @@ import { ArrayOfObjects } from '../components/Blogs/ArrayOfObjects';
 import Card from '../components/Blogs/Card';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
+import Typed from 'react-typed';
 
 const BlogPage = () => {
   return (
@@ -16,7 +17,7 @@ const BlogPage = () => {
       <div style={{ height: '100vh', width: '100vw' }}>
         <Navbar backButton={true} />
         <div className='container d-flex justify-content-center p-4'>
-          <h2 style={{ fontFamily: 'Dancing Script' }}>Blogs</h2>
+          <h1 style={{ fontFamily: 'Dancing Script' }}>Blogs</h1>
         </div>
         <div
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'

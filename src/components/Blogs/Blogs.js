@@ -7,20 +7,14 @@ import { Link } from 'react-router-dom';
 const Blogs = ({ headline }) => {
   return (
     <div
-      className='d-flex flex-direction-row flex-wrap justify-content-center py-5 bg-light'
-      style={{ width: '100vw' }}
+      className='d-flex flex-direction-row flex-wrap justify-content-center py-5'
+      style={{ width: '100vw', backgroundColor: 'white' }}
     >
       <h2
         className='pt-3 title text-dark'
         style={{ paddingLeft: '20px', fontFamily: 'Dancing Script' }}
       >
         {headline}
-      </h2>
-      <h2
-        className='d-flex pt-3 title text-dark justify-content-end'
-        style={{ paddingLeft: '20px', fontFamily: 'Dancing Script' }}
-      >
-        more
       </h2>
 
       <div
