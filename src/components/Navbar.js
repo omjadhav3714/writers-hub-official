@@ -60,6 +60,11 @@ const Navbar = ({ backButton }) => {
                     kavita
                   </Link>
                 </li>
+                <li class='nav-item'>
+                  <Link class='nav-link' to='/quotes'>
+                    quotes
+                  </Link>
+                </li>
               </ul>
             ) : (
               <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>

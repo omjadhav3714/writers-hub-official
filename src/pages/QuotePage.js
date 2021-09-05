@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { ArrayOfObjects } from '../components/Blogs/ArrayOfObjects';
 import Card from '../components/Blogs/Card';
@@ -6,20 +6,19 @@ import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { db } from '../firebase';
 
-const ShayariPage = () => {
-  const [shayris, setShayris] = useState([]);
+const KavitaPage = () => {
+  const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
-    db.collection('Shayris')
+    db.collection('Quotes')
       .get()
       .then((snapshot) => {
-        const shayris = [];
+        const quotes = [];
         snapshot.forEach((doc) => {
           const data = doc.data();
-          shayris.push(data);
+          quotes.push(data);
         });
-        console.log(shayris);
-        setShayris(shayris);
+        setQuotes(quotes);
       });
   }, []);
 
@@ -32,21 +31,19 @@ const ShayariPage = () => {
       <div style={{ height: '100vh', width: '100vw' }}>
         <Navbar backButton={true} />
         <div className='container d-flex justify-content-center p-4'>
-          <h2 style={{ fontFamily: 'Dancing Script' }}>Shayaris</h2>
+          <h2 style={{ fontFamily: 'Dancing Script' }}>Quotes</h2>
         </div>
         <div
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
           style={{ width: '100vw' }}
         >
-          {shayris.map(({ img, description, title, key }) => {
+          {quotes.map(({ img, description, title, updated_on }) => {
             return (
               <Card
                 img={img}
                 content={description}
                 title={title}
-                date={`Published: 2021-17-02`}
-                url={`/shayaris/${key}`}
-                id={key}
+                date={updated_on}
               />
             );
           })}
@@ -57,4 +54,4 @@ const ShayariPage = () => {
   );
 };
 
-export default ShayariPage;
+export default KavitaPage;

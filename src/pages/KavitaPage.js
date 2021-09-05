@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { ArrayOfObjects } from '../components/Blogs/ArrayOfObjects';
 import Card from '../components/Blogs/Card';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
+import { db } from '../firebase';
 
 const KavitaPage = () => {
+  const [kavitas, setKavitas] = useState([]);
+
+  useEffect(() => {
+    db.collection('Poems')
+      .get()
+      .then((snapshot) => {
+        const poems = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          poems.push(data);
+        });
+        setKavitas(poems);
+      });
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,13 +37,13 @@ const KavitaPage = () => {
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
           style={{ width: '100vw' }}
         >
-          {ArrayOfObjects.map(({ img, content, title }) => {
+          {kavitas.map(({ img, description, title, updated_on }) => {
             return (
               <Card
                 img={img}
-                content={content}
+                content={description}
                 title={title}
-                date={`Published: 2021-17-02`}
+                date={updated_on}
               />
             );
           })}

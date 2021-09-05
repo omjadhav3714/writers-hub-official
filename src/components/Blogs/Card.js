@@ -2,7 +2,7 @@ import React from 'react';
 import './Blogs.css';
 import { Link } from 'react-router-dom';
 
-const Card = ({ img, content, title, date }) => {
+const Card = ({ img, content, title, date, id }) => {
   return (
     <div
       className='card shadow mx-4 my-3 single-card blog-card p-2 flex-1 bg-dark'
@@ -33,7 +33,7 @@ const Card = ({ img, content, title, date }) => {
         <div className='links d-flex justify-content-between align-items-center m-0 p-1  '>
           <p className='small pb-0 pt-1 m-0'>5 min read</p>
           <Link href='#' className='py-0 text-decoration-none'>
-            Read More
+            {id}
           </Link>
         </div>
       </div>
