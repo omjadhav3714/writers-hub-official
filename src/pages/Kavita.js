@@ -1,4 +1,3 @@
-import { data } from 'browserslist';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { db } from '../firebase';
@@ -8,17 +7,17 @@ import Footer from '../components/Footer';
 const Shayri = () => {
   const { id } = useParams();
 
-  const [shayri, setShayri] = useState();
+  const [kavita, setKavita] = useState();
 
   useEffect(() => {
-    const single = db.collection('Shayris').doc(id);
+    const single = db.collection('Poems').doc(id);
 
     single
       .get()
       .then(function (doc) {
         if (doc.exists) {
           let data = doc.data();
-          setShayri(data);
+          setKavita(data);
         }
       })
       .catch(function (error) {
@@ -28,25 +27,26 @@ const Shayri = () => {
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
+      {console.log(kavita)}
       <Navbar />
-      {shayri ? (
+      {kavita ? (
         <div style={{ paddingTop: '50px' }}>
           <div>
-            <h2
+            <h1
               className='d-flex justify-content-center'
               style={{ fontWeight: '600' }}
             >
-              {shayri.title}
-            </h2>
+              {kavita.title}
+            </h1>
           </div>
           <div className='d-flex justify-content-center p-4'>
             <p style={{ width: '350px', fontSize: '22px' }}>
-              {shayri.description}
+              {kavita.description}
             </p>
           </div>
           <div className='container d-flex justify-content-end p-4 w-50'>
             <p style={{ width: '150px', fontSize: '22px' }}>
-              -{shayri.authorName}
+              -{kavita.authorName}
             </p>
           </div>
         </div>

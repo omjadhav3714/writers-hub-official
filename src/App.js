@@ -10,11 +10,15 @@ import { AnimatePresence } from 'framer-motion';
 import KavitaPage from './pages/KavitaPage';
 import { db } from './firebase';
 import Shayri from './pages/Shayri';
+import Quotes from './pages/Quotes';
+import Kavita from './pages/Kavita';
 
 const App = () => {
   return (
     <AnimatePresence>
       <Switch>
+        <Route path='/kavitas/:id' component={Kavita} />
+        <Route path='/quotes/:id' component={Quotes} />
         <Route path='/shayaris/:id' component={Shayri} />
         <Route path='/quotes' component={QuotePage} />
         <Route path='/kavitas' component={KavitaPage} />

@@ -15,7 +15,14 @@ const KavitaPage = () => {
       .then((snapshot) => {
         const poems = [];
         snapshot.forEach((doc) => {
-          const data = doc.data();
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().description,
+            authorName: doc.data().authorName,
+            isFeatured: doc.data().isFeatured,
+            updated_on: doc.data().updated_on,
+          };
           poems.push(data);
         });
         setKavitas(poems);
@@ -37,13 +44,14 @@ const KavitaPage = () => {
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
           style={{ width: '100vw' }}
         >
-          {kavitas.map(({ img, description, title, updated_on }) => {
+          {kavitas.map(({ img, description, title, updated_on, id }) => {
             return (
               <Card
                 img={img}
                 content={description}
                 title={title}
                 date={updated_on}
+                url={`/kavitas/${id}`}
               />
             );
           })}

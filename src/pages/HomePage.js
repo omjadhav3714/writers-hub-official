@@ -20,7 +20,14 @@ const HomePage = () => {
       .then((snapshot) => {
         const feat_shayris = [];
         snapshot.forEach((doc) => {
-          const data = doc.data();
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().description,
+            authorName: doc.data().authorName,
+            isFeatured: doc.data().isFeatured,
+            updated_on: doc.data().updated_on,
+          };
           if (data.isFeatured) {
             feat_shayris.push(data);
           }
@@ -35,7 +42,14 @@ const HomePage = () => {
       .then((snapshot) => {
         const feat_kavitas = [];
         snapshot.forEach((doc) => {
-          const data = doc.data();
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().description,
+            authorName: doc.data().authorName,
+            isFeatured: doc.data().isFeatured,
+            updated_on: doc.data().updated_on,
+          };
           if (data.isFeatured) {
             feat_kavitas.push(data);
           }
@@ -50,7 +64,14 @@ const HomePage = () => {
       .then((snapshot) => {
         const feat_quotes = [];
         snapshot.forEach((doc) => {
-          const data = doc.data();
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().description,
+            authorName: doc.data().authorName,
+            isFeatured: doc.data().isFeatured,
+            updated_on: doc.data().updated_on,
+          };
           if (data.isFeatured) {
             feat_quotes.push(data);
           }
@@ -96,13 +117,14 @@ const HomePage = () => {
               style={{ width: '100vw' }}
             >
               {featuredShayris.map(
-                ({ img, description, title, updated_on }) => {
+                ({ img, description, title, updated_on, id }) => {
                   return (
                     <Card
                       img={img}
                       content={description}
                       title={title}
                       date={updated_on}
+                      url={`/shayaris/${id}`}
                     />
                   );
                 }
@@ -125,16 +147,19 @@ const HomePage = () => {
             className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
             style={{ width: '100vw' }}
           >
-            {featuredKavitas.map(({ img, description, title, updated_on }) => {
-              return (
-                <Card
-                  img={img}
-                  content={description}
-                  title={title}
-                  date={updated_on}
-                />
-              );
-            })}
+            {featuredKavitas.map(
+              ({ img, description, title, updated_on, id }) => {
+                return (
+                  <Card
+                    img={img}
+                    content={description}
+                    title={title}
+                    date={updated_on}
+                    url={`/kavitas/${id}`}
+                  />
+                );
+              }
+            )}
           </div>
         </div>
         <div
@@ -152,16 +177,19 @@ const HomePage = () => {
             className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
             style={{ width: '100vw' }}
           >
-            {featuredQuotes.map(({ img, description, title, updated_on }) => {
-              return (
-                <Card
-                  img={img}
-                  content={description}
-                  title={title}
-                  date={updated_on}
-                />
-              );
-            })}
+            {featuredQuotes.map(
+              ({ img, description, title, updated_on, id }) => {
+                return (
+                  <Card
+                    img={img}
+                    content={description}
+                    title={title}
+                    date={updated_on}
+                    url={`/quotes/${id}`}
+                  />
+                );
+              }
+            )}
           </div>
         </div>
         <div>

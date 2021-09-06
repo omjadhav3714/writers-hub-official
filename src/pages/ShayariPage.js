@@ -15,11 +15,19 @@ const ShayariPage = () => {
       .then((snapshot) => {
         const shayris = [];
         snapshot.forEach((doc) => {
-          const data = doc.data();
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            description: doc.data().description,
+            authorName: doc.data().authorName,
+            isFeatured: doc.data().isFeatured,
+            updated_on: doc.data().updated_on,
+          };
+
           shayris.push(data);
         });
-        console.log(shayris);
         setShayris(shayris);
+        console.log(shayris);
       });
   }, []);
 
@@ -38,18 +46,29 @@ const ShayariPage = () => {
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
           style={{ width: '100vw' }}
         >
-          {shayris.map(({ img, description, title, key }) => {
-            return (
-              <Card
-                img={img}
-                content={description}
-                title={title}
-                date={`Published: 2021-17-02`}
-                url={`/shayaris/${key}`}
-                id={key}
-              />
-            );
-          })}
+          {shayris.map(
+            ({
+              img,
+              id,
+              description,
+              title,
+              authorName,
+              isFeatured,
+              updated_on,
+            }) => {
+              return (
+                <div>
+                  <Card
+                    img={img}
+                    content={description}
+                    title={title}
+                    date={updated_on}
+                    url={`/shayaris/${id}`}
+                  />
+                </div>
+              );
+            }
+          )}
         </div>
         <Footer />
       </div>
