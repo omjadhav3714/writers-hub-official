@@ -117,7 +117,7 @@ const HomePage = () => {
               style={{ width: '100vw' }}
             >
               {featuredShayris.map(
-                ({ img, description, title, updated_on, id }) => {
+                ({ img, description, title, updated_on, id, authorName }) => {
                   return (
                     <Card
                       img={img}
@@ -125,6 +125,7 @@ const HomePage = () => {
                       title={title}
                       date={updated_on}
                       url={`/shayaris/${id}`}
+                      author={authorName}
                     />
                   );
                 }
@@ -148,7 +149,7 @@ const HomePage = () => {
             style={{ width: '100vw' }}
           >
             {featuredKavitas.map(
-              ({ img, description, title, updated_on, id }) => {
+              ({ img, description, title, updated_on, id, authorName }) => {
                 return (
                   <Card
                     img={img}
@@ -156,6 +157,7 @@ const HomePage = () => {
                     title={title}
                     date={updated_on}
                     url={`/kavitas/${id}`}
+                    author={authorName}
                   />
                 );
               }
@@ -178,7 +180,7 @@ const HomePage = () => {
             style={{ width: '100vw' }}
           >
             {featuredQuotes.map(
-              ({ img, description, title, updated_on, id }) => {
+              ({ img, description, title, updated_on, id, authorName }) => {
                 return (
                   <Card
                     img={img}
@@ -186,6 +188,7 @@ const HomePage = () => {
                     title={title}
                     date={updated_on}
                     url={`/quotes/${id}`}
+                    author={authorName}
                   />
                 );
               }

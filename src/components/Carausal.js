@@ -37,10 +37,6 @@ const Carausal = () => {
             class='d-block w-100 carousal-height'
             alt='sdajkhfjkdas'
           />
-          <div class='carousel-caption d-none d-md-block'>
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
         </div>
         <div class='carousel-item' style={{ height: '600px' }}>
           <img
@@ -48,10 +44,6 @@ const Carausal = () => {
             class='d-block w-100 carousal-height'
             alt='...'
           />
-          <div class='carousel-caption d-none d-md-block'>
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
         </div>
         <div class='carousel-item' style={{ height: '600px' }}>
           <img
@@ -59,10 +51,6 @@ const Carausal = () => {
             class='d-block w-100 carousal-height'
             alt='...'
           />
-          <div class='carousel-caption d-none d-md-block'>
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
         </div>
       </div>
       <button
