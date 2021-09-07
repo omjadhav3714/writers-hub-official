@@ -44,17 +44,20 @@ const KavitaPage = () => {
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
           style={{ width: '100vw' }}
         >
-          {kavitas.map(({ img, description, title, updated_on, id }) => {
-            return (
-              <Card
-                img={img}
-                content={description}
-                title={title}
-                date={updated_on}
-                url={`/kavitas/${id}`}
-              />
-            );
-          })}
+          {kavitas.map(
+            ({ img, description, title, updated_on, id, authorName }) => {
+              return (
+                <Card
+                  img={img}
+                  content={description}
+                  title={title}
+                  date={updated_on}
+                  url={`/kavitas/${id}`}
+                  author={authorName}
+                />
+              );
+            }
+          )}
         </div>
         <Footer />
       </div>

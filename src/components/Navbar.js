@@ -7,7 +7,7 @@ const Navbar = ({ backButton }) => {
   return (
     <div
       className='border-bottom border-3'
-      style={{ borderBottom: '3px solid #201f1e' }}
+      style={{ borderBottom: '3px solid #201f1e', height: '80px' }}
     >
       <nav class='navbar navbar-expand-md navbar-light bg-light'>
         <div class='container-fluid'>

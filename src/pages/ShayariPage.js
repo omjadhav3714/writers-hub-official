@@ -64,6 +64,7 @@ const ShayariPage = () => {
                     title={title}
                     date={updated_on}
                     url={`/shayaris/${id}`}
+                    author={authorName}
                   />
                 </div>
               );
