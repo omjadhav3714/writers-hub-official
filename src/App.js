@@ -12,11 +12,13 @@ import { db } from './firebase';
 import Shayri from './pages/Shayri';
 import Quotes from './pages/Quotes';
 import Kavita from './pages/Kavita';
+import Blog from './pages/Blog';
 
 const App = () => {
   return (
     <AnimatePresence>
       <Switch>
+        <Route path='/blogs/:id' component={Blog} />
         <Route path='/kavitas/:id' component={Kavita} />
         <Route path='/quotes/:id' component={Quotes} />
         <Route path='/shayaris/:id' component={Shayri} />

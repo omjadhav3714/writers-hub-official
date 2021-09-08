@@ -8,17 +8,19 @@ const Card = ({ img, content, title, date, url, author }) => {
       className='card shadow mx-4 my-3 single-card blog-card p-2 flex-1'
       style={{ width: '350px', backgroundColor: '#dcdcdc' }}
     >
-      {/* <div
-        className="img-container d-flex"
-        style={{ maxHeight: "150px", minHeight: "150px" }}
-      >
-        <img
-          src={img}
-          className="card-img-top"
-          alt="..."
-          style={{ objectFit: "cover" }}
-        />
-      </div> */}
+      {img && (
+        <div
+          className='img-container d-flex'
+          style={{ maxHeight: '150px', minHeight: '150px' }}
+        >
+          <img
+            src={img}
+            className='card-img-top'
+            alt='...'
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+      )}
       <div className='card-body p-2'>
         <p
           className='card-title text-capitalize text-dark'

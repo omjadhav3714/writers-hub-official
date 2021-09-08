@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Blogs from '../components/Blogs/Blogs';
 import { ArrayOfObjects } from '../components/Blogs/ArrayOfObjects';
@@ -6,8 +6,34 @@ import Card from '../components/Blogs/Card';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import Typed from 'react-typed';
+import { db } from '../firebase';
 
 const BlogPage = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    db.collection('Blogs')
+      .get()
+      .then((snapshot) => {
+        const logs = [];
+        snapshot.forEach((doc) => {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            image: doc.data().images[0],
+            categories: doc.data().categories,
+            description: doc.data().description,
+            authorName: doc.data().authorName,
+            isFeatured: doc.data().isFeatured,
+            updated_on: doc.data().updated_on,
+          };
+          logs.push(data);
+        });
+        setBlogs(logs);
+        console.log(blogs);
+      });
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,16 +49,20 @@ const BlogPage = () => {
           className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
           style={{ width: '100vw' }}
         >
-          {ArrayOfObjects.map(({ img, content, title }) => {
-            return (
-              <Card
-                img={img}
-                content={content}
-                title={title}
-                date={`Published: 2021-17-02`}
-              />
-            );
-          })}
+          {blogs.map(
+            ({ id, image, description, title, authorName, updated_on }) => {
+              return (
+                <Card
+                  img={image}
+                  content={description}
+                  title={title}
+                  author={authorName}
+                  date={updated_on}
+                  url={`/blogs/${id}`}
+                />
+              );
+            }
+          )}
         </div>
         <Footer />
       </div>

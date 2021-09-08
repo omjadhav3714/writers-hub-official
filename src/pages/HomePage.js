@@ -8,11 +8,37 @@ import { db } from '../firebase';
 import Card from '../components/Blogs/Card';
 
 const HomePage = () => {
+  const [featBlogs, setFeatBlogs] = useState([]);
+
   const [featuredShayris, setFeaturedShayris] = useState([]);
 
   const [featuredKavitas, setFeaturedKavitas] = useState([]);
 
   const [featuredQuotes, setFeaturedQuotes] = useState([]);
+
+  useEffect(() => {
+    db.collection('Blogs')
+      .get()
+      .then((snapshot) => {
+        const blogs = [];
+        snapshot.forEach((doc) => {
+          const data = {
+            id: doc.id,
+            title: doc.data().title,
+            image: doc.data().images[0],
+            categories: doc.data().categories,
+            description: doc.data().description,
+            authorName: doc.data().authorName,
+            isFeatured: doc.data().isFeatured,
+            updated_on: doc.data().updated_on,
+          };
+          if (data.isFeatured) {
+            blogs.push(data);
+          }
+        });
+        setFeatBlogs(blogs);
+      });
+  }, []);
 
   useEffect(() => {
     db.collection('Shayris')
@@ -89,17 +115,39 @@ const HomePage = () => {
       <div>
         <Navbar backButton={false} />
         <Carausal />
-        <section id='blog'>
+        <div>
           <div
-            style={{
-              backgroundImage:
-                'linear-gradient(15deg, #42275a 0%, #734b6d 100%)',
-              paddingLeft: '5px',
-            }}
+            className='d-flex flex-direction-row flex-wrap justify-content-center py-5'
+            style={{ width: '100vw', backgroundColor: 'white' }}
           >
-            <Blogs headline={`Featured Blogs`} />
+            <h2
+              className='pt-3 title text-dark'
+              style={{ paddingLeft: '20px', fontFamily: 'Dancing Script' }}
+            >
+              Featured Blogs
+            </h2>
+
+            <div
+              className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+              style={{ width: '100vw' }}
+            >
+              {featBlogs.map(
+                ({ image, description, title, updated_on, id, authorName }) => {
+                  return (
+                    <Card
+                      img={image}
+                      content={description}
+                      title={title}
+                      date={updated_on}
+                      url={`/shayaris/${id}`}
+                      author={authorName}
+                    />
+                  );
+                }
+              )}
+            </div>
           </div>
-        </section>
+        </div>
         <div>
           <div
             className='d-flex flex-direction-row flex-wrap justify-content-center py-5'
