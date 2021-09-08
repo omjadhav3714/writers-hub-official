@@ -139,7 +139,7 @@ const HomePage = () => {
                       content={description}
                       title={title}
                       date={updated_on}
-                      url={`/shayaris/${id}`}
+                      url={`/blogs/${id}`}
                       author={authorName}
                     />
                   );
