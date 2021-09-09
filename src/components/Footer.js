@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="footer pt-5">
+    <div className="footer">
       <footer
         className="site-footer text-light"
-        style={{ backgroundColor: "#1C1C1C" }}
+        style={{ backgroundColor: "#111" }}
       >
         <div class="container px-4 py-5">
           <div class="row">
@@ -44,7 +44,7 @@ const Footer = () => {
               style={{ fontSize: "17px" }}
             >
               <ul className="list-unstyled text-light">
-                <li className="py-1">
+                <li className="py-2">
                   <Link
                     href="#!"
                     className="text-light text-capitalize"
@@ -53,7 +53,7 @@ const Footer = () => {
                     about us
                   </Link>
                 </li>
-                <li className="py-1">
+                <li className="py-2">
                   <Link
                     href="#!"
                     className="text-light text-capitalize"
@@ -62,7 +62,7 @@ const Footer = () => {
                     contact us
                   </Link>
                 </li>
-                <li className="py-1">
+                <li className="py-2">
                   <Link
                     href="#!"
                     class="text-light"
@@ -71,7 +71,7 @@ const Footer = () => {
                     Contribute
                   </Link>
                 </li>
-                <li className="py-1">
+                <li className="py-2">
                   <Link
                     href="#!"
                     className="text-light text-capitalize"
@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
         <hr style={{ color: "#e07624" }} />
         <div class="text-center p-3" style={{ fontSize: "17px" }}>
-          © className='py1"' 2020 Copyright :{" "}
+          ©2020 Copyright : &nbsp;
           <Link class="text-light" href="#" style={{ textDecoration: "none" }}>
             Writers Hub official
           </Link>
