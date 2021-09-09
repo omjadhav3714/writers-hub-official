@@ -88,7 +88,7 @@ const Blog = () => {
                   />
                 </figure>
 
-                <section className="mb-5" style={{ textAlign: "justify" }}>
+                <section className="mb-5 " style={{ textAlign: "justify" }}>
                   <p className="fs-5 mb-4">{blog.description}</p>
                 </section>
               </article>
