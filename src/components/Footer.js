@@ -4,14 +4,30 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <footer className="site-footer text-dark bg-light">
-        <div class="container p-4">
+    <div className="footer pt-5">
+      <footer
+        className="site-footer text-light"
+        style={{ backgroundColor: "#1C1C1C" }}
+      >
+        <div class="container px-4 py-5">
           <div class="row">
             <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-              <h5 class="text-uppercase">About us</h5>
+              <p
+                className="author ps-3 "
+                style={{
+                  position: "relative",
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                  fontFamily: "sans-serif",
+                }}
+              >
+                ABOUT US
+              </p>
 
-              <p className="s-3" style={{ fontSize: "17px" }}>
+              <p
+                className="s-3"
+                style={{ fontSize: "17px", textAlign: "justify" }}
+              >
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
                 atque ea quis molestias. Fugiat pariatur maxime quis culpa
                 corporis vitae repudiandae aliquam voluptatem veniam, est atque
@@ -24,41 +40,41 @@ const Footer = () => {
             </div>
 
             <div
-              className="col-lg-3 col-md-6 mb-4 mb-md-0 text-dark"
+              className="col-lg-3 col-md-6 mb-4 mb-md-0 text-light"
               style={{ fontSize: "17px" }}
             >
-              <ul className="list-unstyled text-dark">
-                <li>
+              <ul className="list-unstyled text-light">
+                <li className="py-1">
                   <Link
                     href="#!"
-                    className="text-dark"
+                    className="text-light text-capitalize"
                     style={{ textDecoration: "none" }}
                   >
                     about us
                   </Link>
                 </li>
-                <li>
+                <li className="py-1">
                   <Link
                     href="#!"
-                    className="text-dark"
+                    className="text-light text-capitalize"
                     style={{ textDecoration: "none" }}
                   >
                     contact us
                   </Link>
                 </li>
-                <li>
+                <li className="py-1">
                   <Link
                     href="#!"
-                    class="text-dark"
+                    class="text-light"
                     style={{ textDecoration: "none" }}
                   >
                     Contribute
                   </Link>
                 </li>
-                <li>
+                <li className="py-1">
                   <Link
                     href="#!"
-                    className="text-dark"
+                    className="text-light text-capitalize"
                     style={{ textDecoration: "none" }}
                   >
                     privacy policy
@@ -70,8 +86,8 @@ const Footer = () => {
         </div>
         <hr style={{ color: "#e07624" }} />
         <div class="text-center p-3" style={{ fontSize: "17px" }}>
-          © 2020 Copyright :{" "}
-          <Link class="text-dark" href="#" style={{ textDecoration: "none" }}>
+          © className='py1"' 2020 Copyright :{" "}
+          <Link class="text-light" href="#" style={{ textDecoration: "none" }}>
             Writers Hub official
           </Link>
         </div>
