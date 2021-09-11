@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Comment = () => {
+const PostComment = () => {
   return (
     <div>
       <div className='d-flex flex-column border py-3 my-3'>
@@ -79,4 +79,4 @@ const Comment = () => {
   );
 };
 
-export default Comment;
+export default PostComment;
