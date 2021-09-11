@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import "./Blog.css";
 import { SocialIcon } from "react-social-icons";
+import Comments from "../components/Comments/Comments";
 
 const Blog = () => {
   const { id } = useParams();
@@ -91,6 +92,7 @@ const Blog = () => {
                 <section className="mb-5 " style={{ textAlign: "justify" }}>
                   <p className="fs-5 mb-4">{blog.description}</p>
                 </section>
+                <Comments />
               </article>
             </div>
 
