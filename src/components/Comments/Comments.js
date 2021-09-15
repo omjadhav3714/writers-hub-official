@@ -5,8 +5,8 @@ import { format } from 'timeago.js';
 
 const Comments = ({ comments }) => {
   return (
-    <div className='mb-5'>
-      <div className='comments border py-4'>
+    <div className='mb-5' style={{ border: '0' }}>
+      <div className='comments  py-4'>
         <p
           className='author ps-3 ms-3 '
           style={{

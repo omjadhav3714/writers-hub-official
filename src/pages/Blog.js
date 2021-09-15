@@ -172,19 +172,14 @@ const Blog = () => {
                       <SocialIcon url='https://twitter.com/' />
                     </li>
                     <li className='px-1'>
-                      <SocialIcon url='https://github.com/' />
+                      <SocialIcon url='https://facebook.com/' />
                     </li>
-                    <li className='px-1'>
-                      <SocialIcon url='https://linkedin.com/' />
-                    </li>
+
                     <li className='px-1'>
                       <SocialIcon url='https://instagram.com/' />
                     </li>
                     <li className='px-1'>
                       <SocialIcon url='https://youtube.com/' />
-                    </li>
-                    <li className='px-1'>
-                      <SocialIcon url='https://medium.com/' />
                     </li>
                   </ul>
                 </div>
