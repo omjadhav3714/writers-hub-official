@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Carausal.css";
+import ReactDOM from "react-dom";
+import Typist from "react-typist";
 
 const Carausal = () => {
+  const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    setCount(1);
+  }, [count]);
   return (
     <div
       id="carouselExampleCaptions"
-      className="carousel slide carousal-height"
+      className="carousel slide carousal-height scrollable-div"
       data-bs-ride="carousel"
     >
       <div class="carousel-indicators">
@@ -32,6 +39,28 @@ const Carausal = () => {
       </div>
       <div className="carousel-inner" style={{ height: "90vh" }}>
         <div class="carousel-item active">
+          <div
+            class="carousel-caption d-none d-md-block"
+            style={{ position: "absolute", top: "70%" }}
+          >
+            {count ? (
+              <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
+                <h1
+                  style={{
+                    fontWeight: "bold",
+
+                    color: "#000",
+                    fontSize: "3rem",
+                  }}
+                >
+                  Welcome to Writers Hub...
+                </h1>
+                <Typist.Backspace count={20} delay={800} />
+              </Typist>
+            ) : (
+              ""
+            )}
+          </div>
           <img
             src="https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ldHJ5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
             class="d-block w-100 carousal-height"
@@ -39,6 +68,28 @@ const Carausal = () => {
           />
         </div>
         <div class="carousel-item" style={{ height: "90vh" }}>
+          <div
+            class="carousel-caption d-none d-md-block"
+            style={{ position: "absolute", top: "30%" }}
+          >
+            {count ? (
+              <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
+                <h1
+                  style={{
+                    fontWeight: "bold",
+
+                    color: "#000",
+                    fontSize: "3rem",
+                  }}
+                >
+                  Here you can read various Blogs, Shayaris, etc!
+                </h1>
+                <Typist.Backspace count={20} delay={800} />
+              </Typist>
+            ) : (
+              ""
+            )}
+          </div>
           <img
             src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVuJTIwYW5kJTIwcGFwZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
             class="d-block w-100 carousal-height"
@@ -46,6 +97,28 @@ const Carausal = () => {
           />
         </div>
         <div class="carousel-item" style={{ height: "90vh" }}>
+          <div
+            class="carousel-caption d-none d-md-block"
+            style={{ position: "absolute", top: "75%" }}
+          >
+            {count ? (
+              <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
+                <h1
+                  style={{
+                    fontWeight: "bold",
+
+                    color: "#000",
+                    fontSize: "3rem",
+                  }}
+                >
+                  Welcome to Writers Hub!
+                </h1>
+                <Typist.Backspace count={20} delay={800} />
+              </Typist>
+            ) : (
+              ""
+            )}
+          </div>
           <img
             src="https://images.unsplash.com/photo-1580127645995-d43fe9598711?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm91bnRhaW4lMjBwZW58ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
             class="d-block w-100 carousal-height"

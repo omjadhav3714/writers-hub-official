@@ -19,6 +19,8 @@
     "react-scrollchor": "^7.0.1",
     "react-social-icons": "^5.6.1",
     "react-typed": "^1.2.0",
+    "react-typewriter-effect": "^1.1.0",
+    "react-typist": "^2.0.5",
     "timeago.js": "^4.0.2",
     "web-vitals": "^1.1.2"
   },
