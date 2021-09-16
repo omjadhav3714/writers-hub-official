@@ -13,22 +13,29 @@ import Shayri from './pages/Shayri';
 import Quotes from './pages/Quotes';
 import Kavita from './pages/Kavita';
 import Blog from './pages/Blog';
+import SignUp from './components/forms/SignUp';
+import LogIn from './components/forms/LogIn';
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
-    <AnimatePresence>
-      <Switch>
-        <Route path='/blogs/:id' component={Blog} />
-        <Route path='/kavitas/:id' component={Kavita} />
-        <Route path='/quotes/:id' component={Quotes} />
-        <Route path='/shayaris/:id' component={Shayri} />
-        <Route path='/quotes' component={QuotePage} />
-        <Route path='/kavitas' component={KavitaPage} />
-        <Route path='/shayaris' component={ShayariPage} />
-        <Route path='/blogs' component={BlogPage} />
-        <Route exact path='/' component={HomePage} />
-      </Switch>
-    </AnimatePresence>
+    <AuthProvider>
+      <AnimatePresence>
+        <Switch>
+          <Route path='/blogs/:id' component={Blog} />
+          <Route path='/kavitas/:id' component={Kavita} />
+          <Route path='/quotes/:id' component={Quotes} />
+          <Route path='/shayaris/:id' component={Shayri} />
+          <Route path='/quotes' component={QuotePage} />
+          <Route path='/kavitas' component={KavitaPage} />
+          <Route path='/shayaris' component={ShayariPage} />
+          <Route path='/blogs' component={BlogPage} />
+          <Route path='/signup' component={SignUp} />
+          <Route path='/login' component={LogIn} />
+          <Route exact path='/' component={HomePage} />
+        </Switch>
+      </AnimatePresence>
+    </AuthProvider>
   );
 };
 

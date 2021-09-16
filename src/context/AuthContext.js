@@ -1,0 +1,65 @@
+import React, { useContext, useEffect, useState } from 'react';
+import { auth, db } from '../firebase';
+import { useHistory } from 'react-router';
+
+const AuthContext = React.createContext();
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const history = useHistory();
+  const SignUp = (username, email, password) => {
+    return auth.createUserWithEmailAndPassword(email, password).then((data) => {
+      db.collection('users').add({
+        id: data.user.uid,
+        username,
+        email,
+        password,
+      });
+    });
+  };
+
+  const LogIn = (email, password) => {
+    return auth.signInWithEmailAndPassword(email, password);
+  };
+
+  const SignOut = () => {
+    auth.signOut().then(setCurrentUser(null));
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        db.collection('users')
+          .get()
+          .then((snapshot) => {
+            const cuser = [];
+            snapshot.forEach((doc) => {
+              const data = {
+                id: doc.data().id,
+                username: doc.data().username,
+                email: doc.data().email,
+              };
+              if (data.id === String(user.uid)) {
+                cuser.push(data);
+              } else {
+              }
+              setCurrentUser(cuser[0]);
+            });
+          });
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  const value = {
+    currentUser,
+    SignUp,
+    SignOut,
+    LogIn,
+  };
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

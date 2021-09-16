@@ -1,5 +1,6 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
 
 const app = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FB_APIKEY,
@@ -12,5 +13,6 @@ const app = firebase.initializeApp({
 });
 
 const db = firebase.firestore();
+const auth = firebase.auth();
 
-export { app, db };
+export { app, db, auth };

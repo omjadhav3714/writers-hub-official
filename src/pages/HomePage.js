@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Carausal from "../components/Carausal";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import { motion } from "framer-motion";
-import { db } from "../firebase";
-import Card from "../components/Blogs/Card";
+import React, { useEffect, useState } from 'react';
+import Carausal from '../components/Carausal';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import { motion } from 'framer-motion';
+import { db } from '../firebase';
+import Card from '../components/Blogs/Card';
+import SignUp from '../components/forms/SignUp';
+import { useAuth } from '../context/AuthContext';
+import { useHistory } from 'react-router';
 
 const HomePage = () => {
   const [featBlogs, setFeatBlogs] = useState([]);
@@ -15,8 +18,14 @@ const HomePage = () => {
 
   const [featuredQuotes, setFeaturedQuotes] = useState([]);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const { currentUser, SignOut } = useAuth();
+
+  const history = useHistory();
+
   useEffect(() => {
-    db.collection("Blogs")
+    db.collection('Blogs')
       .get()
       .then((snapshot) => {
         const blogs = [];
@@ -40,7 +49,7 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    db.collection("Shayris")
+    db.collection('Shayris')
       .get()
       .then((snapshot) => {
         const feat_shayris = [];
@@ -62,7 +71,7 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    db.collection("Poems")
+    db.collection('Poems')
       .get()
       .then((snapshot) => {
         const feat_kavitas = [];
@@ -84,7 +93,7 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    db.collection("Quotes")
+    db.collection('Quotes')
       .get()
       .then((snapshot) => {
         const feat_quotes = [];
@@ -105,6 +114,19 @@ const HomePage = () => {
       });
   }, []);
 
+  const handleSignOut = async () => {
+    try {
+      await SignOut();
+      history.push('/signup');
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  if (!currentUser) {
+    history.push('/signup');
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -113,27 +135,33 @@ const HomePage = () => {
     >
       <div>
         <Navbar backButton={false} />
+        {currentUser && (
+          <>
+            <p>Welcome {currentUser.username}</p>
+            <button onClick={handleSignOut}>signout</button>
+          </>
+        )}
         <Carausal />
         <div>
           <div
-            className="d-flex flex-column align-items-center justify-content-center py-5"
-            style={{ width: "100vw", backgroundColor: "white" }}
+            className='d-flex flex-column align-items-center justify-content-center py-5'
+            style={{ width: '100vw', backgroundColor: 'white' }}
           >
             <h2
-              className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
+              className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
               style={{
-                paddingLeft: "20px",
-                fontFamily: "Dancing Script",
-                borderBottom: "2px solid #222",
-                paddingBottom: "1px",
+                paddingLeft: '20px',
+                fontFamily: 'Dancing Script',
+                borderBottom: '2px solid #222',
+                paddingBottom: '1px',
               }}
             >
               Featured Blogs
             </h2>
 
             <div
-              className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
-              style={{ width: "100vw" }}
+              className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+              style={{ width: '100vw' }}
             >
               {featBlogs.map(
                 ({ image, description, title, updated_on, id, authorName }) => {
@@ -154,24 +182,24 @@ const HomePage = () => {
         </div>
         <div>
           <div
-            className="d-flex flex-column align-items-center justify-content-center py-5"
-            style={{ width: "100vw", backgroundColor: "white" }}
+            className='d-flex flex-column align-items-center justify-content-center py-5'
+            style={{ width: '100vw', backgroundColor: 'white' }}
           >
             <h2
-              className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
+              className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
               style={{
-                paddingLeft: "20px",
-                fontFamily: "Dancing Script",
-                borderBottom: "2px solid #222",
-                paddingBottom: "1px",
+                paddingLeft: '20px',
+                fontFamily: 'Dancing Script',
+                borderBottom: '2px solid #222',
+                paddingBottom: '1px',
               }}
             >
               trending Shayris
             </h2>
 
             <div
-              className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
-              style={{ width: "100vw" }}
+              className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+              style={{ width: '100vw' }}
             >
               {featuredShayris.map(
                 ({ img, description, title, updated_on, id, authorName }) => {
@@ -191,24 +219,24 @@ const HomePage = () => {
           </div>
         </div>
         <div
-          className="d-flex flex-column align-items-center justify-content-center py-5"
-          style={{ width: "100vw", backgroundColor: "white" }}
+          className='d-flex flex-column align-items-center justify-content-center py-5'
+          style={{ width: '100vw', backgroundColor: 'white' }}
         >
           <h2
-            className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
+            className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
             style={{
-              paddingLeft: "20px",
-              fontFamily: "Dancing Script",
-              borderBottom: "2px solid #222",
-              paddingBottom: "1px",
+              paddingLeft: '20px',
+              fontFamily: 'Dancing Script',
+              borderBottom: '2px solid #222',
+              paddingBottom: '1px',
             }}
           >
             trending kavitas
           </h2>
 
           <div
-            className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
-            style={{ width: "100vw" }}
+            className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+            style={{ width: '100vw' }}
           >
             {featuredKavitas.map(
               ({ img, description, title, updated_on, id, authorName }) => {
@@ -227,24 +255,24 @@ const HomePage = () => {
           </div>
         </div>
         <div
-          className="d-flex flex-column align-items-center justify-content-center py-5"
-          style={{ width: "100vw", backgroundColor: "white" }}
+          className='d-flex flex-column align-items-center justify-content-center py-5'
+          style={{ width: '100vw', backgroundColor: 'white' }}
         >
           <h2
-            className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
+            className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
             style={{
-              paddingLeft: "20px",
-              fontFamily: "Dancing Script",
-              borderBottom: "2px solid #222",
-              paddingBottom: "1px",
+              paddingLeft: '20px',
+              fontFamily: 'Dancing Script',
+              borderBottom: '2px solid #222',
+              paddingBottom: '1px',
             }}
           >
             trending quotes
           </h2>
 
           <div
-            className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
-            style={{ width: "100vw" }}
+            className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+            style={{ width: '100vw' }}
           >
             {featuredQuotes.map(
               ({ img, description, title, updated_on, id, authorName }) => {
@@ -265,7 +293,7 @@ const HomePage = () => {
         <div>
           <Footer
             style={{
-              backgroundColor: "#68527b",
+              backgroundColor: '#68527b',
             }}
           />
         </div>
