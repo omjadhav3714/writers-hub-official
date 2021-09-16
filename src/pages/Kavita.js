@@ -7,6 +7,16 @@ import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import './Blog.css';
 import Comments from '../components/Comments/Comments';
+import {
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+  TelegramShareButton,
+  TelegramIcon,
+} from 'react-share';
 
 const Kavita = () => {
   const { id } = useParams();
@@ -153,18 +163,54 @@ const Kavita = () => {
                     SOCIAL SHARE
                   </p>
                   <ul className='d-flex' style={{ listStyle: 'none' }}>
+                    <TwitterShareButton
+                      url={window.location.href}
+                      quote={kavita.title}
+                    >
+                      <TwitterIcon
+                        logoFillColor='white'
+                        size='53'
+                        round={true}
+                      ></TwitterIcon>
+                    </TwitterShareButton>
                     <li className='px-1'>
-                      <SocialIcon url='https://twitter.com/' />
+                      <FacebookShareButton
+                        url={window.location.href}
+                        quote={kavita.title}
+                        hashtag='#Kavita'
+                      >
+                        <FacebookIcon
+                          logoFillColor='white'
+                          size='53'
+                          round={true}
+                        ></FacebookIcon>
+                      </FacebookShareButton>
                     </li>
                     <li className='px-1'>
-                      <SocialIcon url='https://facebook.com/' />
+                      <WhatsappShareButton
+                        url={window.location.href}
+                        quote={kavita.title}
+                      >
+                        <WhatsappIcon
+                          logoFillColor='white'
+                          size='53'
+                          round={true}
+                        ></WhatsappIcon>
+                      </WhatsappShareButton>
                     </li>
 
                     <li className='px-1'>
-                      <SocialIcon url='https://instagram.com/' />
-                    </li>
-                    <li className='px-1'>
-                      <SocialIcon url='https://youtube.com/' />
+                      <TelegramShareButton
+                        url={window.location.href}
+                        quote={kavita.title}
+                        hashtag='#Kavita'
+                      >
+                        <TelegramIcon
+                          logoFillColor='white'
+                          size='53'
+                          round={true}
+                        ></TelegramIcon>
+                      </TelegramShareButton>
                     </li>
                   </ul>
                 </div>
@@ -305,7 +351,11 @@ const Kavita = () => {
           </div>
         </div>
       ) : (
-        <div>loading</div>
+        <div class='text-center'>
+          <div class='spinner-border' role='status'>
+            <span class='sr-only'>Loading...</span>
+          </div>
+        </div>
       )}
       <Footer />
     </div>

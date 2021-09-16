@@ -7,6 +7,16 @@ import { Link } from 'react-router-dom';
 import './Blog.css';
 import { SocialIcon } from 'react-social-icons';
 import Comments from '../components/Comments/Comments';
+import {
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+  TelegramShareButton,
+  TelegramIcon,
+} from 'react-share';
 
 const Blog = () => {
   const { id } = useParams();
@@ -169,17 +179,53 @@ const Blog = () => {
                   </p>
                   <ul className='d-flex' style={{ listStyle: 'none' }}>
                     <li className='px-1'>
-                      <SocialIcon url='https://twitter.com/' />
+                      <TwitterShareButton
+                        url={window.location.href}
+                        quote={blog.title}
+                      >
+                        <TwitterIcon
+                          logoFillColor='white'
+                          size='53'
+                          round={true}
+                        ></TwitterIcon>
+                      </TwitterShareButton>
                     </li>
                     <li className='px-1'>
-                      <SocialIcon url='https://facebook.com/' />
+                      <FacebookShareButton
+                        url={window.location.href}
+                        quote={blog.title}
+                      >
+                        <FacebookIcon
+                          logoFillColor='white'
+                          size='53'
+                          round={true}
+                        ></FacebookIcon>
+                      </FacebookShareButton>
+                    </li>
+                    <li className='px-1'>
+                      <WhatsappShareButton
+                        url={window.location.href}
+                        quote={blog.title}
+                      >
+                        <WhatsappIcon
+                          logoFillColor='white'
+                          size='53'
+                          round={true}
+                        ></WhatsappIcon>
+                      </WhatsappShareButton>
                     </li>
 
                     <li className='px-1'>
-                      <SocialIcon url='https://instagram.com/' />
-                    </li>
-                    <li className='px-1'>
-                      <SocialIcon url='https://youtube.com/' />
+                      <TelegramShareButton
+                        url={window.location.href}
+                        quote={blog.title}
+                      >
+                        <TelegramIcon
+                          logoFillColor='white'
+                          size='53'
+                          round={true}
+                        ></TelegramIcon>
+                      </TelegramShareButton>
                     </li>
                   </ul>
                 </div>
@@ -443,7 +489,11 @@ const Blog = () => {
           </div>
         </div>
       ) : (
-        <div>loading</div>
+        <div class='text-center'>
+          <div class='spinner-border' role='status'>
+            <span class='sr-only'>Loading...</span>
+          </div>
+        </div>
       )}
       <Footer />
     </div>
