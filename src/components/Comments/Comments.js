@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './Comments.css';
 import { db } from '../../firebase';
 import { format } from 'timeago.js';
+import { useAuth } from '../../context/AuthContext';
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, deleteComment, currentUser }) => {
   return (
     <div className='mb-5' style={{ border: '0' }}>
       <div className='comments  py-4'>
@@ -53,26 +54,11 @@ const Comments = ({ comments }) => {
                       {format(comment.created_at)}
                     </p>
                   </div>
-                  {/*  <p className="pt-0 mt-0 pe-2" style={{ fontSize: "0.85rem" }}>
-                    3 Likes
-                  </p>
-
-                   like btn */}
-                  {/* <button
-                    className="p-0 m-0 like-btn"
-                    style={{
-                      backgroundColor: "transparent",
-                      outline: "none",
-                      border: "none",
-                      maxHeight: "16px",
-                    }}
-                  >
-                    <i
-                      className="fas fa-thumbs-up"
-                      style={{ color: "#D3D3D3	" }}
-                    ></i>
-                  </button>
-                </div>  */}
+                  {currentUser && currentUser.id === comment.id && (
+                    <button className='btn btn-danger' onClick={deleteComment}>
+                      deleteComment
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

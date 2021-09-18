@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import Comments from '../components/Comments/Comments';
+import { format } from 'timeago.js';
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -23,8 +24,6 @@ const Shayri = () => {
   const { id } = useParams();
 
   const [shayri, setShayri] = useState();
-  const [commentName, setCommentName] = useState('');
-  const [commentEmail, setCommentEmail] = useState('');
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [success, setSuccess] = useState(false);
@@ -46,21 +45,20 @@ const Shayri = () => {
       .catch(function (error) {
         console.log('Error getting document:', error);
       });
-    db.collection('Comments')
+    db.collection('Shayris')
+      .doc(id)
+      .collection('comment')
       .get()
       .then((snapshot) => {
         const comm = [];
         snapshot.forEach((doc) => {
-          const data = {
-            postId: doc.data().post_id,
+          comm.push({
+            id: doc.id,
             name: doc.data().name,
             email: doc.data().email,
             comment: doc.data().comment,
             created_at: doc.data().created_at,
-          };
-          if (data.postId === id) {
-            comm.push(data);
-          }
+          });
         });
         setComments(comm);
       });
@@ -84,19 +82,27 @@ const Shayri = () => {
   const addComment = async (e) => {
     e.preventDefault();
     const commentData = {
-      post_id: id,
-      name: commentName,
-      email: commentEmail,
+      userId: currentUser.id,
+      name: currentUser.username,
+      email: currentUser.email,
       comment: comment,
       created_at: new Date().toString(),
     };
 
-    if (!commentData.name || !commentData.comment) {
+    if (!currentUser) {
       setSuccess(false);
       setError(true);
     } else {
       try {
-        await db.collection('Comments').add(commentData);
+        await db
+          .collection('Shayris')
+          .doc(`/${id}/comment/${currentUser.id}`)
+          .set({
+            name: currentUser.username,
+            email: currentUser.email,
+            comment: comment,
+            created_at: new Date().toString(),
+          });
         setError(false);
         setSuccess(true);
         setComments([commentData, ...comments]);
@@ -105,6 +111,29 @@ const Shayri = () => {
         setError(true);
       }
     }
+  };
+
+  const deleteComment = async () => {
+    await db
+      .collection('Shayris')
+      .doc(`/${id}/comment/${currentUser.id}`)
+      .delete();
+    db.collection('Shayris')
+      .doc(id)
+      .collection('comment')
+      .get()
+      .then((snapshot) => {
+        const comm = [];
+        snapshot.forEach((doc) => {
+          comm.push({
+            id: doc.id,
+            name: doc.data().username,
+            email: doc.data().email,
+            created_at: doc.data.created_at,
+          });
+        });
+        setComments(comm);
+      });
   };
 
   const AddLike = async (e) => {
@@ -127,6 +156,8 @@ const Shayri = () => {
         });
     }
   };
+
+  console.log(comments);
 
   const Unlike = async (e) => {
     if (!currentUser) {
@@ -181,14 +212,82 @@ const Shayri = () => {
                     )}
                   </div>
                 </header>
-
                 <section
                   className='mb-5 '
                   style={{ textAlign: 'justify', width: '300px' }}
                 >
                   <p className='fs-5 mb-4'>{shayri.description}</p>
                 </section>
-                <Comments comments={comments} />
+                <div className='mb-5' style={{ border: '0' }}>
+                  <div className='comments  py-4'>
+                    <p
+                      className='author ps-3 ms-3 '
+                      style={{
+                        position: 'relative',
+                        fontWeight: 'bold',
+                        fontSize: '18px',
+                        fontFamily: 'sans-serif',
+                        color: '#222',
+                      }}
+                    >
+                      TOP COMMENTS
+                    </p>
+
+                    <div className='d-flex flex-row flex-wrap'>
+                      {/* single comment 1 */}
+                      {comments.map((comment) => (
+                        <div className='col-lg-6 col-md-6 col-sm-12 pb-3'>
+                          <div className='d-flex flex-row single-post flex-wrap col-12'>
+                            <div className='px-3 col-lg-12 col-md-12 col-sm-12'>
+                              <div className='d-inline-flex justify-content-between'>
+                                <p className='popular-blog-comment pb-1 mb-0'>
+                                  <span
+                                    style={{
+                                      fontWeight: 'bold',
+                                      fontWeight: 'bold',
+                                      fontFamily: 'sans-serif',
+                                      fontSize: '1rem',
+                                    }}
+                                  >
+                                    {comment.name}
+                                  </span>
+                                </p>
+                              </div>
+                              <p className=' pt-0 mt-0 pb-1 mb-0'>
+                                <span
+                                  style={{
+                                    fontWeight: 'bold',
+                                    fontSize: '0.9rem',
+                                  }}
+                                >
+                                  {comment.comment}
+                                </span>
+                              </p>
+                              <div className='d-flex'>
+                                <p
+                                  className='pt-0 mt-0 pe-2'
+                                  style={{ fontSize: '0.85rem' }}
+                                >
+                                  {format(comment.created_at)}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* end of comment 1 */}
+
+                      {/* single comment 2 */}
+
+                      {/* end of single comment */}
+                      {/* single comment 2 */}
+
+                      {/* end of single comment */}
+                    </div>
+                  </div>
+                </div>
+                )
               </article>
             </div>
 
@@ -369,31 +468,6 @@ const Shayri = () => {
                   }}
                   onSubmit={addComment}
                 >
-                  <div class='form-group py-3'>
-                    <label className='pb-1' for='email'>
-                      Email
-                    </label>
-                    <input
-                      type='email'
-                      class='form-control'
-                      id='email'
-                      aria-describedby='emailHelp'
-                      placeholder='Enter email'
-                      onChange={(e) => setCommentEmail(e.target.value)}
-                    />
-                  </div>
-                  <div class='form-group py-3'>
-                    <label className='pb-1' for='name'>
-                      Your Name
-                    </label>
-                    <input
-                      type='text'
-                      class='form-control'
-                      id='name'
-                      placeholder='Name'
-                      onChange={(e) => setCommentName(e.target.value)}
-                    />
-                  </div>
                   <div class='form-group py-3'>
                     <label className='pb-1' for='exampleFormControlTextarea1'>
                       Comment

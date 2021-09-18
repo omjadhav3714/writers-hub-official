@@ -51,22 +51,20 @@ const Kavita = () => {
       .catch(function (error) {
         console.log('Error getting document:', error);
       });
-    db.collection('Comments')
+    db.collection('Poems')
+      .doc(id)
+      .collection('comment')
       .get()
       .then((snapshot) => {
         const comm = [];
         snapshot.forEach((doc) => {
-          const data = {
-            postId: doc.data().post_id,
+          comm.push({
+            id: doc.id,
             name: doc.data().name,
             email: doc.data().email,
             comment: doc.data().comment,
-
             created_at: doc.data().created_at,
-          };
-          if (data.postId === id) {
-            comm.push(data);
-          }
+          });
         });
         setComments(comm);
       });
@@ -93,19 +91,27 @@ const Kavita = () => {
   const addComment = async (e) => {
     e.preventDefault();
     const commentData = {
-      post_id: id,
-      name: commentName,
-      email: commentEmail,
+      userId: currentUser.id,
+      name: currentUser.username,
+      email: currentUser.email,
       comment: comment,
       created_at: new Date().toString(),
     };
 
-    if (!commentData.name || !commentData.comment) {
+    if (!currentUser) {
       setSuccess(false);
       setError(true);
     } else {
       try {
-        await db.collection('Comments').add(commentData);
+        await db
+          .collection('Poems')
+          .doc(`/${id}/comment/${currentUser.id}`)
+          .set({
+            name: currentUser.username,
+            email: currentUser.email,
+            comment: comment,
+            created_at: new Date().toString(),
+          });
         setError(false);
         setSuccess(true);
         setComments([commentData, ...comments]);
@@ -382,31 +388,6 @@ const Kavita = () => {
                   }}
                   onSubmit={addComment}
                 >
-                  <div class='form-group py-3'>
-                    <label className='pb-1' for='email'>
-                      Email
-                    </label>
-                    <input
-                      type='email'
-                      class='form-control'
-                      id='email'
-                      aria-describedby='emailHelp'
-                      placeholder='Enter email'
-                      onChange={(e) => setCommentEmail(e.target.value)}
-                    />
-                  </div>
-                  <div class='form-group py-3'>
-                    <label className='pb-1' for='name'>
-                      Your Name
-                    </label>
-                    <input
-                      type='text'
-                      class='form-control'
-                      id='name'
-                      placeholder='Name'
-                      onChange={(e) => setCommentName(e.target.value)}
-                    />
-                  </div>
                   <div class='form-group py-3'>
                     <label className='pb-1' for='exampleFormControlTextarea1'>
                       Comment
