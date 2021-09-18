@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import './Blog.css';
 import Comments from '../components/Comments/Comments';
+import { useHistory } from 'react-router';
+import { useAuth } from '../context/AuthContext';
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -28,6 +30,12 @@ const Kavita = () => {
   const [comments, setComments] = useState([]);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [liked, setLiked] = useState(false);
+  const [tlikes, setTlikes] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const history = useHistory();
+
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     const single = db.collection('Poems').doc(id);
@@ -53,6 +61,7 @@ const Kavita = () => {
             name: doc.data().name,
             email: doc.data().email,
             comment: doc.data().comment,
+
             created_at: doc.data().created_at,
           };
           if (data.postId === id) {
@@ -61,8 +70,25 @@ const Kavita = () => {
         });
         setComments(comm);
       });
-    console.log(comments);
   }, []);
+
+  useState(() => {
+    db.collection('Poems')
+      .doc(id)
+      .collection('like')
+      .get()
+      .then((snapshot) => {
+        const dat = [];
+        snapshot.forEach((doc) => {
+          dat.push(doc.data());
+        });
+        setTlikes(dat);
+      });
+  }, []);
+
+  if (tlikes) {
+    console.log(tlikes);
+  }
 
   const addComment = async (e) => {
     e.preventDefault();
@@ -90,6 +116,53 @@ const Kavita = () => {
     }
   };
 
+  const AddLike = async (e) => {
+    if (!currentUser) {
+      e.preventDefault();
+    } else {
+      await db.collection('Poems').doc(`/${id}/like/${currentUser.id}`).set({
+        like: 1,
+      });
+      db.collection('Poems')
+        .doc(id)
+        .collection('like')
+        .get()
+        .then((snapshot) => {
+          const dat = [];
+          snapshot.forEach((doc) => {
+            dat.push(doc.data());
+          });
+          setTlikes(dat);
+        });
+    }
+  };
+
+  const Unlike = async (e) => {
+    if (!currentUser) {
+      e.preventDefault();
+    } else {
+      await db
+        .collection('Poems')
+        .doc(`/${id}/like/${currentUser.id}`)
+        .delete();
+      db.collection('Poems')
+        .doc(id)
+        .collection('like')
+        .get()
+        .then((snapshot) => {
+          const dat = [];
+          snapshot.forEach((doc) => {
+            dat.push(doc.data());
+          });
+          setTlikes(dat);
+        });
+    }
+  };
+
+  if (likes) {
+    console.log(likes);
+  }
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <Navbar />
@@ -104,6 +177,21 @@ const Kavita = () => {
                   <div className='text-muted fst-italic mb-2'>
                     Posted on {kavita.updated_on}, 2021 <br /> by{' '}
                     {kavita.authorName}
+                  </div>
+                  <div>
+                    <button className='btn btn-primary' onClick={AddLike}>
+                      Like
+                    </button>
+
+                    <button className='btn btn-primary' onClick={Unlike}>
+                      UnLike
+                    </button>
+
+                    {tlikes && (
+                      <span class='badge rounded-pill bg-secondary'>
+                        {tlikes.length}
+                      </span>
+                    )}
                   </div>
                 </header>
 

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import './Blog.css';
 import { SocialIcon } from 'react-social-icons';
 import Comments from '../components/Comments/Comments';
+import { useAuth } from '../context/AuthContext';
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -29,7 +30,9 @@ const Blog = () => {
   const [comments, setComments] = useState([]);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [tlikes, setTlikes] = useState([]);
 
+  const { currentUser } = useAuth();
   useEffect(() => {
     const single = db.collection('Blogs').doc(id);
 
@@ -66,6 +69,20 @@ const Blog = () => {
     console.log(comments);
   }, []);
 
+  useState(() => {
+    db.collection('Blogs')
+      .doc(id)
+      .collection('like')
+      .get()
+      .then((snapshot) => {
+        const dat = [];
+        snapshot.forEach((doc) => {
+          dat.push(doc.data());
+        });
+        setTlikes(dat);
+      });
+  }, []);
+
   const addComment = async (e) => {
     e.preventDefault();
     const commentData = {
@@ -92,6 +109,49 @@ const Blog = () => {
     }
   };
 
+  const AddLike = async (e) => {
+    if (!currentUser) {
+      e.preventDefault();
+    } else {
+      await db.collection('Blogs').doc(`/${id}/like/${currentUser.id}`).set({
+        like: 1,
+      });
+      db.collection('Blogs')
+        .doc(id)
+        .collection('like')
+        .get()
+        .then((snapshot) => {
+          const dat = [];
+          snapshot.forEach((doc) => {
+            dat.push(doc.data());
+          });
+          setTlikes(dat);
+        });
+    }
+  };
+
+  const Unlike = async (e) => {
+    if (!currentUser) {
+      e.preventDefault();
+    } else {
+      await db
+        .collection('Blogs')
+        .doc(`/${id}/like/${currentUser.id}`)
+        .delete();
+      db.collection('Blogs')
+        .doc(id)
+        .collection('like')
+        .get()
+        .then((snapshot) => {
+          const dat = [];
+          snapshot.forEach((doc) => {
+            dat.push(doc.data());
+          });
+          setTlikes(dat);
+        });
+    }
+  };
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <Navbar />
@@ -105,6 +165,24 @@ const Blog = () => {
 
                   <div className='text-muted fst-italic mb-2'>
                     Posted on {blog.updated_on}, 2021 by {blog.authorName}
+                  </div>
+
+                  <div>
+                    <div>
+                      <button className='btn btn-primary' onClick={AddLike}>
+                        Like
+                      </button>
+
+                      <button className='btn btn-primary' onClick={Unlike}>
+                        UnLike
+                      </button>
+
+                      {tlikes && (
+                        <span class='badge rounded-pill bg-secondary'>
+                          {tlikes.length}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   {blog.categories.map((c) => (

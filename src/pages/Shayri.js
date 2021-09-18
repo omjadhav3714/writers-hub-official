@@ -17,6 +17,7 @@ import {
   TelegramShareButton,
   TelegramIcon,
 } from 'react-share';
+import { useAuth } from '../context/AuthContext';
 
 const Shayri = () => {
   const { id } = useParams();
@@ -28,6 +29,8 @@ const Shayri = () => {
   const [comments, setComments] = useState([]);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [tlikes, setTlikes] = useState([]);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     const single = db.collection('Shayris').doc(id);
@@ -64,6 +67,20 @@ const Shayri = () => {
     console.log(comments);
   }, []);
 
+  useState(() => {
+    db.collection('Shayris')
+      .doc(id)
+      .collection('like')
+      .get()
+      .then((snapshot) => {
+        const dat = [];
+        snapshot.forEach((doc) => {
+          dat.push(doc.data());
+        });
+        setTlikes(dat);
+      });
+  }, []);
+
   const addComment = async (e) => {
     e.preventDefault();
     const commentData = {
@@ -90,6 +107,49 @@ const Shayri = () => {
     }
   };
 
+  const AddLike = async (e) => {
+    if (!currentUser) {
+      e.preventDefault();
+    } else {
+      await db.collection('Shayris').doc(`/${id}/like/${currentUser.id}`).set({
+        like: 1,
+      });
+      db.collection('Shayris')
+        .doc(id)
+        .collection('like')
+        .get()
+        .then((snapshot) => {
+          const dat = [];
+          snapshot.forEach((doc) => {
+            dat.push(doc.data());
+          });
+          setTlikes(dat);
+        });
+    }
+  };
+
+  const Unlike = async (e) => {
+    if (!currentUser) {
+      e.preventDefault();
+    } else {
+      await db
+        .collection('Shayris')
+        .doc(`/${id}/like/${currentUser.id}`)
+        .delete();
+      db.collection('Shayris')
+        .doc(id)
+        .collection('like')
+        .get()
+        .then((snapshot) => {
+          const dat = [];
+          snapshot.forEach((doc) => {
+            dat.push(doc.data());
+          });
+          setTlikes(dat);
+        });
+    }
+  };
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <Navbar />
@@ -104,6 +164,21 @@ const Shayri = () => {
                   <div className='text-muted fst-italic mb-2'>
                     Posted on {shayri.updated_on}, 2021 <br /> by{' '}
                     {shayri.authorName}
+                  </div>
+                  <div>
+                    <button className='btn btn-primary' onClick={AddLike}>
+                      Like
+                    </button>
+
+                    <button className='btn btn-primary' onClick={Unlike}>
+                      UnLike
+                    </button>
+
+                    {tlikes && (
+                      <span class='badge rounded-pill bg-secondary'>
+                        {tlikes.length}
+                      </span>
+                    )}
                   </div>
                 </header>
 
