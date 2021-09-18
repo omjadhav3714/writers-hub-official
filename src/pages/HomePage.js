@@ -135,12 +135,7 @@ const HomePage = () => {
     >
       <div>
         <Navbar backButton={false} />
-        {currentUser && (
-          <>
-            <p>Welcome {currentUser.username}</p>
-            <button onClick={handleSignOut}>signout</button>
-          </>
-        )}
+
         <Carausal />
         <div>
           <div

@@ -112,15 +112,12 @@ const Shayri = () => {
       setError(true);
     } else {
       try {
-        await db
-          .collection('Quotes')
-          .doc(`/${id}/comment/${currentUser.id}`)
-          .set({
-            name: currentUser.username,
-            email: currentUser.email,
-            comment: comment,
-            created_at: new Date().toString(),
-          });
+        await db.collection('Quotes').doc(id).collection('comment').add({
+          name: currentUser.username,
+          email: currentUser.email,
+          comment: comment,
+          created_at: new Date().toString(),
+        });
         setError(false);
         setSuccess(true);
         setComments([commentData, ...comments]);
