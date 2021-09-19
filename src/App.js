@@ -16,6 +16,7 @@ import Blog from './pages/Blog';
 import SignUp from './components/forms/SignUp';
 import LogIn from './components/forms/LogIn';
 import { AuthProvider } from './context/AuthContext';
+import ForgetPassword from './components/forms/ForgetPassword';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/kavitas' component={KavitaPage} />
           <Route path='/shayaris' component={ShayariPage} />
           <Route path='/blogs' component={BlogPage} />
+          <Route path='/resetpassword' component={ForgetPassword} />
           <Route path='/signup' component={SignUp} />
           <Route path='/login' component={LogIn} />
           <Route exact path='/' component={HomePage} />

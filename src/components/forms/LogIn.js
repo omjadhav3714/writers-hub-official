@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
 const LogIn = () => {
@@ -60,7 +60,13 @@ const LogIn = () => {
             />
           </div>
           <div class='form-group '>
-            <p>already have an account</p>
+            <p>
+              Dont Have an account <Link to='/signup'>Register</Link>
+            </p>
+            <br />
+            <p>
+              <Link to='/resetpassword'>Forget Password ?</Link>
+            </p>
           </div>
           <button type='submit' class='btn btn-primary'>
             LogIn

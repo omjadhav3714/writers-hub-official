@@ -30,6 +30,10 @@ export const AuthProvider = ({ children }) => {
     auth.signOut().then(setCurrentUser(null));
   };
 
+  const ResetPassword = async (email) => {
+    await auth.sendPasswordResetEmail(email);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -60,6 +64,7 @@ export const AuthProvider = ({ children }) => {
     SignUp,
     SignOut,
     LogIn,
+    ResetPassword,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
