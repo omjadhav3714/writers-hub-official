@@ -17,6 +17,7 @@ import {
   TelegramIcon,
 } from 'react-share';
 import { useAuth } from '../context/AuthContext';
+import { useHistory } from 'react-router';
 
 const Shayri = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ const Shayri = () => {
   const [error, setError] = useState(false);
   const [tlikes, setTlikes] = useState([]);
   const { currentUser } = useAuth();
+  const history = useHistory();
 
   useEffect(() => {
     const single = db.collection('Quotes').doc(id);
@@ -99,18 +101,19 @@ const Shayri = () => {
 
   const addComment = async (e) => {
     e.preventDefault();
-    const commentData = {
-      userId: currentUser.id,
-      name: currentUser.username,
-      email: currentUser.email,
-      comment: comment,
-      created_at: new Date().toString(),
-    };
 
     if (!currentUser) {
+      history.push('/login');
       setSuccess(false);
       setError(true);
     } else {
+      const commentData = {
+        userId: currentUser.id,
+        name: currentUser.username,
+        email: currentUser.email,
+        comment: comment,
+        created_at: new Date().toString(),
+      };
       try {
         await db.collection('Quotes').doc(id).collection('comment').add({
           name: currentUser.username,
@@ -130,7 +133,7 @@ const Shayri = () => {
 
   const AddLike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db.collection('Quotes').doc(`/${id}/like/${currentUser.id}`).set({
         like: 1,
@@ -151,7 +154,7 @@ const Shayri = () => {
 
   const Unlike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db
         .collection('Quotes')

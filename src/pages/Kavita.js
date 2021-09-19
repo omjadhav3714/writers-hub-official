@@ -90,18 +90,19 @@ const Kavita = () => {
 
   const addComment = async (e) => {
     e.preventDefault();
-    const commentData = {
-      userId: currentUser.id,
-      name: currentUser.username,
-      email: currentUser.email,
-      comment: comment,
-      created_at: new Date().toString(),
-    };
 
     if (!currentUser) {
+      history.push('/lgoin');
       setSuccess(false);
       setError(true);
     } else {
+      const commentData = {
+        userId: currentUser.id,
+        name: currentUser.username,
+        email: currentUser.email,
+        comment: comment,
+        created_at: new Date().toString(),
+      };
       try {
         await db.collection('Poems').doc(id).collection('comment').add({
           name: currentUser.username,
@@ -121,7 +122,7 @@ const Kavita = () => {
 
   const AddLike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db.collection('Poems').doc(`/${id}/like/${currentUser.id}`).set({
         like: 1,
@@ -142,7 +143,7 @@ const Kavita = () => {
 
   const Unlike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db
         .collection('Poems')

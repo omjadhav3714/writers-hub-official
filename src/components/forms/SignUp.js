@@ -46,7 +46,7 @@ const SignUp = () => {
                     fontFamily: 'Dancing Script',
                   }}
                 >
-                  Shayri Kavita Quotes and Blogs
+                  Shayris Kavitas Quotes and Blogs
                 </div>
               </div>
               <div class='card-body p-4 p-sm-5 bg-light'>

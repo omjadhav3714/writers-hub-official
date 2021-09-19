@@ -1,6 +1,6 @@
 import { data } from 'browserslist';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -19,6 +19,7 @@ import {
   TelegramIcon,
 } from 'react-share';
 import { useAuth } from '../context/AuthContext';
+const history = useHistory;
 
 const Shayri = () => {
   const { id } = useParams();
@@ -81,18 +82,19 @@ const Shayri = () => {
 
   const addComment = async (e) => {
     e.preventDefault();
-    const commentData = {
-      userId: currentUser.id,
-      name: currentUser.username,
-      email: currentUser.email,
-      comment: comment,
-      created_at: new Date().toString(),
-    };
 
     if (!currentUser) {
+      history.push('/login');
       setSuccess(false);
       setError(true);
     } else {
+      const commentData = {
+        userId: currentUser.id,
+        name: currentUser.username,
+        email: currentUser.email,
+        comment: comment,
+        created_at: new Date().toString(),
+      };
       try {
         await db.collection('Shayris').doc(id).collection('comment').add({
           name: currentUser.username,
@@ -135,7 +137,7 @@ const Shayri = () => {
 
   const AddLike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db.collection('Shayris').doc(`/${id}/like/${currentUser.id}`).set({
         like: 1,
@@ -158,7 +160,7 @@ const Shayri = () => {
 
   const Unlike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db
         .collection('Shayris')

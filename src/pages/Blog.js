@@ -8,6 +8,7 @@ import './Blog.css';
 import { SocialIcon } from 'react-social-icons';
 import Comments from '../components/Comments/Comments';
 import { useAuth } from '../context/AuthContext';
+import { useHistory } from 'react-router';
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -31,6 +32,7 @@ const Blog = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [tlikes, setTlikes] = useState([]);
+  const history = useHistory();
 
   const { currentUser } = useAuth();
   useEffect(() => {
@@ -83,18 +85,19 @@ const Blog = () => {
 
   const addComment = async (e) => {
     e.preventDefault();
-    const commentData = {
-      userId: currentUser.id,
-      name: currentUser.username,
-      email: currentUser.email,
-      comment: comment,
-      created_at: new Date().toString(),
-    };
 
     if (!currentUser) {
+      history.push('/login');
       setSuccess(false);
       setError(true);
     } else {
+      const commentData = {
+        userId: currentUser.id,
+        name: currentUser.username,
+        email: currentUser.email,
+        comment: comment,
+        created_at: new Date().toString(),
+      };
       try {
         await db.collection('Blogs').doc(id).collection('comment').add({
           name: currentUser.username,
@@ -114,7 +117,7 @@ const Blog = () => {
 
   const AddLike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db.collection('Blogs').doc(`/${id}/like/${currentUser.id}`).set({
         like: 1,
@@ -135,7 +138,7 @@ const Blog = () => {
 
   const Unlike = async (e) => {
     if (!currentUser) {
-      e.preventDefault();
+      history.push('/login');
     } else {
       await db
         .collection('Blogs')

@@ -114,6 +114,10 @@ const HomePage = () => {
       });
   }, []);
 
+  if (!currentUser) {
+    history.push('/login');
+  }
+
   const handleSignOut = async () => {
     try {
       await SignOut();
@@ -122,10 +126,6 @@ const HomePage = () => {
       console.log(error.message);
     }
   };
-
-  if (!currentUser) {
-    history.push('/signup');
-  }
 
   return (
     <motion.div
