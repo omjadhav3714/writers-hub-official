@@ -43,43 +43,36 @@ const Navbar = ({ backButton }) => {
             class='collapse navbar-collapse justify-content-start'
             id='navbarNav'
           >
-            {!backButton ? (
-              <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
-                <li class='nav-item'>
-                  <Link
-                    class='nav-link'
-                    to='/blogs'
-                    smooth={true}
-                    duration={500}
-                  >
-                    Blogs
-                  </Link>
-                </li>
-                <li class='nav-item'>
-                  <Link class='nav-link' to='/shayaris'>
-                    Sayari
-                  </Link>
-                </li>
-                <li class='nav-item'>
-                  <Link class='nav-link' to='/kavitas'>
-                    kavita
-                  </Link>
-                </li>
-                <li class='nav-item'>
-                  <Link class='nav-link' to='/quotes'>
-                    quotes
-                  </Link>
-                </li>
-              </ul>
-            ) : (
-              <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
-                <li class='nav-item'>
-                  <Link class='nav-link' to='/shayaris'>
-                    Sayari
-                  </Link>
-                </li>
-              </ul>
-            )}
+            <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
+              <li class='nav-item'>
+                <Link class='nav-link' to='/blogs' smooth={true} duration={500}>
+                  Blogs
+                </Link>
+              </li>
+              <li class='nav-item'>
+                <Link class='nav-link' to='/shayaris'>
+                  Sayari
+                </Link>
+              </li>
+              <li class='nav-item'>
+                <Link class='nav-link' to='/kavitas'>
+                  kavita
+                </Link>
+              </li>
+              <li class='nav-item'>
+                <Link class='nav-link' to='/quotes'>
+                  quotes
+                </Link>
+              </li>
+            </ul>
+
+            <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
+              <li class='nav-item'>
+                <Link class='nav-link' to='/shayaris'>
+                  Sayari
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div

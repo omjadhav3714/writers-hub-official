@@ -19,6 +19,7 @@ import {
   TelegramShareButton,
   TelegramIcon,
 } from 'react-share';
+import { HandThumbsUpFill, HandThumbsDownFill } from 'react-bootstrap-icons';
 
 const Blog = () => {
   const { id } = useParams();
@@ -175,12 +176,8 @@ const Blog = () => {
 
                   <div>
                     <div>
-                      <button className='btn btn-primary' onClick={AddLike}>
-                        Like
-                      </button>
-
-                      <button className='btn btn-primary' onClick={Unlike}>
-                        UnLike
+                      <button className='btn btn-light' onClick={AddLike}>
+                        <HandThumbsUpFill />
                       </button>
 
                       {tlikes && (
@@ -188,6 +185,9 @@ const Blog = () => {
                           {tlikes.length}
                         </span>
                       )}
+                      <button className='btn btn-light' onClick={Unlike}>
+                        <HandThumbsDownFill />
+                      </button>
                     </div>
                   </div>
 

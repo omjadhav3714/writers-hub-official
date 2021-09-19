@@ -19,6 +19,7 @@ import {
   TelegramIcon,
 } from 'react-share';
 import { useAuth } from '../context/AuthContext';
+import { HandThumbsDownFill, HandThumbsUpFill } from 'react-bootstrap-icons';
 const history = useHistory;
 
 const Shayri = () => {
@@ -196,12 +197,8 @@ const Shayri = () => {
                     {shayri.authorName}
                   </div>
                   <div>
-                    <button className='btn btn-primary' onClick={AddLike}>
-                      Like
-                    </button>
-
-                    <button className='btn btn-primary' onClick={Unlike}>
-                      UnLike
+                    <button className='btn btn-light' onClick={AddLike}>
+                      <HandThumbsUpFill />
                     </button>
 
                     {tlikes && (
@@ -209,6 +206,9 @@ const Shayri = () => {
                         {tlikes.length}
                       </span>
                     )}
+                    <button className='btn btn-light' onClick={Unlike}>
+                      <HandThumbsDownFill />
+                    </button>
                   </div>
                 </header>
                 <section

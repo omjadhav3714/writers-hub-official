@@ -18,6 +18,7 @@ import {
 } from 'react-share';
 import { useAuth } from '../context/AuthContext';
 import { useHistory } from 'react-router';
+import { HandThumbsUpFill, HandThumbsDownFill } from 'react-bootstrap-icons';
 
 const Shayri = () => {
   const { id } = useParams();
@@ -190,19 +191,17 @@ const Shayri = () => {
                     {quote.authorName}
                   </div>
                   <div>
-                    <button className='btn btn-primary' onClick={AddLike}>
-                      Like
+                    <button className='btn btn-light' onClick={AddLike}>
+                      <HandThumbsUpFill />
                     </button>
-
-                    <button className='btn btn-primary' onClick={Unlike}>
-                      UnLike
-                    </button>
-
                     {tlikes && (
                       <span class='badge rounded-pill bg-secondary'>
                         {tlikes.length}
                       </span>
                     )}
+                    <button className='btn btn-light' onClick={Unlike}>
+                      <HandThumbsDownFill />
+                    </button>
                   </div>
                 </header>
 
