@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import './signup.css';
+import writer from '../../images/writer.png';
 
 const SignUp = () => {
   const usernameRef = useRef();
@@ -32,55 +34,102 @@ const SignUp = () => {
 
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
-      {console.log(currentUser)}
-      <div
-        className='container d-flex justify-content-center text-align-center align-items-center'
-        style={{ marginTop: 'auto', marginBottom: 'auto' }}
-      >
-        <form onSubmit={handleSubmit}>
-          <div class='form-group'>
-            <label for='exampleInputEmail1'>Username</label>
-            <input
-              type='text'
-              class='form-control'
-              placeholder='Enter username'
-              ref={usernameRef}
-            />
-            <small id='emailHelp' class='form-text text-muted'>
-              We'll never share your email with anyone else.
-            </small>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-lg-10 col-xl-9 mx-auto'>
+            <div class='card flex-row my-5 border-0 shadow rounded-3 overflow-hidden'>
+              <div class='card-img-left d-flex justify-content-center align-items-center text-dark'>
+                <div
+                  style={{
+                    width: '150px',
+                    fontSize: '50px',
+                    fontFamily: 'Dancing Script',
+                  }}
+                >
+                  Shayri Kavita Quotes and Blogs
+                </div>
+              </div>
+              <div class='card-body p-4 p-sm-5 bg-light'>
+                <div>
+                  <p
+                    class='card-title text-center mb-5'
+                    style={{ fontFamily: 'Dancing Script', fontSize: '30px' }}
+                  >
+                    <span className='p-2'>
+                      <img src={writer} alt='' width='55' height='50' />
+                    </span>
+                    Writers hub
+                  </p>
+                </div>
+                <form onSubmit={handleSubmit}>
+                  <div class='form-floating mb-3'>
+                    <input
+                      type='text'
+                      class='form-control'
+                      id='floatingInputUsername'
+                      placeholder='myusername'
+                      required
+                      autofocus
+                      ref={usernameRef}
+                    />
+                    <label for='floatingInputUsername'>Username</label>
+                  </div>
+
+                  <div class='form-floating mb-3'>
+                    <input
+                      type='email'
+                      class='form-control'
+                      id='floatingInputEmail'
+                      placeholder='name@example.com'
+                      ref={emailRef}
+                    />
+                    <label for='floatingInputEmail'>Email address</label>
+                  </div>
+
+                  <hr />
+
+                  <div class='form-floating mb-3'>
+                    <input
+                      type='password'
+                      class='form-control'
+                      id='floatingPassword'
+                      placeholder='Password'
+                      ref={passwordRef}
+                    />
+                    <label for='floatingPassword'>Password</label>
+                  </div>
+
+                  <div class='form-floating mb-3'>
+                    <input
+                      type='password'
+                      class='form-control'
+                      id='floatingPasswordConfirm'
+                      placeholder='Confirm Password'
+                    />
+                    <label for='floatingPasswordConfirm'>
+                      Confirm Password
+                    </label>
+                  </div>
+
+                  <div class='d-grid mb-2'>
+                    <button
+                      class='btn btn-lg btn-primary btn-login fw-bold text-uppercase'
+                      type='submit'
+                    >
+                      Register
+                    </button>
+                  </div>
+
+                  <Link class='d-block text-center mt-2 small' to='/login'>
+                    Have an account? Sign In
+                  </Link>
+
+                  <hr class='my-4' />
+                </form>
+              </div>
+            </div>
           </div>
-          <div class='form-group'>
-            <label for='exampleInputEmail1'>Email address</label>
-            <input
-              type='email'
-              class='form-control'
-              placeholder='Enter email'
-              ref={emailRef}
-            />
-            <small id='emailHelp' class='form-text text-muted'>
-              We'll never share your email with anyone else.
-            </small>
-          </div>
-          <div class='form-group'>
-            <label for='exampleInputPassword1'>Password</label>
-            <input
-              type='password'
-              class='form-control'
-              id='exampleInputPassword1'
-              placeholder='Password'
-              ref={passwordRef}
-            />
-          </div>
-          <div class='form-group '>
-            <p>
-              already have an account <Link to='/login'>click here</Link>
-            </p>
-          </div>
-          <button type='submit' class='btn btn-primary'>
-            SignUp
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );
