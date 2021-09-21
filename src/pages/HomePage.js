@@ -134,10 +134,11 @@ const HomePage = () => {
       exit={{ opacity: 0 }}
     >
       <div>
-        <Navbar backButton={false} />
-
+        <div style={{ zIndex: '1' }}>
+          <Navbar backButton={false} />
+        </div>
         <Carausal />
-        <div>
+        <div style={{ zIndex: '2' }}>
           <div
             className='d-flex flex-column align-items-center justify-content-center py-5'
             style={{ width: '100vw', backgroundColor: 'white' }}

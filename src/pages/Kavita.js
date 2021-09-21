@@ -201,7 +201,7 @@ const Kavita = () => {
 
                 <section
                   className='mb-5 '
-                  style={{ textAlign: 'justify', width: '400px' }}
+                  style={{ textAlign: 'justify', width: '300px' }}
                 >
                   <p className='fs-5 mb-4'>{kavita.description}</p>
                 </section>

@@ -10,11 +10,11 @@ const Navbar = ({ backButton }) => {
   const { currentUser, SignOut } = useAuth();
   const history = useHistory();
   return (
-    <div
-      className='border-bottom border-3'
-      style={{ borderBottom: '3px solid #201f1e', height: '80px' }}
-    >
-      <nav class='navbar navbar-expand-md navbar-light bg-light'>
+    <div className='' style={{ height: '85px', width: '100vw' }}>
+      <nav
+        class='navbar navbar-expand-md sticky-top navbar-light bg-light'
+        style={{ height: '70px' }}
+      >
         <div class='container-fluid'>
           <span className='p-2 align-items-center'>
             <img src={writer} alt='' width='50' height='45' />
@@ -40,7 +40,7 @@ const Navbar = ({ backButton }) => {
             </span>
           </button>
           <div
-            class='collapse navbar-collapse justify-content-start'
+            class='collapse navbar-collapse justify-content-start bg-light'
             id='navbarNav'
           >
             <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
@@ -72,11 +72,16 @@ const Navbar = ({ backButton }) => {
                   Sayari
                 </Link>
               </li>
+              <li class='nav-item'>
+                <Link class='nav-link' to='/'>
+                  Home
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div
-            class='collapse navbar-collapse justify-content-end'
+            class='collapse navbar-collapse justify-content-end bg-light'
             id='navbarNav'
           >
             <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
