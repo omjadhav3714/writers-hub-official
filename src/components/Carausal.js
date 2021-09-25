@@ -70,7 +70,7 @@ const Carausal = () => {
         <div class='carousel-item' style={{ height: '90vh' }}>
           <div
             class='carousel-caption d-none d-md-block'
-            style={{ position: 'absolute', top: '10%' }}
+            style={{ position: 'absolute', top: '30%' }}
           >
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
@@ -80,7 +80,7 @@ const Carausal = () => {
 
                     color: '#000',
                     fontSize: '3rem',
-                    fontFamily: 'Dacing Script',
+                    fontFamily:"Dacing Script"
                   }}
                 >
                   Here you can read various Blogs, Shayaris, etc!

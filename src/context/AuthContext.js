@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }) => {
             const cuser = [];
             snapshot.forEach((doc) => {
               const data = {
+                userId: doc.id,
                 id: doc.data().id,
                 username: doc.data().username,
                 email: doc.data().email,

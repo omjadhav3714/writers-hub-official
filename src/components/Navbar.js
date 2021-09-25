@@ -5,10 +5,12 @@ import writer from '../images/writer.png';
 import { useAuth } from '../context/AuthContext';
 import { MusicNoteBeamed } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router';
+import { Button } from 'bootstrap';
 
 const Navbar = ({ backButton }) => {
   const { currentUser, SignOut } = useAuth();
   const history = useHistory();
+
   return (
     <div className='' style={{ height: '85px', width: '100vw' }}>
       <nav
@@ -68,14 +70,7 @@ const Navbar = ({ backButton }) => {
 
             <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
               <li class='nav-item'>
-                <Link class='nav-link' to='/shayaris'>
-                  Sayari
-                </Link>
-              </li>
-              <li class='nav-item'>
-                <Link class='nav-link' to='/'>
-                  Home
-                </Link>
+                <Link class='nav-link'>Home</Link>
               </li>
             </ul>
           </div>
@@ -87,8 +82,14 @@ const Navbar = ({ backButton }) => {
             <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
               {currentUser && currentUser.username ? (
                 <>
-                  <li class='nav-link'>
-                    <MusicNoteBeamed /> {currentUser.username}
+                  <li class='nav-item'>
+                    <button
+                      onClick={() =>
+                        history.push(`/users/${currentUser.username}`)
+                      }
+                    >
+                      <MusicNoteBeamed /> {currentUser.username}
+                    </button>
                   </li>
                   <li class='nav-item'>
                     <button

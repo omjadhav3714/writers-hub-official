@@ -17,12 +17,14 @@ import SignUp from './components/forms/SignUp';
 import LogIn from './components/forms/LogIn';
 import { AuthProvider } from './context/AuthContext';
 import ForgetPassword from './components/forms/ForgetPassword';
+import UserProfile from './pages/UserProfile';
 
 const App = () => {
   return (
     <AuthProvider>
       <AnimatePresence>
         <Switch>
+          <Route path='/users/:id' component={UserProfile} />
           <Route path='/blogs/:id' component={Blog} />
           <Route path='/kavitas/:id' component={Kavita} />
           <Route path='/quotes/:id' component={Quotes} />
