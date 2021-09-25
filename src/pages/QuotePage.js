@@ -15,15 +15,17 @@ const KavitaPage = () => {
       .then((snapshot) => {
         const quotes = [];
         snapshot.forEach((doc) => {
-          const data = {
-            id: doc.id,
-            title: doc.data().title,
-            description: doc.data().description,
-            authorName: doc.data().authorName,
-            isFeatured: doc.data().isFeatured,
-            updated_on: doc.data().updated_on,
-          };
-          quotes.push(data);
+          if (doc.data().isApproved === true) {
+            const data = {
+              id: doc.id,
+              title: doc.data().title,
+              description: doc.data().description,
+              authorName: doc.data().authorName,
+              isFeatured: doc.data().isFeatured,
+              updated_on: doc.data().updated_on,
+            };
+            quotes.push(data);
+          }
         });
         setQuotes(quotes);
       });

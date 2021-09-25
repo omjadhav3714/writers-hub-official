@@ -2,18 +2,19 @@ import React, { useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
+import { useHistory } from 'react-router';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
   const [showShayriForm, setShowShayriForm] = useState(false);
   const [showKavitaForm, setShowKavitaForm] = useState(false);
   const [showQuoteForm, setShowQuoteForm] = useState(false);
+  const history = useHistory();
 
   const shayriTitle = useRef();
   const shayriContent = useRef();
   const kavitaTitle = useRef();
   const kavitaContent = useRef();
-  const quoteTitle = useRef();
   const quoteContent = useRef();
 
   const addShayri = async (e) => {
@@ -64,11 +65,22 @@ const UserProfile = () => {
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
       <Navbar />
-      <div>
+      <div className='container'>
         {currentUser && currentUser.username && (
           <div className='ms-3'>
             <h1>{currentUser.username}</h1>
             <h1>{currentUser.email}</h1>
+
+            {currentUser.isAdmin && (
+              <button
+                className='btn btn-primary ms-3'
+                onClick={() => {
+                  history.push('/approvals');
+                }}
+              >
+                Approvals
+              </button>
+            )}
 
             <button
               className='btn btn-success ms-3'

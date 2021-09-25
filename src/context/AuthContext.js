@@ -47,6 +47,7 @@ export const AuthProvider = ({ children }) => {
                 id: doc.data().id,
                 username: doc.data().username,
                 email: doc.data().email,
+                isAdmin: doc.data().isAdmin,
               };
               if (data.id === String(user.uid)) {
                 cuser.push(data);

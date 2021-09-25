@@ -70,7 +70,9 @@ const Navbar = ({ backButton }) => {
 
             <ul class='navbar-nav ml-auto' style={{ fontSize: '16px' }}>
               <li class='nav-item'>
-                <Link class='nav-link'>Home</Link>
+                <Link class='nav-link' to='/'>
+                  Home
+                </Link>
               </li>
             </ul>
           </div>
@@ -84,6 +86,7 @@ const Navbar = ({ backButton }) => {
                 <>
                   <li class='nav-item'>
                     <button
+                      className='btn btn-light'
                       onClick={() =>
                         history.push(`/users/${currentUser.username}`)
                       }

@@ -18,12 +18,20 @@ import LogIn from './components/forms/LogIn';
 import { AuthProvider } from './context/AuthContext';
 import ForgetPassword from './components/forms/ForgetPassword';
 import UserProfile from './pages/UserProfile';
+import Approvals from './pages/Approvals';
+import KavitaApprovals from './pages/approvals/KavitaApprovals';
+import QuoteApprovals from './pages/approvals/quoteApproval';
+import ShayriApprovals from './pages/approvals/ShayriApproval';
 
 const App = () => {
   return (
     <AuthProvider>
       <AnimatePresence>
         <Switch>
+          <Route path='/approvals/shayris/:id' component={ShayriApprovals} />
+          <Route path='/approvals/quotes/:id' component={QuoteApprovals} />
+          <Route path='/approvals/kavitas/:id' component={KavitaApprovals} />
+          <Route path='/approvals' component={Approvals} />
           <Route path='/users/:id' component={UserProfile} />
           <Route path='/blogs/:id' component={Blog} />
           <Route path='/kavitas/:id' component={Kavita} />

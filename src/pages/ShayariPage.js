@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Card from "../components/Blogs/Card";
-import Footer from "../components/Footer";
-import { motion } from "framer-motion";
-import { db } from "../firebase";
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Card from '../components/Blogs/Card';
+import Footer from '../components/Footer';
+import { motion } from 'framer-motion';
+import { db } from '../firebase';
 
 const ShayariPage = () => {
   const [shayris, setShayris] = useState([]);
 
   useEffect(() => {
-    db.collection("Shayris")
+    db.collection('Shayris')
       .get()
       .then((snapshot) => {
         const shayris = [];
         snapshot.forEach((doc) => {
-          const data = {
-            id: doc.id,
-            title: doc.data().title,
-            description: doc.data().description,
-            authorName: doc.data().authorName,
-            isFeatured: doc.data().isFeatured,
-            updated_on: doc.data().updated_on,
-          };
+          if (doc.data().isApproved === true) {
+            const data = {
+              id: doc.id,
+              title: doc.data().title,
+              description: doc.data().description,
+              authorName: doc.data().authorName,
+              isFeatured: doc.data().isFeatured,
+              updated_on: doc.data().updated_on,
+            };
 
-          shayris.push(data);
+            shayris.push(data);
+          }
         });
         setShayris(shayris);
         console.log(shayris);
@@ -36,14 +38,14 @@ const ShayariPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div style={{ height: "100vh", width: "100vw" }}>
+      <div style={{ height: '100vh', width: '100vw' }}>
         <Navbar backButton={true} />
-        <div className="container d-flex justify-content-center p-4">
-          <h2 style={{ fontFamily: "Dancing Script" }}>Shayaris</h2>
+        <div className='container d-flex justify-content-center p-4'>
+          <h2 style={{ fontFamily: 'Dancing Script' }}>Shayaris</h2>
         </div>
         <div
-          className="container d-flex flex-direction-row flex-wrap justify-content-center my-3"
-          style={{ width: "100vw" }}
+          className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
+          style={{ width: '100vw' }}
         >
           {shayris.map(
             ({
