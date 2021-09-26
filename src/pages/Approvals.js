@@ -8,6 +8,7 @@ const Approvals = () => {
   const [shayriApprovals, setShayriApprovals] = useState([]);
   const [blogApprovals, setBlogApprovals] = useState([]);
   const [quoteApprovals, setQuoteApprovals] = useState([]);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     db.collection('Poems')
@@ -137,7 +138,7 @@ const Approvals = () => {
                   paddingBottom: '1px',
                 }}
               >
-                trending Shayris
+                Approve Shayris
               </h2>
 
               <div
@@ -185,7 +186,7 @@ const Approvals = () => {
                 paddingBottom: '1px',
               }}
             >
-              trending kavitas
+              approve kavitas
             </h2>
 
             <div
@@ -232,7 +233,7 @@ const Approvals = () => {
                 paddingBottom: '1px',
               }}
             >
-              trending quotes
+              approve quotes
             </h2>
 
             <div

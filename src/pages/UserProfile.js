@@ -9,6 +9,8 @@ const UserProfile = () => {
   const [showShayriForm, setShowShayriForm] = useState(false);
   const [showKavitaForm, setShowKavitaForm] = useState(false);
   const [showQuoteForm, setShowQuoteForm] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   const history = useHistory();
 
   const shayriTitle = useRef();
@@ -20,7 +22,7 @@ const UserProfile = () => {
   const addShayri = async (e) => {
     e.preventDefault();
     try {
-      db.collection('Shayris').add({
+      await db.collection('Shayris').add({
         authorName: currentUser.username,
         isFeatured: false,
         isApproved: false,
@@ -28,14 +30,23 @@ const UserProfile = () => {
         description: shayriContent.current.value,
         updated_on: new Date().toString(),
       });
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     } catch (error) {
-      console.log(error);
+      setError(true);
+      setSuccess(false);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     }
   };
   const addKavita = async (e) => {
     e.preventDefault();
     try {
-      db.collection('Poems').add({
+      await db.collection('Poems').add({
         authorName: currentUser.username,
         isFeatured: false,
         isApproved: false,
@@ -43,22 +54,40 @@ const UserProfile = () => {
         description: kavitaContent.current.value,
         updated_on: new Date().toString(),
       });
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     } catch (error) {
-      console.log(error);
+      setError(true);
+      setSuccess(false);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     }
   };
   const addQuote = async (e) => {
     e.preventDefault();
     try {
-      db.collection('Quotes').add({
+      await db.collection('Quotes').add({
         authorName: currentUser.username,
         isFeatured: false,
         isApproved: false,
         description: quoteContent.current.value,
         updated_on: new Date().toString(),
       });
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
     } catch (error) {
-      console.log(error);
+      setError(true);
+      setSuccess(false);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     }
   };
 
@@ -68,8 +97,8 @@ const UserProfile = () => {
       <div className='container'>
         {currentUser && currentUser.username && (
           <div className='ms-3'>
-            <h1>{currentUser.username}</h1>
-            <h1>{currentUser.email}</h1>
+            <h1>USER : {currentUser.username}</h1>
+            <h1>EMAIL: {currentUser.email}</h1>
 
             {currentUser.isAdmin && (
               <button
@@ -127,6 +156,17 @@ const UserProfile = () => {
             <div>
               {showShayriForm && (
                 <form onSubmit={addShayri}>
+                  {success && (
+                    <div class='alert alert-success' role='alert'>
+                      Success! , your shayri will be posted once the admin
+                      approves it
+                    </div>
+                  )}
+                  {error && (
+                    <div class='alert alert-error' role='alert'>
+                      opps something went wrong!
+                    </div>
+                  )}
                   <div class='form-group'>
                     <label for='exampleInputEmail1'>Title</label>
                     <input
@@ -157,6 +197,17 @@ const UserProfile = () => {
               )}
               {showKavitaForm && (
                 <form onSubmit={addKavita}>
+                  {success && (
+                    <div class='alert alert-success' role='alert'>
+                      Success! , your kavita will be posted once the admin
+                      approves it
+                    </div>
+                  )}
+                  {error && (
+                    <div class='alert alert-error' role='alert'>
+                      opps something went wrong!
+                    </div>
+                  )}
                   <div class='form-group'>
                     <label for='exampleInputEmail1'>Title</label>
                     <input
@@ -187,6 +238,17 @@ const UserProfile = () => {
               )}
               {showQuoteForm && (
                 <form onSubmit={addQuote}>
+                  {success && (
+                    <div class='alert alert-success' role='alert'>
+                      Success! , your quote will be posted once the admin
+                      approves it
+                    </div>
+                  )}
+                  {error && (
+                    <div class='alert alert-error' role='alert'>
+                      opps something went wrong!
+                    </div>
+                  )}
                   <div class='form-group'>
                     <label for='exampleInputPassword1'>Content</label>
                     <textarea

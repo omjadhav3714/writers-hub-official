@@ -5,6 +5,8 @@ import { db } from '../../firebase';
 
 const QuoteApprovals = () => {
   const { id } = useParams();
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const [quote, setQuote] = useState();
   useEffect(() => {
@@ -23,10 +25,40 @@ const QuoteApprovals = () => {
       });
   }, []);
 
-  const handleApprove = () => {
-    db.collection('Quotes').doc(id).update({
-      isApproved: true,
-    });
+  const handleApprove = async () => {
+    try {
+      await db.collection('Quotes').doc(id).update({
+        isApproved: true,
+      });
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    } catch (error) {
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    }
+  };
+
+  const handleNotApprove = async () => {
+    try {
+      await db.collection('Quotes').doc(id).delete();
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    } catch (error) {
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -36,9 +68,22 @@ const QuoteApprovals = () => {
         <div className='container mt-5'>
           <div>
             <article>
+              {success && (
+                <div class='alert alert-success' role='alert'>
+                  Success!
+                </div>
+              )}
+              {error && (
+                <div class='alert alert-danger' role='alert'>
+                  Opps something went wrong
+                </div>
+              )}
               <header className='mb-4'>
                 <button className='btn btn-success' onClick={handleApprove}>
                   Approve
+                </button>
+                <button className='btn btn-danger' onClick={handleNotApprove}>
+                  DisApprove
                 </button>
                 <div className='text-muted fst-italic mb-2'>
                   Posted on {quote.updated_on}, 2021 <br /> by{' '}

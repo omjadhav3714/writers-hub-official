@@ -5,6 +5,8 @@ import { db } from '../../firebase';
 
 const KavitaApprovals = () => {
   const { id } = useParams();
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const [kavita, setKavita] = useState();
   useEffect(() => {
@@ -23,10 +25,40 @@ const KavitaApprovals = () => {
       });
   }, []);
 
-  const handleApprove = () => {
-    db.collection('Poems').doc(id).update({
-      isApproved: true,
-    });
+  const handleApprove = async () => {
+    try {
+      await db.collection('Poems').doc(id).update({
+        isApproved: true,
+      });
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    } catch (error) {
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    }
+  };
+
+  const handleNotApprove = async () => {
+    try {
+      await db.collection('Poems').doc(id).delete();
+      setSuccess(true);
+      setError(false);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    } catch (error) {
+      setError(true);
+      setSuccess(false);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -36,10 +68,26 @@ const KavitaApprovals = () => {
         <div className='container mt-5'>
           <div>
             <article>
+              {success && (
+                <div class='alert alert-success' role='alert'>
+                  Success!
+                </div>
+              )}
+              {error && (
+                <div class='alert alert-danger' role='alert'>
+                  Opps something went wrong
+                </div>
+              )}
               <header className='mb-4'>
                 <h1 className='fw-bolder mb-1'>{kavita.title}</h1>
                 <button className='btn btn-success' onClick={handleApprove}>
                   Approve
+                </button>
+                <button
+                  className='btn btn-danger ms-3'
+                  onClick={handleNotApprove}
+                >
+                  Disapprove
                 </button>
                 <div className='text-muted fst-italic mb-2'>
                   Posted on {kavita.updated_on}, 2021 <br /> by{' '}
