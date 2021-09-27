@@ -191,14 +191,15 @@ const Blog = () => {
                     </div>
                   </div>
 
-                  {blog.categories.map((c) => (
-                    <p
-                      className='badge bg-secondary text-decoration-none link-light'
-                      href='#!'
-                    >
-                      {c}
-                    </p>
-                  ))}
+                  {blog.catagories &&
+                    blog.categories.map((c) => (
+                      <p
+                        className='badge bg-secondary text-decoration-none link-light'
+                        href='#!'
+                      >
+                        {c}
+                      </p>
+                    ))}
                 </header>
                 <figure className='mb-4'>
                   <img

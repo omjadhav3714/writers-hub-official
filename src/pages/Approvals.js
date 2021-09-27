@@ -34,6 +34,30 @@ const Approvals = () => {
   }, []);
 
   useEffect(() => {
+    db.collection('Blogs')
+      .get()
+      .then((snapshot) => {
+        const blogs = [];
+        snapshot.forEach((doc) => {
+          if (doc.data().isApproved === false) {
+            const data = {
+              id: doc.id,
+              image: doc.data().images[0],
+              title: doc.data().title,
+              description: doc.data().description,
+              authorName: doc.data().authorName,
+              isFeatured: doc.data().isFeatured,
+              updated_on: doc.data().updated_on,
+              isApproved: doc.data().isApproved,
+            };
+            blogs.push(data);
+          }
+        });
+        setBlogApprovals(blogs);
+      });
+  }, []);
+
+  useEffect(() => {
     db.collection('Shayris')
       .get()
       .then((snapshot) => {
@@ -101,25 +125,32 @@ const Approvals = () => {
                 Featured Blogs
               </h2>
 
-              {/* <div
-              className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
-              style={{ width: '100vw' }}
-            >
-              {featBlogs.map(
-                ({ image, description, title, updated_on, id, authorName }) => {
-                  return (
-                    <Card
-                      img={image}
-                      content={description}
-                      title={title}
-                      date={updated_on}
-                      url={`/blogs/${id}`}
-                      author={authorName}
-                    />
-                  );
-                }
-              )}
-            </div> */}
+              <div
+                className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+                style={{ width: '100vw' }}
+              >
+                {blogApprovals.map(
+                  ({
+                    image,
+                    description,
+                    title,
+                    updated_on,
+                    id,
+                    authorName,
+                  }) => {
+                    return (
+                      <Card
+                        img={image}
+                        content={description}
+                        title={title}
+                        date={updated_on}
+                        url={`/approvals/blogs/${id}`}
+                        author={authorName}
+                      />
+                    );
+                  }
+                )}
+              </div>
             </div>
           </div>
         )}

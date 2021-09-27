@@ -115,6 +115,7 @@ const UserProfile = () => {
             title: blogTitle.current.value,
             description: blogContent.current.value,
             images: [data.url],
+            updated_on: new Date().toString(),
           });
         });
       setSuccess(true);

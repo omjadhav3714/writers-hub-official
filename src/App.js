@@ -22,12 +22,14 @@ import Approvals from './pages/Approvals';
 import KavitaApprovals from './pages/approvals/KavitaApprovals';
 import QuoteApprovals from './pages/approvals/quoteApproval';
 import ShayriApprovals from './pages/approvals/ShayriApproval';
+import BlogApprovals from './pages/approvals/BlogApprovals';
 
 const App = () => {
   return (
     <AuthProvider>
       <AnimatePresence>
         <Switch>
+          <Route path='/approvals/blogs/:id' component={BlogApprovals} />
           <Route path='/approvals/shayris/:id' component={ShayriApprovals} />
           <Route path='/approvals/quotes/:id' component={QuoteApprovals} />
           <Route path='/approvals/kavitas/:id' component={KavitaApprovals} />
