@@ -113,7 +113,7 @@ const UserProfile = () => {
             isFeatured: false,
             isApproved: false,
             title: blogTitle.current.value,
-            content: blogContent.current.value,
+            description: blogContent.current.value,
             images: [data.url],
           });
         });
