@@ -6,7 +6,7 @@ body {
 /* blog section */
 
 .title {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   border-bottom: 3px solid #201f1e;
 }
 
@@ -14,14 +14,13 @@ body {
 
 .card {
   color: #8b92a9;
-  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
+
   border: 0;
   border-radius: 6px;
-  background: #202940;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .small {
