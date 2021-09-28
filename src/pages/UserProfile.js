@@ -159,6 +159,7 @@ const UserProfile = () => {
                   setShowBlogForm(false);
                 } else {
                   setShowBlogForm(true);
+                  setShowShayriForm(false);
                   setShowKavitaForm(false);
                   setShowQuoteForm(false);
                 }
@@ -174,6 +175,7 @@ const UserProfile = () => {
                   setShowShayriForm(false);
                 } else {
                   setShowShayriForm(true);
+                  setShowBlogForm(false);
                   setShowKavitaForm(false);
                   setShowQuoteForm(false);
                 }
@@ -188,6 +190,7 @@ const UserProfile = () => {
                   setShowKavitaForm(false);
                 } else {
                   setShowKavitaForm(true);
+                  setShowBlogForm(false);
                   setShowShayriForm(false);
                   setShowQuoteForm(false);
                 }
@@ -202,6 +205,7 @@ const UserProfile = () => {
                   setShowQuoteForm(false);
                 } else {
                   setShowQuoteForm(true);
+                  setShowBlogForm(false);
                   setShowShayriForm(false);
                   setShowKavitaForm(false);
                 }

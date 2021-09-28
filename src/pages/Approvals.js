@@ -122,7 +122,7 @@ const Approvals = () => {
                   paddingBottom: '1px',
                 }}
               >
-                Featured Blogs
+                Approve Blogs
               </h2>
 
               <div
