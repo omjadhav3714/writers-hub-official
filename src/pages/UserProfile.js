@@ -16,12 +16,16 @@ const UserProfile = () => {
 
   const shayriTitle = useRef();
   const shayriContent = useRef();
+  const shayriSocialLink = useRef();
   const kavitaTitle = useRef();
   const kavitaContent = useRef();
+  const kavitaSocialLink = useRef();
   const quoteContent = useRef();
   const [blogImg, setBlogImg] = useState();
   const blogTitle = useRef();
   const blogContent = useRef();
+  const blogCategories = useRef();
+  const blogSocialLink = useRef();
 
   const addShayri = async (e) => {
     e.preventDefault();
@@ -32,7 +36,9 @@ const UserProfile = () => {
         isApproved: false,
         title: shayriTitle.current.value,
         description: shayriContent.current.value,
+        rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
         updated_on: new Date().toString(),
+        social_link: shayriSocialLink.current.value,
       });
       setSuccess(true);
       setError(false);
@@ -56,7 +62,9 @@ const UserProfile = () => {
         isApproved: false,
         title: kavitaTitle.current.value,
         description: kavitaContent.current.value,
+        rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
         updated_on: new Date().toString(),
+        social_link: kavitaSocialLink.current.value,
       });
       setSuccess(true);
       setError(false);
@@ -79,6 +87,7 @@ const UserProfile = () => {
         isFeatured: false,
         isApproved: false,
         description: quoteContent.current.value,
+        rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
         updated_on: new Date().toString(),
       });
       setSuccess(true);
@@ -114,7 +123,10 @@ const UserProfile = () => {
             isApproved: false,
             title: blogTitle.current.value,
             description: blogContent.current.value,
+            categories: blogCategories.current.value.split(','),
+            social_link: blogSocialLink.current.value,
             images: [data.url],
+            rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
             updated_on: new Date().toString(),
           });
         });
@@ -253,12 +265,34 @@ const UserProfile = () => {
                     />
                   </div>
                   <div class='form-group'>
+                    <label for='exampleInputEmail1'>categories</label>
+                    <input
+                      type='text'
+                      class='form-control'
+                      id='exampleInputEmail1'
+                      aria-describedby='emailHelp'
+                      placeholder='categories'
+                      ref={blogCategories}
+                    />
+                  </div>
+                  <div class='form-group'>
+                    <label for='exampleInputEmail1'>social link</label>
+                    <input
+                      type='text'
+                      class='form-control'
+                      id='exampleInputEmail1'
+                      aria-describedby='emailHelp'
+                      placeholder='title'
+                      ref={blogSocialLink}
+                    />
+                  </div>
+                  <div class='form-group'>
                     <label for='exampleInputPassword1'>Content</label>
                     <textarea
                       type='text'
                       class='form-control'
                       id='exampleInputPassword1'
-                      placeholder='shayri'
+                      placeholder='blog'
                       style={{ height: '207px' }}
                       ref={blogContent}
                     />
@@ -291,6 +325,17 @@ const UserProfile = () => {
                       aria-describedby='emailHelp'
                       placeholder='title'
                       ref={shayriTitle}
+                    />
+                  </div>
+                  <div class='form-group'>
+                    <label for='exampleInputEmail1'>social link</label>
+                    <input
+                      type='text'
+                      class='form-control'
+                      id='exampleInputEmail1'
+                      aria-describedby='emailHelp'
+                      placeholder='title'
+                      ref={shayriSocialLink}
                     />
                   </div>
                   <div class='form-group'>
@@ -332,6 +377,17 @@ const UserProfile = () => {
                       aria-describedby='emailHelp'
                       placeholder='title'
                       ref={kavitaTitle}
+                    />
+                  </div>
+                  <div class='form-group'>
+                    <label for='exampleInputEmail1'>social link</label>
+                    <input
+                      type='text'
+                      class='form-control'
+                      id='exampleInputEmail1'
+                      aria-describedby='emailHelp'
+                      placeholder='title'
+                      ref={kavitaSocialLink}
                     />
                   </div>
                   <div class='form-group'>
