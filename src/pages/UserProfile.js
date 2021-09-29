@@ -87,7 +87,6 @@ const UserProfile = () => {
         isFeatured: false,
         isApproved: false,
         description: quoteContent.current.value,
-        rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
         updated_on: new Date().toString(),
       });
       setSuccess(true);
