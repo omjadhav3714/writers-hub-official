@@ -135,7 +135,7 @@ const UserProfile = () => {
   const addShayri = async (e) => {
     e.preventDefault();
     try {
-      await db.collection('Shayris').add({
+      const data = {
         authorName: currentUser.username,
         isFeatured: false,
         isApproved: false,
@@ -145,7 +145,9 @@ const UserProfile = () => {
         updated_on: new Date().toString(),
         social_link: shayriSocialLink.current.value,
         userId: currentUser.userId,
-      });
+      };
+      await db.collection('Shayris').add(data);
+      setUserShayris([data, ...userShayris]);
       setSuccess(true);
       setError(false);
       setTimeout(() => {
@@ -162,7 +164,7 @@ const UserProfile = () => {
   const addKavita = async (e) => {
     e.preventDefault();
     try {
-      await db.collection('Poems').add({
+      const data = {
         authorName: currentUser.username,
         isFeatured: false,
         isApproved: false,
@@ -172,7 +174,9 @@ const UserProfile = () => {
         updated_on: new Date().toString(),
         social_link: kavitaSocialLink.current.value,
         userId: currentUser.userId,
-      });
+      };
+      await db.collection('Poems').add(data);
+      setUserKavitas([data, ...userKavitas]);
       setSuccess(true);
       setError(false);
       setTimeout(() => {
@@ -189,14 +193,16 @@ const UserProfile = () => {
   const addQuote = async (e) => {
     e.preventDefault();
     try {
-      await db.collection('Quotes').add({
+      const data = {
         authorName: currentUser.username,
         isFeatured: false,
         isApproved: false,
         description: quoteContent.current.value,
         updated_on: new Date().toString(),
         userId: currentUser.userId,
-      });
+      };
+      await db.collection('Quotes').add(data);
+      setUserQuotes([data, ...userQuotes]);
       setSuccess(true);
       setError(false);
       setTimeout(() => {
@@ -573,6 +579,9 @@ const UserProfile = () => {
                     date={updated_on}
                     url={`/shayaris/${id}`}
                     author={authorName}
+                    deleteOption={true}
+                    collection={'Shayris'}
+                    id={id}
                   />
                 </div>
               );
@@ -593,6 +602,9 @@ const UserProfile = () => {
                   author={authorName}
                   date={updated_on}
                   url={`/blogs/${id}`}
+                  deleteOption={true}
+                  collection={'Blogs'}
+                  id={id}
                 />
               );
             }
@@ -612,6 +624,9 @@ const UserProfile = () => {
                   date={updated_on}
                   url={`/kavitas/${id}`}
                   author={authorName}
+                  deleteOption={true}
+                  collection={'Poems'}
+                  id={id}
                 />
               );
             }
@@ -634,11 +649,15 @@ const UserProfile = () => {
               return (
                 <Card
                   img={img}
+                  id={id}
                   content={description}
                   title={title}
                   date={updated_on}
                   url={`/quotes/${id}`}
                   author={authorName}
+                  isApproved={isApproved}
+                  deleteOption={true}
+                  collection={'Quotes'}
                 />
               );
             }

@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Card from "../components/Blogs/Card";
-import Footer from "../components/Footer";
-import { motion } from "framer-motion";
-import Typed from "react-typed";
-import { db } from "../firebase";
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Card from '../components/Blogs/Card';
+import Footer from '../components/Footer';
+import { motion } from 'framer-motion';
+import Typed from 'react-typed';
+import { db } from '../firebase';
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    db.collection("Blogs")
+    db.collection('Blogs')
       .get()
       .then((snapshot) => {
         const logs = [];
@@ -25,6 +25,7 @@ const BlogPage = () => {
               authorName: doc.data().authorName,
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
+              isApproved: doc.data().isApproved,
             };
             logs.push(data);
           }
@@ -42,21 +43,29 @@ const BlogPage = () => {
     >
       <div
         style={{
-          minHight: "100vh",
-          width: "100vw",
-          backgroundColor: "#EFefef",
+          minHight: '100vh',
+          width: '100vw',
+          backgroundColor: '#EFefef',
         }}
       >
         <Navbar backButton={true} />
-        <div className="container d-flex justify-content-center p-4">
-          <h1 style={{ fontFamily: "Dancing Script" }}>Blogs</h1>
+        <div className='container d-flex justify-content-center p-4'>
+          <h1 style={{ fontFamily: 'Dancing Script' }}>Blogs</h1>
         </div>
         <div
-          className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
-          style={{ width: "100vw" }}
+          className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+          style={{ width: '100vw' }}
         >
           {blogs.map(
-            ({ id, image, description, title, authorName, updated_on }) => {
+            ({
+              id,
+              image,
+              description,
+              title,
+              authorName,
+              updated_on,
+              isApproved,
+            }) => {
               return (
                 <Card
                   img={image}
@@ -65,6 +74,7 @@ const BlogPage = () => {
                   author={authorName}
                   date={updated_on}
                   url={`/blogs/${id}`}
+                  isApproved={isApproved}
                 />
               );
             }

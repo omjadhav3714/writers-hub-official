@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Card from "../components/Blogs/Card";
-import Footer from "../components/Footer";
-import { motion } from "framer-motion";
-import { db } from "../firebase";
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Card from '../components/Blogs/Card';
+import Footer from '../components/Footer';
+import { motion } from 'framer-motion';
+import { db } from '../firebase';
 
 const ShayariPage = () => {
   const [shayris, setShayris] = useState([]);
 
   useEffect(() => {
-    db.collection("Shayris")
+    db.collection('Shayris')
       .get()
       .then((snapshot) => {
         const shayris = [];
@@ -22,6 +22,7 @@ const ShayariPage = () => {
               authorName: doc.data().authorName,
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
+              isApproved: doc.data().isApproved,
             };
 
             shayris.push(data);
@@ -38,14 +39,14 @@ const ShayariPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div style={{ width: "100vw", backgroundColor: "#efefef" }}>
+      <div style={{ width: '100vw', backgroundColor: '#efefef' }}>
         <Navbar backButton={true} />
-        <div className="container d-flex justify-content-center p-4">
-          <h2 style={{ fontFamily: "Dancing Script" }}>Shayaris</h2>
+        <div className='container d-flex justify-content-center p-4'>
+          <h2 style={{ fontFamily: 'Dancing Script' }}>Shayaris</h2>
         </div>
         <div
-          className="container d-flex flex-direction-row flex-wrap justify-content-center my-3"
-          style={{ width: "100vw" }}
+          className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
+          style={{ width: '100vw' }}
         >
           {shayris.map(
             ({
@@ -56,6 +57,7 @@ const ShayariPage = () => {
               authorName,
               isFeatured,
               updated_on,
+              isApproved,
             }) => {
               return (
                 <div>
@@ -66,6 +68,7 @@ const ShayariPage = () => {
                     date={updated_on}
                     url={`/shayaris/${id}`}
                     author={authorName}
+                    isApproved={isApproved}
                   />
                 </div>
               );

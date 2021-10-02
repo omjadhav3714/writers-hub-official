@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import React, { useState, useEffect } from 'react';
+import Navbar from '../components/Navbar';
 
-import Card from "../components/Blogs/Card";
-import Footer from "../components/Footer";
-import { motion } from "framer-motion";
-import { db } from "../firebase";
+import Card from '../components/Blogs/Card';
+import Footer from '../components/Footer';
+import { motion } from 'framer-motion';
+import { db } from '../firebase';
 
 const KavitaPage = () => {
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
-    db.collection("Quotes")
+    db.collection('Quotes')
       .get()
       .then((snapshot) => {
         const quotes = [];
@@ -23,6 +23,7 @@ const KavitaPage = () => {
               authorName: doc.data().authorName,
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
+              isApproved: doc.data().isApproved,
             };
             quotes.push(data);
           }
@@ -37,14 +38,14 @@ const KavitaPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div style={{ width: "100vw", backgroundColor: "#efefef" }}>
+      <div style={{ width: '100vw', backgroundColor: '#efefef' }}>
         <Navbar backButton={true} />
-        <div className="container d-flex justify-content-center p-4">
-          <h2 style={{ fontFamily: "Dancing Script" }}>Quotes</h2>
+        <div className='container d-flex justify-content-center p-4'>
+          <h2 style={{ fontFamily: 'Dancing Script' }}>Quotes</h2>
         </div>
         <div
-          className="container d-flex flex-direction-row flex-wrap justify-content-center my-3"
-          style={{ width: "100vw" }}
+          className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
+          style={{ width: '100vw' }}
         >
           {quotes.map(
             ({
@@ -64,6 +65,7 @@ const KavitaPage = () => {
                   date={updated_on}
                   url={`/quotes/${id}`}
                   author={authorName}
+                  isApproved={isApproved}
                 />
               );
             }
