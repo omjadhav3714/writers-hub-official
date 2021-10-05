@@ -4,6 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { useHistory } from 'react-router';
 import Card from '../components/Blogs/Card';
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
@@ -403,7 +405,7 @@ const UserProfile = () => {
                     </div>
                     <div class='form-group'>
                       <label for='exampleInputPassword1'>Content</label>
-                      <textarea
+                      <ReactQuill
                         type='text'
                         class='form-control'
                         id='exampleInputPassword1'
@@ -413,7 +415,7 @@ const UserProfile = () => {
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-primary'>
+                    <button type='submit' class='btn btn-primary mt-5'>
                       Submit
                     </button>
                   </form>
@@ -455,17 +457,17 @@ const UserProfile = () => {
                     </div>
                     <div class='form-group'>
                       <label for='exampleInputPassword1'>Content</label>
-                      <textarea
+                      <ReactQuill
                         type='text'
                         class='form-control'
                         id='exampleInputPassword1'
                         placeholder='shayri'
-                        style={{ height: '207px' }}
+                        style={{ height:"207px",fontSize:"22px" }}
                         ref={shayriContent}
                       />
                     </div>
-
-                    <button type='submit' class='btn btn-primary'>
+                      <br/>
+                    <button type='submit' class='btn btn-primary mt-5'>
                       Submit
                     </button>
                   </form>
@@ -507,7 +509,7 @@ const UserProfile = () => {
                     </div>
                     <div class='form-group'>
                       <label for='exampleInputPassword1'>Content</label>
-                      <textarea
+                      <ReactQuill
                         type='text'
                         class='form-control'
                         id='exampleInputPassword1'
@@ -517,7 +519,7 @@ const UserProfile = () => {
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-primary'>
+                    <button type='submit' class='btn btn-primary mt-5'>
                       Submit
                     </button>
                   </form>
@@ -537,7 +539,7 @@ const UserProfile = () => {
                     )}
                     <div class='form-group'>
                       <label for='exampleInputPassword1'>Content</label>
-                      <textarea
+                      <ReactQuill
                         type='text'
                         class='form-control'
                         id='exampleInputPassword1'
@@ -547,7 +549,7 @@ const UserProfile = () => {
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-primary'>
+                    <button type='submit' class='btn btn-primary mt-5'>
                       Submit
                     </button>
                   </form>
