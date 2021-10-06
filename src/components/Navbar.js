@@ -41,6 +41,8 @@ const Navbar = ({ backButton }) => {
               <MenuDown />
             </span>
           </button>
+          {currentUser && 
+          
           <div
             class="collapse navbar-collapse justify-content-start bg-light"
             id="navbarNav"
@@ -76,6 +78,7 @@ const Navbar = ({ backButton }) => {
               </li>
             </ul>
           </div>
+          }
 
           <div
             class="collapse navbar-collapse justify-content-end bg-light"

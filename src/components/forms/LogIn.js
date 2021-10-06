@@ -4,6 +4,8 @@ import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
 import writer from "../../images/writer.png";
 import "./Login.css";
+import Navbar from "../Navbar";
+import Footer from '../Footer'
 
 const LogIn = () => {
   const emailRef = useRef();
@@ -28,6 +30,7 @@ const LogIn = () => {
 
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
+        <Navbar/>
       <div class="container">
         <div class="row">
           <div class="col-lg-10 col-xl-9 mx-auto">
@@ -43,7 +46,7 @@ const LogIn = () => {
                   Shayris Kavitas Quotes and Blogs
                 </div>
               </div>
-              <div class="card-body p-4 p-sm-5 bg-light">
+              <div class="card-body p-4 p-sm-5">
                 <div>
                   <p
                     class="card-title text-center mb-5"
@@ -63,11 +66,12 @@ const LogIn = () => {
                       id="floatingInputEmail"
                       placeholder="name@example.com"
                       ref={emailRef}
+                      style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                     />
                     <label for="floatingInputEmail">Email address</label>
                   </div>
 
-                  <hr />
+                
 
                   <div class="form-floating mb-3">
                     <input
@@ -76,14 +80,16 @@ const LogIn = () => {
                       id="floatingPassword"
                       placeholder="Password"
                       ref={passwordRef}
+                      style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                     />
                     <label for="floatingPassword">Password</label>
                   </div>
 
                   <div class="d-grid mb-2">
                     <button
-                      class="btn btn-lg btn-primary btn-login fw-bold text-uppercase"
+                      class="btn btn-lg btn-secondary btn-login fw-bold text-uppercase"
                       type="submit"
+                      style={{fontFamily:"Dancing Script"}}
                     >
                       Sign in
                     </button>
@@ -107,6 +113,7 @@ const LogIn = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

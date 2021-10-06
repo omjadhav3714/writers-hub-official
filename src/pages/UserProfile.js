@@ -371,7 +371,7 @@ const UserProfile = () => {
                       )}
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputEmail1'>Title</label>
+                     <br/>
                       <input
                         type='text'
                         class='form-control'
@@ -379,10 +379,11 @@ const UserProfile = () => {
                         aria-describedby='emailHelp'
                         placeholder='title'
                         ref={blogTitle}
+                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                       />
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputEmail1'>categories</label>
+                      <br/>
                       <input
                         type='text'
                         class='form-control'
@@ -390,21 +391,23 @@ const UserProfile = () => {
                         aria-describedby='emailHelp'
                         placeholder='categories'
                         ref={blogCategories}
+                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                       />
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputEmail1'>social link</label>
+                      <br/>
                       <input
                         type='text'
                         class='form-control'
                         id='exampleInputEmail1'
                         aria-describedby='emailHelp'
-                        placeholder='title'
+                        placeholder='social media links'
                         ref={blogSocialLink}
+                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                       />
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputPassword1'>Content</label>
+                      <br/>
                       <ReactQuill
                         type='text'
                         class='form-control'
@@ -415,7 +418,7 @@ const UserProfile = () => {
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-primary mt-5'>
+                    <button type='submit' class='btn btn-secondary mt-5'  style={{fontFamily:"Dancing Script"}}>
                       Submit
                     </button>
                   </form>
@@ -434,7 +437,7 @@ const UserProfile = () => {
                       </div>
                     )}
                     <div class='form-group'>
-                      <label for='exampleInputEmail1'>Title</label>
+                      <br/>
                       <input
                         type='text'
                         class='form-control'
@@ -442,21 +445,23 @@ const UserProfile = () => {
                         aria-describedby='emailHelp'
                         placeholder='title'
                         ref={shayriTitle}
+                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                       />
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputEmail1'>social link</label>
+                      <br/>
                       <input
                         type='text'
                         class='form-control'
                         id='exampleInputEmail1'
                         aria-describedby='emailHelp'
-                        placeholder='title'
+                        placeholder='social media link'
                         ref={shayriSocialLink}
+                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                       />
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputPassword1'>Content</label>
+                      <br/>
                       <ReactQuill
                         type='text'
                         class='form-control'
@@ -467,7 +472,7 @@ const UserProfile = () => {
                       />
                     </div>
                       <br/>
-                    <button type='submit' class='btn btn-primary mt-5'>
+                    <button type='submit' class='btn btn-secondary mt-5 ' style={{fontFamily:"Dancing Script"}}>
                       Submit
                     </button>
                   </form>
@@ -486,7 +491,7 @@ const UserProfile = () => {
                       </div>
                     )}
                     <div class='form-group'>
-                      <label for='exampleInputEmail1'>Title</label>
+                      <br/>
                       <input
                         type='text'
                         class='form-control'
@@ -494,21 +499,23 @@ const UserProfile = () => {
                         aria-describedby='emailHelp'
                         placeholder='title'
                         ref={kavitaTitle}
+                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                       />
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputEmail1'>social link</label>
+                     <br/>
                       <input
                         type='text'
                         class='form-control'
                         id='exampleInputEmail1'
                         aria-describedby='emailHelp'
-                        placeholder='title'
+                        placeholder='social media link'
                         ref={kavitaSocialLink}
+                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
                       />
                     </div>
                     <div class='form-group'>
-                      <label for='exampleInputPassword1'>Content</label>
+                     <br/>
                       <ReactQuill
                         type='text'
                         class='form-control'
@@ -516,10 +523,11 @@ const UserProfile = () => {
                         placeholder='kavita'
                         style={{ height: '207px' }}
                         ref={kavitaContent}
+                        
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-primary mt-5'>
+                    <button type='submit' class='btn btn-secondary mt-5' style={{fontFamily:"Dancing Script"}}>
                       Submit
                     </button>
                   </form>
@@ -549,7 +557,7 @@ const UserProfile = () => {
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-primary mt-5'>
+                    <button type='submit' class='btn btn-secondary mt-5'  style={{fontFamily:"Dancing Script"}}>
                       Submit
                     </button>
                   </form>
