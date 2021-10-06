@@ -4,8 +4,11 @@ import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { useHistory } from 'react-router';
 import Card from '../components/Blogs/Card';
-import ReactQuill from 'react-quill'
+import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import './UserProfile.css';
+import gravatar from 'gravatar';
+import Avatar from 'react-avatar';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
@@ -263,104 +266,154 @@ const UserProfile = () => {
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
       <Navbar />
-      <div className='container'>
+      <div className="container">
         <div>
-          {currentUser && currentUser.username && (
-            <div className='ms-3'>
-              <h1>USER : {currentUser.username}</h1>
-              <h1>EMAIL: {currentUser.email}</h1>
+          {currentUser && currentUser.username && currentUser.email && (
+            <div className="ms-3">
+              <div class="container d-flex justify-content-center align-items-center">
+                <div class="card mt-5" style={{ width: '800px' }}>
+                  <div class="user text-center">
+                    <div class="profile">
+                      {' '}
+                      <Avatar name={currentUser.username} round="50px" />
+                    </div>
+                  </div>
+                  <div class="mt-5 text-center">
+                    <h4 class="mb-0" style={{ fontSize: '32px' }}>
+                      {currentUser.username}
+                    </h4>{' '}
+                    <span
+                      class="text-muted d-block mb-2"
+                      style={{ fontSize: '22px' }}
+                    >
+                      {currentUser.email}
+                    </span>{' '}
+                    <br />
+                    <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+                      <div class="stats">
+                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                          Blogs
+                        </h6>{' '}
+                        <span className="fs-5">{userBlogs.length}</span>
+                      </div>
+                      <div class="stats">
+                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                          Kavitas
+                        </h6>{' '}
+                        <span>{userKavitas.length}</span>
+                      </div>
+                      <div class="stats">
+                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                          Shayris
+                        </h6>{' '}
+                        <span>{userShayris.length}</span>
+                      </div>
+                      <div class="stats">
+                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                          Quotes
+                        </h6>{' '}
+                        <span>{userQuotes.length}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              {currentUser.isAdmin && (
+              <br />
+              <br />
+              <div className="d-flex justify-content-center">
+                {currentUser.isAdmin && (
+                  <button
+                    className="btn btn-primary ms-3"
+                    onClick={() => {
+                      history.push('/approvals');
+                    }}
+                  >
+                    Approvals
+                  </button>
+                )}
+
                 <button
-                  className='btn btn-primary ms-3'
+                  className="btn btn-success ms-3"
                   onClick={() => {
-                    history.push('/approvals');
+                    if (showBlogForm) {
+                      setShowBlogForm(false);
+                    } else {
+                      setShowBlogForm(true);
+                      setShowShayriForm(false);
+                      setShowKavitaForm(false);
+                      setShowQuoteForm(false);
+                    }
                   }}
                 >
-                  Approvals
+                  Add Blog
                 </button>
-              )}
 
-              <button
-                className='btn btn-success ms-3'
-                onClick={() => {
-                  if (showBlogForm) {
-                    setShowBlogForm(false);
-                  } else {
-                    setShowBlogForm(true);
-                    setShowShayriForm(false);
-                    setShowKavitaForm(false);
-                    setShowQuoteForm(false);
-                  }
-                }}
-              >
-                Add Blog
-              </button>
-
-              <button
-                className='btn btn-success ms-3'
-                onClick={() => {
-                  if (showShayriForm) {
-                    setShowShayriForm(false);
-                  } else {
-                    setShowShayriForm(true);
-                    setShowBlogForm(false);
-                    setShowKavitaForm(false);
-                    setShowQuoteForm(false);
-                  }
-                }}
-              >
-                Add shayri
-              </button>
-              <button
-                className='btn btn-success ms-3'
-                onClick={() => {
-                  if (showKavitaForm) {
-                    setShowKavitaForm(false);
-                  } else {
-                    setShowKavitaForm(true);
-                    setShowBlogForm(false);
-                    setShowShayriForm(false);
-                    setShowQuoteForm(false);
-                  }
-                }}
-              >
-                Add kavita
-              </button>
-              <button
-                className='btn btn-success ms-3'
-                onClick={() => {
-                  if (showQuoteForm) {
-                    setShowQuoteForm(false);
-                  } else {
-                    setShowQuoteForm(true);
-                    setShowBlogForm(false);
-                    setShowShayriForm(false);
-                    setShowKavitaForm(false);
-                  }
-                }}
-              >
-                Add Quote
-              </button>
+                <button
+                  className="btn btn-success ms-3"
+                  onClick={() => {
+                    if (showShayriForm) {
+                      setShowShayriForm(false);
+                    } else {
+                      setShowShayriForm(true);
+                      setShowBlogForm(false);
+                      setShowKavitaForm(false);
+                      setShowQuoteForm(false);
+                    }
+                  }}
+                >
+                  Add shayri
+                </button>
+                <button
+                  className="btn btn-success ms-3"
+                  onClick={() => {
+                    if (showKavitaForm) {
+                      setShowKavitaForm(false);
+                    } else {
+                      setShowKavitaForm(true);
+                      setShowBlogForm(false);
+                      setShowShayriForm(false);
+                      setShowQuoteForm(false);
+                    }
+                  }}
+                >
+                  Add kavita
+                </button>
+                <button
+                  className="btn btn-success ms-3"
+                  onClick={() => {
+                    if (showQuoteForm) {
+                      setShowQuoteForm(false);
+                    } else {
+                      setShowQuoteForm(true);
+                      setShowBlogForm(false);
+                      setShowShayriForm(false);
+                      setShowKavitaForm(false);
+                    }
+                  }}
+                >
+                  Add Quote
+                </button>
+              </div>
               <div>
                 {showBlogForm && (
                   <form onSubmit={addBlog}>
                     {success && (
-                      <div class='alert alert-success' role='alert'>
+                      <div class="alert alert-success" role="alert">
                         Success! , your shayri will be posted once the admin
                         approves it
                       </div>
                     )}
                     {error && (
-                      <div class='alert alert-error' role='alert'>
+                      <div class="alert alert-error" role="alert">
                         opps something went wrong!
                       </div>
                     )}
                     <div>
-                      <label for='exampleInputEmail1'>image:</label>
+                      <label for="exampleInputEmail1">image:</label>
                       <input
-                        className='p-3'
-                        type='file'
+                        className="p-3"
+                        type="file"
                         onChange={(e) => setBlogImg(e.target.files[0])}
                       />{' '}
                       {blogImg && (
@@ -370,55 +423,71 @@ const UserProfile = () => {
                         />
                       )}
                     </div>
-                    <div class='form-group'>
-                     <br/>
+                    <div class="form-group">
+                      <br />
                       <input
-                        type='text'
-                        class='form-control'
-                        id='exampleInputEmail1'
-                        aria-describedby='emailHelp'
-                        placeholder='title'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="title"
                         ref={blogTitle}
-                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
+                        style={{
+                          borderStyle: 'none',
+                          borderRadius: '0px',
+                          borderBottom: '1px solid grey',
+                        }}
                       />
                     </div>
-                    <div class='form-group'>
-                      <br/>
+                    <div class="form-group">
+                      <br />
                       <input
-                        type='text'
-                        class='form-control'
-                        id='exampleInputEmail1'
-                        aria-describedby='emailHelp'
-                        placeholder='categories'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="categories"
                         ref={blogCategories}
-                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
+                        style={{
+                          borderStyle: 'none',
+                          borderRadius: '0px',
+                          borderBottom: '1px solid grey',
+                        }}
                       />
                     </div>
-                    <div class='form-group'>
-                      <br/>
+                    <div class="form-group">
+                      <br />
                       <input
-                        type='text'
-                        class='form-control'
-                        id='exampleInputEmail1'
-                        aria-describedby='emailHelp'
-                        placeholder='social media links'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="social media links"
                         ref={blogSocialLink}
-                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
+                        style={{
+                          borderStyle: 'none',
+                          borderRadius: '0px',
+                          borderBottom: '1px solid grey',
+                        }}
                       />
                     </div>
-                    <div class='form-group'>
-                      <br/>
+                    <div class="form-group">
+                      <br />
                       <ReactQuill
-                        type='text'
-                        class='form-control'
-                        id='exampleInputPassword1'
-                        placeholder='blog'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="blog"
                         style={{ height: '207px' }}
                         ref={blogContent}
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-secondary mt-5'  style={{fontFamily:"Dancing Script"}}>
+                    <button
+                      type="submit"
+                      class="btn btn-secondary mt-5"
+                      style={{ fontFamily: 'Dancing Script' }}
+                    >
                       Submit
                     </button>
                   </form>
@@ -426,53 +495,65 @@ const UserProfile = () => {
                 {showShayriForm && (
                   <form onSubmit={addShayri}>
                     {success && (
-                      <div class='alert alert-success' role='alert'>
+                      <div class="alert alert-success" role="alert">
                         Success! , your shayri will be posted once the admin
                         approves it
                       </div>
                     )}
                     {error && (
-                      <div class='alert alert-error' role='alert'>
+                      <div class="alert alert-error" role="alert">
                         opps something went wrong!
                       </div>
                     )}
-                    <div class='form-group'>
-                      <br/>
+                    <div class="form-group">
+                      <br />
                       <input
-                        type='text'
-                        class='form-control'
-                        id='exampleInputEmail1'
-                        aria-describedby='emailHelp'
-                        placeholder='title'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="title"
                         ref={shayriTitle}
-                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
+                        style={{
+                          borderStyle: 'none',
+                          borderRadius: '0px',
+                          borderBottom: '1px solid grey',
+                        }}
                       />
                     </div>
-                    <div class='form-group'>
-                      <br/>
+                    <div class="form-group">
+                      <br />
                       <input
-                        type='text'
-                        class='form-control'
-                        id='exampleInputEmail1'
-                        aria-describedby='emailHelp'
-                        placeholder='social media link'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="social media link"
                         ref={shayriSocialLink}
-                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
+                        style={{
+                          borderStyle: 'none',
+                          borderRadius: '0px',
+                          borderBottom: '1px solid grey',
+                        }}
                       />
                     </div>
-                    <div class='form-group'>
-                      <br/>
+                    <div class="form-group">
+                      <br />
                       <ReactQuill
-                        type='text'
-                        class='form-control'
-                        id='exampleInputPassword1'
-                        placeholder='shayri'
-                        style={{ height:"207px",fontSize:"22px" }}
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="shayri"
+                        style={{ height: '207px', fontSize: '22px' }}
                         ref={shayriContent}
                       />
                     </div>
-                      <br/>
-                    <button type='submit' class='btn btn-secondary mt-5 ' style={{fontFamily:"Dancing Script"}}>
+                    <br />
+                    <button
+                      type="submit"
+                      class="btn btn-secondary mt-5 "
+                      style={{ fontFamily: 'Dancing Script' }}
+                    >
                       Submit
                     </button>
                   </form>
@@ -480,54 +561,65 @@ const UserProfile = () => {
                 {showKavitaForm && (
                   <form onSubmit={addKavita}>
                     {success && (
-                      <div class='alert alert-success' role='alert'>
+                      <div class="alert alert-success" role="alert">
                         Success! , your kavita will be posted once the admin
                         approves it
                       </div>
                     )}
                     {error && (
-                      <div class='alert alert-error' role='alert'>
+                      <div class="alert alert-error" role="alert">
                         opps something went wrong!
                       </div>
                     )}
-                    <div class='form-group'>
-                      <br/>
+                    <div class="form-group">
+                      <br />
                       <input
-                        type='text'
-                        class='form-control'
-                        id='exampleInputEmail1'
-                        aria-describedby='emailHelp'
-                        placeholder='title'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="title"
                         ref={kavitaTitle}
-                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
+                        style={{
+                          borderStyle: 'none',
+                          borderRadius: '0px',
+                          borderBottom: '1px solid grey',
+                        }}
                       />
                     </div>
-                    <div class='form-group'>
-                     <br/>
+                    <div class="form-group">
+                      <br />
                       <input
-                        type='text'
-                        class='form-control'
-                        id='exampleInputEmail1'
-                        aria-describedby='emailHelp'
-                        placeholder='social media link'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="social media link"
                         ref={kavitaSocialLink}
-                        style={{borderStyle:'none',borderRadius:"0px" , borderBottom:"1px solid grey"}}
+                        style={{
+                          borderStyle: 'none',
+                          borderRadius: '0px',
+                          borderBottom: '1px solid grey',
+                        }}
                       />
                     </div>
-                    <div class='form-group'>
-                     <br/>
+                    <div class="form-group">
+                      <br />
                       <ReactQuill
-                        type='text'
-                        class='form-control'
-                        id='exampleInputPassword1'
-                        placeholder='kavita'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="kavita"
                         style={{ height: '207px' }}
                         ref={kavitaContent}
-                        
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-secondary mt-5' style={{fontFamily:"Dancing Script"}}>
+                    <button
+                      type="submit"
+                      class="btn btn-secondary mt-5"
+                      style={{ fontFamily: 'Dancing Script' }}
+                    >
                       Submit
                     </button>
                   </form>
@@ -535,29 +627,33 @@ const UserProfile = () => {
                 {showQuoteForm && (
                   <form onSubmit={addQuote}>
                     {success && (
-                      <div class='alert alert-success' role='alert'>
+                      <div class="alert alert-success" role="alert">
                         Success! , your quote will be posted once the admin
                         approves it
                       </div>
                     )}
                     {error && (
-                      <div class='alert alert-error' role='alert'>
-                        opps something went wrong!
+                      <div class="alert alert-error" role="alert">
+                        Opps something went wrong!
                       </div>
                     )}
-                    <div class='form-group'>
-                      <label for='exampleInputPassword1'>Content</label>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Content</label>
                       <ReactQuill
-                        type='text'
-                        class='form-control'
-                        id='exampleInputPassword1'
-                        placeholder='Quote'
+                        type="text"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Quote"
                         style={{ height: '207px' }}
                         ref={quoteContent}
                       />
                     </div>
 
-                    <button type='submit' class='btn btn-secondary mt-5'  style={{fontFamily:"Dancing Script"}}>
+                    <button
+                      type="submit"
+                      class="btn btn-secondary mt-5"
+                      style={{ fontFamily: 'Dancing Script' }}
+                    >
                       Submit
                     </button>
                   </form>
@@ -566,8 +662,8 @@ const UserProfile = () => {
             </div>
           )}
         </div>
-        <div className='p-5'>
-          <div className='container d-flex justify-content-center p-4'>
+        <div className="p-5">
+          <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Shayaris</h2>
           </div>
           {userShayris.map(
@@ -598,8 +694,8 @@ const UserProfile = () => {
             }
           )}
         </div>
-        <div className='p-5'>
-          <div className='container d-flex justify-content-center p-4'>
+        <div className="p-5">
+          <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Blogs</h2>
           </div>
           {userBlogs.map(
@@ -620,8 +716,8 @@ const UserProfile = () => {
             }
           )}
         </div>
-        <div className='p-5'>
-          <div className='container d-flex justify-content-center p-4'>
+        <div className="p-5">
+          <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My kavitas</h2>
           </div>
           {userKavitas.map(
@@ -642,8 +738,8 @@ const UserProfile = () => {
             }
           )}
         </div>
-        <div className='p-5'>
-          <div className='container d-flex justify-content-center p-4'>
+        <div className="p-5">
+          <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My quotesc</h2>
           </div>
           {userQuotes.map(
