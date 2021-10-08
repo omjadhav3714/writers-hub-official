@@ -9,6 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 import './UserProfile.css';
 import gravatar from 'gravatar';
 import Avatar from 'react-avatar';
+import { clippingParents } from '@popperjs/core';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
@@ -25,15 +26,15 @@ const UserProfile = () => {
   const history = useHistory();
 
   const shayriTitle = useRef();
-  const shayriContent = useRef();
+  const [shayriContent, setShayriContent] = useState('');
+  const [blogContent, setBlogContent] = useState('');
   const shayriSocialLink = useRef();
   const kavitaTitle = useRef();
-  const kavitaContent = useRef();
+  const [kavitaContent, setKavitaContent] = useState('');
   const kavitaSocialLink = useRef();
-  const quoteContent = useRef();
+  const [quoteContent, setQuoteContent] = useState('');
   const [blogImg, setBlogImg] = useState();
   const blogTitle = useRef();
-  const blogContent = useRef();
   const blogCategories = useRef();
   const blogSocialLink = useRef();
 
@@ -145,13 +146,14 @@ const UserProfile = () => {
         isFeatured: false,
         isApproved: false,
         title: shayriTitle.current.value,
-        description: shayriContent.current.value,
+        description: shayriContent,
         rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
         updated_on: new Date().toString(),
         social_link: shayriSocialLink.current.value,
         userId: currentUser.userId,
       };
       await db.collection('Shayris').add(data);
+      console.log(data);
       setUserShayris([data, ...userShayris]);
       setSuccess(true);
       setError(false);
@@ -159,6 +161,7 @@ const UserProfile = () => {
         setSuccess(false);
       }, 3000);
     } catch (error) {
+      console.log(error);
       setError(true);
       setSuccess(false);
       setTimeout(() => {
@@ -240,7 +243,7 @@ const UserProfile = () => {
             isFeatured: false,
             isApproved: false,
             title: blogTitle.current.value,
-            description: blogContent.current.value,
+            description: blogContent,
             categories: blogCategories.current.value.split(','),
             social_link: blogSocialLink.current.value,
             images: [data.url],
@@ -479,7 +482,8 @@ const UserProfile = () => {
                         id="exampleInputPassword1"
                         placeholder="blog"
                         style={{ height: '207px' }}
-                        ref={blogContent}
+                        value={blogContent}
+                        onChange={(value) => setBlogContent(value)}
                       />
                     </div>
 
@@ -529,6 +533,7 @@ const UserProfile = () => {
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                         placeholder="social media link"
+                        onChange={(e) => console.log(e.target.value)}
                         ref={shayriSocialLink}
                         style={{
                           borderStyle: 'none',
@@ -545,7 +550,8 @@ const UserProfile = () => {
                         id="exampleInputPassword1"
                         placeholder="shayri"
                         style={{ height: '207px', fontSize: '22px' }}
-                        ref={shayriContent}
+                        value={shayriContent}
+                        onChange={(value) => setShayriContent(value)}
                       />
                     </div>
                     <br />
@@ -611,7 +617,8 @@ const UserProfile = () => {
                         id="exampleInputPassword1"
                         placeholder="kavita"
                         style={{ height: '207px' }}
-                        ref={kavitaContent}
+                        value={kavitaContent}
+                        onChange={(value) => setKavitaContent(value)}
                       />
                     </div>
 
@@ -645,7 +652,8 @@ const UserProfile = () => {
                         id="exampleInputPassword1"
                         placeholder="Quote"
                         style={{ height: '207px' }}
-                        ref={quoteContent}
+                        value={quoteContent}
+                        onChange={(value) => setQuoteContent(value)}
                       />
                     </div>
 
