@@ -273,46 +273,73 @@ const UserProfile = () => {
         <div>
           {currentUser && currentUser.username && currentUser.email && (
             <div className="ms-3">
-              <div class="container d-flex justify-content-center align-items-center">
-                <div class="card mt-5" style={{ width: '800px' }}>
-                  <div class="user text-center">
-                    <div class="profile">
+              <div className="container d-flex justify-content-center align-items-center">
+                <div className="card mt-5" style={{ width: '800px' }}>
+                  <div className="user text-center text-dark">
+                    <div>
                       {' '}
                       <Avatar name={currentUser.username} round="50px" />
                     </div>
                   </div>
-                  <div class="mt-5 text-center">
-                    <h4 class="mb-0" style={{ fontSize: '32px' }}>
+                  <div className="mt-5 text-center">
+                    <h4
+                      className="mb-0 text-dark"
+                      style={{ fontSize: '32px', fontFamily: 'Dancing Script' }}
+                    >
                       {currentUser.username}
                     </h4>{' '}
                     <span
-                      class="text-muted d-block mb-2"
+                      className="text-muted d-block mb-2"
                       style={{ fontSize: '22px' }}
                     >
                       {currentUser.email}
                     </span>{' '}
                     <br />
-                    <div class="d-flex justify-content-between align-items-center mt-4 px-4">
-                      <div class="stats">
-                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                    <div className="d-flex justify-content-center align-items-center mt-4 px-4">
+                      <div className="stats">
+                        <h6
+                          class="mb-0 text-dark"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
                           Blogs
                         </h6>{' '}
                         <span className="fs-5">{userBlogs.length}</span>
                       </div>
-                      <div class="stats">
-                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                      <div class="stats p-3">
+                        <h6
+                          className="mb-0 text-dark"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
                           Kavitas
                         </h6>{' '}
                         <span>{userKavitas.length}</span>
                       </div>
                       <div class="stats">
-                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                        <h6
+                          className="mb-0 text-dark p-3"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
                           Shayris
                         </h6>{' '}
                         <span>{userShayris.length}</span>
                       </div>
-                      <div class="stats">
-                        <h6 class="mb-0" style={{ fontSize: '25px' }}>
+                      <div class="stats text-dark">
+                        <h6
+                          class="mb-0"
+                          style={{
+                            fontSize: '28px',
+                            fontFamily: 'Dancing Script',
+                          }}
+                        >
                           Quotes
                         </h6>{' '}
                         <span>{userQuotes.length}</span>
@@ -324,10 +351,10 @@ const UserProfile = () => {
 
               <br />
               <br />
-              <div className="d-flex justify-content-center">
+              <div className="d-flex justify-content-center align-items-center">
                 {currentUser.isAdmin && (
                   <button
-                    className="btn btn-primary ms-3"
+                    className="btn btn-primary ms-3 mt-2"
                     onClick={() => {
                       history.push('/approvals');
                     }}
@@ -337,7 +364,7 @@ const UserProfile = () => {
                 )}
 
                 <button
-                  className="btn btn-success ms-3"
+                  className="btn btn-success ms-3 mt-2"
                   onClick={() => {
                     if (showBlogForm) {
                       setShowBlogForm(false);
@@ -353,7 +380,7 @@ const UserProfile = () => {
                 </button>
 
                 <button
-                  className="btn btn-success ms-3"
+                  className="btn btn-success ms-3 mt-2"
                   onClick={() => {
                     if (showShayriForm) {
                       setShowShayriForm(false);
@@ -368,7 +395,7 @@ const UserProfile = () => {
                   Add shayri
                 </button>
                 <button
-                  className="btn btn-success ms-3"
+                  className="btn btn-success ms-3 mt-2"
                   onClick={() => {
                     if (showKavitaForm) {
                       setShowKavitaForm(false);
@@ -383,7 +410,7 @@ const UserProfile = () => {
                   Add kavita
                 </button>
                 <button
-                  className="btn btn-success ms-3"
+                  className="btn btn-success ms-3 mt-2"
                   onClick={() => {
                     if (showQuoteForm) {
                       setShowQuoteForm(false);
@@ -674,107 +701,123 @@ const UserProfile = () => {
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Shayaris</h2>
           </div>
-          {userShayris.map(
-            ({
-              img,
-              id,
-              description,
-              title,
-              authorName,
-              isFeatured,
-              updated_on,
-            }) => {
-              return (
-                <div>
-                  <Card
-                    img={img}
-                    content={description}
-                    title={title}
-                    date={updated_on}
-                    url={`/shayaris/${id}`}
-                    author={authorName}
-                    deleteOption={true}
-                    collection={'Shayris'}
-                    id={id}
-                  />
-                </div>
-              );
-            }
+          {userShayris.length > 0 ? (
+            userShayris.map(
+              ({
+                img,
+                id,
+                description,
+                title,
+                authorName,
+                isFeatured,
+                updated_on,
+              }) => {
+                return (
+                  <div>
+                    <Card
+                      img={img}
+                      content={description}
+                      title={title}
+                      date={updated_on}
+                      url={`/shayaris/${id}`}
+                      author={authorName}
+                      deleteOption={true}
+                      collection={'Shayris'}
+                      id={id}
+                    />
+                  </div>
+                );
+              }
+            )
+          ) : (
+            <div className="d-flex justify-content-center">No posts yet</div>
           )}
         </div>
         <div className="p-5">
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Blogs</h2>
           </div>
-          {userBlogs.map(
-            ({ id, image, description, title, authorName, updated_on }) => {
-              return (
-                <Card
-                  img={image}
-                  content={description}
-                  title={title}
-                  author={authorName}
-                  date={updated_on}
-                  url={`/blogs/${id}`}
-                  deleteOption={true}
-                  collection={'Blogs'}
-                  id={id}
-                />
-              );
-            }
+          {userBlogs.length > 0 ? (
+            userBlogs.map(
+              ({ id, image, description, title, authorName, updated_on }) => {
+                return (
+                  <Card
+                    img={image}
+                    content={description}
+                    title={title}
+                    author={authorName}
+                    date={updated_on}
+                    url={`/blogs/${id}`}
+                    deleteOption={true}
+                    collection={'Blogs'}
+                    id={id}
+                  />
+                );
+              }
+            )
+          ) : (
+            <div className="d-flex justify-content-center">No posts yet</div>
           )}
         </div>
         <div className="p-5">
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My kavitas</h2>
           </div>
-          {userKavitas.map(
-            ({ img, description, title, updated_on, id, authorName }) => {
-              return (
-                <Card
-                  img={img}
-                  content={description}
-                  title={title}
-                  date={updated_on}
-                  url={`/kavitas/${id}`}
-                  author={authorName}
-                  deleteOption={true}
-                  collection={'Poems'}
-                  id={id}
-                />
-              );
-            }
+          {userKavitas.length > 0 ? (
+            userKavitas.map(
+              ({ img, description, title, updated_on, id, authorName }) => {
+                return (
+                  <Card
+                    img={img}
+                    content={description}
+                    title={title}
+                    date={updated_on}
+                    url={`/kavitas/${id}`}
+                    author={authorName}
+                    deleteOption={true}
+                    collection={'Poems'}
+                    id={id}
+                  />
+                );
+              }
+            )
+          ) : (
+            <div className="d-flex justify-content-center">No posts yet</div>
           )}
         </div>
         <div className="p-5">
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My quotesc</h2>
           </div>
-          {userQuotes.map(
-            ({
-              img,
-              description,
-              title,
-              updated_on,
-              id,
-              authorName,
-              isApproved,
-            }) => {
-              return (
-                <Card
-                  img={img}
-                  id={id}
-                  content={description}
-                  title={title}
-                  date={updated_on}
-                  url={`/quotes/${id}`}
-                  author={authorName}
-                  isApproved={isApproved}
-                  deleteOption={true}
-                  collection={'Quotes'}
-                />
-              );
-            }
+          {userQuotes.length > 0 ? (
+            userQuotes.map(
+              ({
+                img,
+                description,
+                title,
+                updated_on,
+                id,
+                authorName,
+                isApproved,
+              }) => {
+                return (
+                  <Card
+                    img={img}
+                    id={id}
+                    content={description}
+                    title={title}
+                    date={updated_on}
+                    url={`/quotes/${id}`}
+                    author={authorName}
+                    isApproved={isApproved}
+                    deleteOption={true}
+                    collection={'Quotes'}
+                  />
+                );
+              }
+            )
+          ) : (
+            <div className="d-flex justify-content-center">No posts yet</div>
           )}
         </div>
       </div>
