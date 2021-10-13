@@ -65,12 +65,12 @@ const BlogApprovals = () => {
     <div style={{ height: '100vh', width: '100vw' }}>
       <Navbar />
       {blog ? (
-        <div className='container mt-5'>
-          <figure className='mb-4'>
+        <div className="container mt-5">
+          <figure className="mb-4">
             <img
-              className='img-fluid'
+              className="img-fluid"
               src={blog.images[0]}
-              alt='hello'
+              alt="hello"
               style={{
                 height: '100px',
                 width: '100px',
@@ -81,33 +81,35 @@ const BlogApprovals = () => {
           <div>
             <article>
               {success && (
-                <div class='alert alert-success' role='alert'>
+                <div class="alert alert-success" role="alert">
                   Success!
                 </div>
               )}
               {error && (
-                <div class='alert alert-danger' role='alert'>
+                <div class="alert alert-danger" role="alert">
                   Opps something went wrong
                 </div>
               )}
-              <header className='mb-4'>
-                <h1 className='fw-bolder mb-1'>{blog.title}</h1>
-                <button className='btn btn-success' onClick={handleApprove}>
+              <header className="mb-4">
+                <h1 className="fw-bolder mb-1">{blog.title}</h1>
+                <button className="btn btn-success" onClick={handleApprove}>
                   Approve
                 </button>
-                <button className='btn btn-danger' onClick={handleNotApprove}>
+                <button className="btn btn-danger" onClick={handleNotApprove}>
                   Disapprove
                 </button>
-                <div className='text-muted fst-italic mb-2'>
+                <div className="text-muted fst-italic mb-2">
                   Posted on {blog.updated_on}, 2021 <br /> by {blog.authorName}
                 </div>
               </header>
 
               <section
-                className='mb-5 '
+                className="mb-5 "
                 style={{ textAlign: 'justify', width: '300px' }}
               >
-                <p className='fs-5 mb-4'>{blog.description}</p>
+                <p className="fs-5 mb-4">
+                  <div dangerouslySetInnerHTML={{ __html: blog.description }} />
+                </p>
               </section>
             </article>
           </div>

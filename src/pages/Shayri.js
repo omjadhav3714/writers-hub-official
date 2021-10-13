@@ -1,13 +1,13 @@
-import { data } from "browserslist";
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router";
-import { db } from "../firebase";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
-import { SocialIcon } from "react-social-icons";
-import Comments from "../components/Comments/Comments";
-import { format } from "timeago.js";
+import { data } from 'browserslist';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
+import { db } from '../firebase';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
+import { SocialIcon } from 'react-social-icons';
+import Comments from '../components/Comments/Comments';
+import { format } from 'timeago.js';
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -17,16 +17,16 @@ import {
   TwitterShareButton,
   TelegramShareButton,
   TelegramIcon,
-} from "react-share";
-import { useAuth } from "../context/AuthContext";
-import { HandThumbsDownFill, HandThumbsUpFill } from "react-bootstrap-icons";
+} from 'react-share';
+import { useAuth } from '../context/AuthContext';
+import { HandThumbsDownFill, HandThumbsUpFill } from 'react-bootstrap-icons';
 const history = useHistory;
 
 const Shayri = () => {
   const { id } = useParams();
 
   const [shayri, setShayri] = useState();
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -34,7 +34,7 @@ const Shayri = () => {
   const { currentUser } = useAuth();
 
   useEffect(() => {
-    const single = db.collection("Shayris").doc(id);
+    const single = db.collection('Shayris').doc(id);
 
     single
       .get()
@@ -45,11 +45,11 @@ const Shayri = () => {
         }
       })
       .catch(function (error) {
-        console.log("Error getting document:", error);
+        console.log('Error getting document:', error);
       });
-    db.collection("Shayris")
+    db.collection('Shayris')
       .doc(id)
-      .collection("comment")
+      .collection('comment')
       .get()
       .then((snapshot) => {
         const comm = [];
@@ -68,9 +68,9 @@ const Shayri = () => {
   }, []);
 
   useState(() => {
-    db.collection("Shayris")
+    db.collection('Shayris')
       .doc(id)
-      .collection("like")
+      .collection('like')
       .get()
       .then((snapshot) => {
         const dat = [];
@@ -85,7 +85,7 @@ const Shayri = () => {
     e.preventDefault();
 
     if (!currentUser) {
-      history.push("/login");
+      history.push('/login');
       setSuccess(false);
       setError(true);
     } else {
@@ -97,7 +97,7 @@ const Shayri = () => {
         created_at: new Date().toString(),
       };
       try {
-        await db.collection("Shayris").doc(id).collection("comment").add({
+        await db.collection('Shayris').doc(id).collection('comment').add({
           name: currentUser.username,
           email: currentUser.email,
           comment: comment,
@@ -115,12 +115,12 @@ const Shayri = () => {
 
   const deleteComment = async () => {
     await db
-      .collection("Shayris")
+      .collection('Shayris')
       .doc(`/${id}/comment/${currentUser.id}`)
       .delete();
-    db.collection("Shayris")
+    db.collection('Shayris')
       .doc(id)
-      .collection("comment")
+      .collection('comment')
       .get()
       .then((snapshot) => {
         const comm = [];
@@ -138,14 +138,14 @@ const Shayri = () => {
 
   const AddLike = async (e) => {
     if (!currentUser) {
-      history.push("/login");
+      history.push('/login');
     } else {
-      await db.collection("Shayris").doc(`/${id}/like/${currentUser.id}`).set({
+      await db.collection('Shayris').doc(`/${id}/like/${currentUser.id}`).set({
         like: 1,
       });
-      db.collection("Shayris")
+      db.collection('Shayris')
         .doc(id)
-        .collection("like")
+        .collection('like')
         .get()
         .then((snapshot) => {
           const dat = [];
@@ -161,15 +161,15 @@ const Shayri = () => {
 
   const Unlike = async (e) => {
     if (!currentUser) {
-      history.push("/login");
+      history.push('/login');
     } else {
       await db
-        .collection("Shayris")
+        .collection('Shayris')
         .doc(`/${id}/like/${currentUser.id}`)
         .delete();
-      db.collection("Shayris")
+      db.collection('Shayris')
         .doc(id)
-        .collection("like")
+        .collection('like')
         .get()
         .then((snapshot) => {
           const dat = [];
@@ -182,7 +182,7 @@ const Shayri = () => {
   };
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: '100vw', height: '100vh' }}>
       <Navbar />
       {shayri ? (
         <div className="container mt-5">
@@ -193,7 +193,7 @@ const Shayri = () => {
                   <h1 className="fw-bolder mb-1">{shayri.title}</h1>
 
                   <div className="text-muted fst-italic mb-2">
-                    Posted on {shayri.updated_on}, 2021 <br /> by{" "}
+                    Posted on {shayri.updated_on}, 2021 <br /> by{' '}
                     {shayri.authorName}
                   </div>
                   <div>
@@ -213,20 +213,24 @@ const Shayri = () => {
                 </header>
                 <section
                   className="mb-5 "
-                  style={{ textAlign: "justify", width: "300px" }}
+                  style={{ textAlign: 'justify', width: '300px' }}
                 >
-                  <p className="fs-5 mb-4">{shayri.description}</p>
+                  <p className="fs-5 mb-4">
+                    <div
+                      dangerouslySetInnerHTML={{ __html: shayri.description }}
+                    />
+                  </p>
                 </section>
-                <div className="mb-5" style={{ border: "0" }}>
+                <div className="mb-5" style={{ border: '0' }}>
                   <div className="comments  py-4">
                     <p
                       className="author ps-3 ms-3 "
                       style={{
-                        position: "relative",
-                        fontWeight: "bold",
-                        fontSize: "18px",
-                        fontFamily: "sans-serif",
-                        color: "#222",
+                        position: 'relative',
+                        fontWeight: 'bold',
+                        fontSize: '18px',
+                        fontFamily: 'sans-serif',
+                        color: '#222',
                       }}
                     >
                       TOP COMMENTS
@@ -242,10 +246,10 @@ const Shayri = () => {
                                 <p className="popular-blog-comment pb-1 mb-0">
                                   <span
                                     style={{
-                                      fontWeight: "bold",
-                                      fontWeight: "bold",
-                                      fontFamily: "sans-serif",
-                                      fontSize: "1rem",
+                                      fontWeight: 'bold',
+                                      fontWeight: 'bold',
+                                      fontFamily: 'sans-serif',
+                                      fontSize: '1rem',
                                     }}
                                   >
                                     {comment.name}
@@ -255,8 +259,8 @@ const Shayri = () => {
                               <p className=" pt-0 mt-0 pb-1 mb-0">
                                 <span
                                   style={{
-                                    fontWeight: "bold",
-                                    fontSize: "0.9rem",
+                                    fontWeight: 'bold',
+                                    fontSize: '0.9rem',
                                   }}
                                 >
                                   {comment.comment}
@@ -265,7 +269,7 @@ const Shayri = () => {
                               <div className="d-flex">
                                 <p
                                   className="pt-0 mt-0 pe-2"
-                                  style={{ fontSize: "0.85rem" }}
+                                  style={{ fontSize: '0.85rem' }}
                                 >
                                   {format(comment.created_at)}
                                 </p>
@@ -296,11 +300,11 @@ const Shayri = () => {
                 <p
                   className="author ps-3 ms-3 "
                   style={{
-                    position: "relative",
-                    fontWeight: "bold",
-                    fontSize: "18px",
-                    fontFamily: "sans-serif",
-                    color: "#222",
+                    position: 'relative',
+                    fontWeight: 'bold',
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color: '#222',
                   }}
                 >
                   AUTHOR WIDGETS
@@ -311,8 +315,8 @@ const Shayri = () => {
                     src="https://images.unsplash.com/photo-1579293676244-953f569610cd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGF1dGhvcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                     alt="hello"
                     style={{
-                      height: "300px",
-                      width: "300px",
+                      height: '300px',
+                      width: '300px',
                     }}
                   />
                 </figure>
@@ -326,16 +330,16 @@ const Shayri = () => {
                   <p
                     className="author ps-3 ms-3"
                     style={{
-                      position: "relative",
-                      fontWeight: "bold",
-                      fontSize: "18px",
-                      fontFamily: "sans-serif",
-                      color: "#222",
+                      position: 'relative',
+                      fontWeight: 'bold',
+                      fontSize: '18px',
+                      fontFamily: 'sans-serif',
+                      color: '#222',
                     }}
                   >
                     SOCIAL SHARE
                   </p>
-                  <ul className="d-flex" style={{ listStyle: "none" }}>
+                  <ul className="d-flex" style={{ listStyle: 'none' }}>
                     <TwitterShareButton
                       url={window.location.href}
                       quote={shayri.title}
@@ -393,11 +397,11 @@ const Shayri = () => {
                 <p
                   className="author ps-3 ms-3"
                   style={{
-                    position: "relative",
-                    fontWeight: "bold",
-                    fontSize: "18px",
-                    fontFamily: "sans-serif",
-                    color: "#222",
+                    position: 'relative',
+                    fontWeight: 'bold',
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color: '#222',
                   }}
                 >
                   MORE
@@ -406,23 +410,23 @@ const Shayri = () => {
                   <div className="col-12">
                     <ul className="list-unstyled d-flex flex-wrap justify-content-start flex-row">
                       <li className="px-2">
-                        <Link to="/blogs" style={{ textDecoration: "none" }}>
+                        <Link to="/blogs" style={{ textDecoration: 'none' }}>
                           <p className="button-author">Blogs</p>
                         </Link>
                       </li>
                       <li className="px-2">
-                        <Link to="/shayaris" style={{ textDecoration: "none" }}>
+                        <Link to="/shayaris" style={{ textDecoration: 'none' }}>
                           <p className="button-author">Shayaris</p>
                         </Link>
                       </li>
 
                       <li className="px-2">
-                        <Link to="/kavitas" style={{ textDecoration: "none" }}>
+                        <Link to="/kavitas" style={{ textDecoration: 'none' }}>
                           <p className="button-author">Kavitas</p>
                         </Link>
                       </li>
                       <li className="px-2">
-                        <Link to="/quotes" style={{ textDecoration: "none" }}>
+                        <Link to="/quotes" style={{ textDecoration: 'none' }}>
                           <p className="button-author">Quotes</p>
                         </Link>
                       </li>
@@ -434,11 +438,11 @@ const Shayri = () => {
                 <p
                   className="author ps-3 ms-3"
                   style={{
-                    position: "relative",
-                    fontWeight: "bold",
-                    fontSize: "18px",
-                    fontFamily: "sans-serif",
-                    color: "#222",
+                    position: 'relative',
+                    fontWeight: 'bold',
+                    fontSize: '18px',
+                    fontFamily: 'sans-serif',
+                    color: '#222',
                   }}
                 >
                   LEAVE A COMMENT
@@ -461,9 +465,9 @@ const Shayri = () => {
                   action="POST"
                   className="p-3"
                   style={{
-                    color: "#222",
-                    fontFamily: "sans-serif",
-                    fontWeight: "600",
+                    color: '#222',
+                    fontFamily: 'sans-serif',
+                    fontWeight: '600',
                   }}
                   onSubmit={addComment}
                 >
@@ -482,13 +486,13 @@ const Shayri = () => {
                   <p
                     className="button-author py-1"
                     style={{
-                      width: "50%",
+                      width: '50%',
                     }}
                   >
                     <button
                       type="submit"
                       className="btn"
-                      style={{ fontWeight: "bold" }}
+                      style={{ fontWeight: 'bold' }}
                     >
                       Post Comment
                     </button>

@@ -172,48 +172,52 @@ const Kavita = () => {
     <div style={{ width: '100vw', height: '100vh' }}>
       <Navbar />
       {kavita ? (
-        <div className='container mt-5'>
-          <div className='row'>
-            <div className='col-lg-8'>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-lg-8">
               <article>
-                <header className='mb-4'>
-                  <h1 className='fw-bolder mb-1'>{kavita.title}</h1>
+                <header className="mb-4">
+                  <h1 className="fw-bolder mb-1">{kavita.title}</h1>
 
-                  <div className='text-muted fst-italic mb-2'>
+                  <div className="text-muted fst-italic mb-2">
                     Posted on {kavita.updated_on}, 2021 <br /> by{' '}
                     {kavita.authorName}
                   </div>
                   <div>
-                    <button className='btn btn-light' onClick={AddLike}>
+                    <button className="btn btn-light" onClick={AddLike}>
                       <HandThumbsUpFill />
                     </button>
 
                     {tlikes && (
-                      <span class='badge rounded-pill bg-secondary'>
+                      <span class="badge rounded-pill bg-secondary">
                         {tlikes.length}
                       </span>
                     )}
-                    <button className='btn btn-light' onClick={Unlike}>
+                    <button className="btn btn-light" onClick={Unlike}>
                       <HandThumbsDownFill />
                     </button>
                   </div>
                 </header>
 
                 <section
-                  className='mb-5 '
+                  className="mb-5 "
                   style={{ textAlign: 'justify', width: '300px' }}
                 >
-                  <p className='fs-5 mb-4'>{kavita.description}</p>
+                  <p className="fs-5 mb-4">
+                    <div
+                      dangerouslySetInnerHTML={{ __html: kavita.description }}
+                    />
+                  </p>
                 </section>
                 <Comments comments={comments} />
               </article>
             </div>
 
-            <div className='col-lg-4'>
+            <div className="col-lg-4">
               {/* author details, adding dynamic images and social media links */}
-              <div className='author-details d-flex flex-column border py-3'>
+              <div className="author-details d-flex flex-column border py-3">
                 <p
-                  className='author ps-3 ms-3 '
+                  className="author ps-3 ms-3 "
                   style={{
                     position: 'relative',
                     fontWeight: 'bold',
@@ -224,26 +228,26 @@ const Kavita = () => {
                 >
                   AUTHOR WIDGETS
                 </p>
-                <figure className='mb-4 d-flex justify-content-center'>
+                <figure className="mb-4 d-flex justify-content-center">
                   <img
-                    className='img-fluid author-img'
-                    src='https://images.unsplash.com/photo-1579293676244-953f569610cd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGF1dGhvcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-                    alt='hello'
+                    className="img-fluid author-img"
+                    src="https://images.unsplash.com/photo-1579293676244-953f569610cd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGF1dGhvcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="hello"
                     style={{
                       height: '300px',
                       width: '300px',
                     }}
                   />
                 </figure>
-                <div className='d-flex justify-content-center flex-column align-items-center pb-5'>
+                <div className="d-flex justify-content-center flex-column align-items-center pb-5">
                   <p>{kavita.authorName}</p>
-                  <a href='#' className='button-author'>
+                  <a href="#" className="button-author">
                     Read More
                   </a>
                 </div>
-                <div className='py-4'>
+                <div className="py-4">
                   <p
-                    className='author ps-3 ms-3'
+                    className="author ps-3 ms-3"
                     style={{
                       position: 'relative',
                       fontWeight: 'bold',
@@ -254,52 +258,52 @@ const Kavita = () => {
                   >
                     SOCIAL SHARE
                   </p>
-                  <ul className='d-flex' style={{ listStyle: 'none' }}>
+                  <ul className="d-flex" style={{ listStyle: 'none' }}>
                     <TwitterShareButton
                       url={window.location.href}
                       quote={kavita.title}
                     >
                       <TwitterIcon
-                        logoFillColor='white'
-                        size='53'
+                        logoFillColor="white"
+                        size="53"
                         round={true}
                       ></TwitterIcon>
                     </TwitterShareButton>
-                    <li className='px-1'>
+                    <li className="px-1">
                       <FacebookShareButton
                         url={window.location.href}
                         quote={kavita.title}
-                        hashtag='#Kavita'
+                        hashtag="#Kavita"
                       >
                         <FacebookIcon
-                          logoFillColor='white'
-                          size='53'
+                          logoFillColor="white"
+                          size="53"
                           round={true}
                         ></FacebookIcon>
                       </FacebookShareButton>
                     </li>
-                    <li className='px-1'>
+                    <li className="px-1">
                       <WhatsappShareButton
                         url={window.location.href}
                         quote={kavita.title}
                       >
                         <WhatsappIcon
-                          logoFillColor='white'
-                          size='53'
+                          logoFillColor="white"
+                          size="53"
                           round={true}
                         ></WhatsappIcon>
                       </WhatsappShareButton>
                     </li>
 
-                    <li className='px-1'>
+                    <li className="px-1">
                       <TelegramShareButton
                         url={window.location.href}
                         quote={kavita.title}
-                        hashtag='#Kavita'
+                        hashtag="#Kavita"
                       >
                         <TelegramIcon
-                          logoFillColor='white'
-                          size='53'
+                          logoFillColor="white"
+                          size="53"
                           round={true}
                         ></TelegramIcon>
                       </TelegramShareButton>
@@ -308,9 +312,9 @@ const Kavita = () => {
                 </div>
               </div>
 
-              <div className='d-flex flex-column border py-3 my-3'>
+              <div className="d-flex flex-column border py-3 my-3">
                 <p
-                  className='author ps-3 ms-3'
+                  className="author ps-3 ms-3"
                   style={{
                     position: 'relative',
                     fontWeight: 'bold',
@@ -321,37 +325,37 @@ const Kavita = () => {
                 >
                   MORE
                 </p>
-                <div className='card-body'>
-                  <div className='col-12'>
-                    <ul className='list-unstyled d-flex flex-wrap justify-content-start flex-row'>
-                      <li className='px-2'>
-                        <Link to='/blogs' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Blogs</p>
+                <div className="card-body">
+                  <div className="col-12">
+                    <ul className="list-unstyled d-flex flex-wrap justify-content-start flex-row">
+                      <li className="px-2">
+                        <Link to="/blogs" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Blogs</p>
                         </Link>
                       </li>
-                      <li className='px-2'>
-                        <Link to='/shayaris' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Shayaris</p>
+                      <li className="px-2">
+                        <Link to="/shayaris" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Shayaris</p>
                         </Link>
                       </li>
 
-                      <li className='px-2'>
-                        <Link to='/kavitas' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Kavitas</p>
+                      <li className="px-2">
+                        <Link to="/kavitas" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Kavitas</p>
                         </Link>
                       </li>
-                      <li className='px-2'>
-                        <Link to='/quotes' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Quotes</p>
+                      <li className="px-2">
+                        <Link to="/quotes" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Quotes</p>
                         </Link>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className='d-flex flex-column border py-3 my-3'>
+              <div className="d-flex flex-column border py-3 my-3">
                 <p
-                  className='author ps-3 ms-3'
+                  className="author ps-3 ms-3"
                   style={{
                     position: 'relative',
                     fontWeight: 'bold',
@@ -364,21 +368,21 @@ const Kavita = () => {
                 </p>
                 {success && (
                   <span>
-                    <div class='alert alert-success' role='alert'>
+                    <div class="alert alert-success" role="alert">
                       Comment posted
                     </div>
                   </span>
                 )}
                 {error && (
                   <span>
-                    <div class='alert alert-danger' role='alert'>
+                    <div class="alert alert-danger" role="alert">
                       oops something went wrong!
                     </div>
                   </span>
                 )}
                 <form
-                  action='POST'
-                  className='p-3'
+                  action="POST"
+                  className="p-3"
                   style={{
                     color: '#222',
                     fontFamily: 'sans-serif',
@@ -386,27 +390,27 @@ const Kavita = () => {
                   }}
                   onSubmit={addComment}
                 >
-                  <div class='form-group py-3'>
-                    <label className='pb-1' for='exampleFormControlTextarea1'>
+                  <div class="form-group py-3">
+                    <label className="pb-1" for="exampleFormControlTextarea1">
                       Comment
                     </label>
                     <textarea
-                      class='form-control'
-                      id='exampleFormControlTextarea1'
-                      rows='3'
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
                       onChange={(e) => setComment(e.target.value)}
                     ></textarea>
                   </div>
 
                   <p
-                    className='button-author py-1'
+                    className="button-author py-1"
                     style={{
                       width: '50%',
                     }}
                   >
                     <button
-                      type='submit'
-                      className='btn'
+                      type="submit"
+                      className="btn"
                       style={{ fontWeight: 'bold' }}
                     >
                       Post Comment
@@ -418,9 +422,9 @@ const Kavita = () => {
           </div>
         </div>
       ) : (
-        <div class='text-center'>
-          <div class='spinner-border' role='status'>
-            <span class='sr-only'>Loading...</span>
+        <div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
           </div>
         </div>
       )}

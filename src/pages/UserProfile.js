@@ -177,7 +177,7 @@ const UserProfile = () => {
         isFeatured: false,
         isApproved: false,
         title: kavitaTitle.current.value,
-        description: kavitaContent.current.value,
+        description: kavitaContent,
         rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
         updated_on: new Date().toString(),
         social_link: kavitaSocialLink.current.value,
@@ -322,7 +322,7 @@ const UserProfile = () => {
                       </div>
                       <div class="stats">
                         <h6
-                          className="mb-0 text-dark p-3"
+                          className="mb-0 text-dark m-2"
                           style={{
                             fontSize: '28px',
                             fontFamily: 'Dancing Script',
@@ -351,7 +351,7 @@ const UserProfile = () => {
 
               <br />
               <br />
-              <div className="d-flex justify-content-center align-items-center">
+              <div className="d-flex flex-column justify-content-center align-items-center">
                 {currentUser.isAdmin && (
                   <button
                     className="btn btn-primary ms-3 mt-2"
@@ -701,37 +701,42 @@ const UserProfile = () => {
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Shayaris</h2>
           </div>
-          {userShayris.length > 0 ? (
-            userShayris.map(
-              ({
-                img,
-                id,
-                description,
-                title,
-                authorName,
-                isFeatured,
-                updated_on,
-              }) => {
-                return (
-                  <div>
-                    <Card
-                      img={img}
-                      content={description}
-                      title={title}
-                      date={updated_on}
-                      url={`/shayaris/${id}`}
-                      author={authorName}
-                      deleteOption={true}
-                      collection={'Shayris'}
-                      id={id}
-                    />
-                  </div>
-                );
-              }
-            )
-          ) : (
-            <div className="d-flex justify-content-center">No posts yet</div>
-          )}
+          <div
+            className="container d-flex flex-direction-row flex-wrap justify-content-center my-3"
+            style={{ width: '160px' }}
+          >
+            {userShayris.length > 0 ? (
+              userShayris.map(
+                ({
+                  img,
+                  id,
+                  description,
+                  title,
+                  authorName,
+                  isFeatured,
+                  updated_on,
+                }) => {
+                  return (
+                    <div>
+                      <Card
+                        img={img}
+                        content={description}
+                        title={title}
+                        date={updated_on}
+                        url={`/shayaris/${id}`}
+                        author={authorName}
+                        deleteOption={true}
+                        collection={'Shayris'}
+                        id={id}
+                      />
+                    </div>
+                  );
+                }
+              )
+            ) : (
+              <div className="d-flex justify-content-center">No posts yet</div>
+            )}
+          </div>
         </div>
         <div className="p-5">
           <div className="container d-flex justify-content-center p-4">

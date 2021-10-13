@@ -65,38 +65,45 @@ const ShayriApprovals = () => {
     <div style={{ height: '100vh', width: '100vw' }}>
       <Navbar />
       {shayri ? (
-        <div className='container mt-5'>
+        <div className="container mt-5">
           <div>
             <article>
               {success && (
-                <div class='alert alert-success' role='alert'>
+                <div class="alert alert-success" role="alert">
                   Success!
                 </div>
               )}
               {error && (
-                <div class='alert alert-danger' role='alert'>
+                <div class="alert alert-danger" role="alert">
                   Opps something went wrong
                 </div>
               )}
-              <header className='mb-4'>
-                <h1 className='fw-bolder mb-1'>{shayri.title}</h1>
-                <button className='btn btn-success' onClick={handleApprove}>
+              <header className="mb-4">
+                <h1 className="fw-bolder mb-1">{shayri.title}</h1>
+                <button className="btn btn-success m-2" onClick={handleApprove}>
                   Approve
                 </button>
-                <button className='btn btn-danger' onClick={handleNotApprove}>
+                <button
+                  className="btn btn-danger m-2"
+                  onClick={handleNotApprove}
+                >
                   Disapprove
                 </button>
-                <div className='text-muted fst-italic mb-2'>
+                <div className="text-muted fst-italic mb-2">
                   Posted on {shayri.updated_on}, 2021 <br /> by{' '}
                   {shayri.authorName}
                 </div>
               </header>
 
               <section
-                className='mb-5 '
+                className="mb-5 "
                 style={{ textAlign: 'justify', width: '300px' }}
               >
-                <p className='fs-5 mb-4'>{shayri.description}</p>
+                <p className="fs-5 mb-4">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: shayri.description }}
+                  />
+                </p>
               </section>
             </article>
           </div>

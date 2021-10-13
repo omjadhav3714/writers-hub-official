@@ -163,29 +163,29 @@ const Blog = () => {
     <div style={{ width: '100vw', height: '100vh' }}>
       <Navbar />
       {blog ? (
-        <div className='container mt-5'>
-          <div className='row'>
-            <div className='col-lg-8'>
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-lg-8">
               <article>
-                <header className='mb-4'>
-                  <h1 className='fw-bolder mb-1'>{blog.title}</h1>
+                <header className="mb-4">
+                  <h1 className="fw-bolder mb-1">{blog.title}</h1>
 
-                  <div className='text-muted fst-italic mb-2'>
+                  <div className="text-muted fst-italic mb-2">
                     Posted on {blog.updated_on}, 2021 by {blog.authorName}
                   </div>
 
                   <div>
                     <div>
-                      <button className='btn btn-light' onClick={AddLike}>
+                      <button className="btn btn-light" onClick={AddLike}>
                         <HandThumbsUpFill />
                       </button>
 
                       {tlikes && (
-                        <span class='badge rounded-pill bg-secondary'>
+                        <span class="badge rounded-pill bg-secondary">
                           {tlikes.length}
                         </span>
                       )}
-                      <button className='btn btn-light' onClick={Unlike}>
+                      <button className="btn btn-light" onClick={Unlike}>
                         <HandThumbsDownFill />
                       </button>
                     </div>
@@ -194,34 +194,38 @@ const Blog = () => {
                   {blog.catagories &&
                     blog.categories.map((c) => (
                       <p
-                        className='badge bg-secondary text-decoration-none link-light'
-                        href='#!'
+                        className="badge bg-secondary text-decoration-none link-light"
+                        href="#!"
                       >
                         {c}
                       </p>
                     ))}
                 </header>
-                <figure className='mb-4'>
+                <figure className="mb-4">
                   <img
-                    className='img-fluid rounded'
+                    className="img-fluid rounded"
                     src={blog.images[0]}
-                    alt='hello'
+                    alt="hello"
                     style={{ height: '520px', width: '800px' }}
                   />
                 </figure>
 
-                <section className='mb-5 ' style={{ textAlign: 'justify' }}>
-                  <p className='fs-5 mb-4'>{blog.description}</p>
+                <section className="mb-5 " style={{ textAlign: 'justify' }}>
+                  <p className="fs-5 mb-4">
+                    <div
+                      dangerouslySetInnerHTML={{ __html: blog.description }}
+                    />
+                  </p>
                 </section>
                 <Comments comments={comments} />
               </article>
             </div>
 
-            <div className='col-lg-4'>
+            <div className="col-lg-4">
               {/* author details, adding dynamic images and social media links */}
-              <div className='author-details d-flex flex-column border py-3'>
+              <div className="author-details d-flex flex-column border py-3">
                 <p
-                  className='author ps-3 ms-3 '
+                  className="author ps-3 ms-3 "
                   style={{
                     position: 'relative',
                     fontWeight: 'bold',
@@ -232,26 +236,26 @@ const Blog = () => {
                 >
                   AUTHOR WIDGETS
                 </p>
-                <figure className='mb-4 d-flex justify-content-center'>
+                <figure className="mb-4 d-flex justify-content-center">
                   <img
-                    className='img-fluid author-img'
-                    src='https://images.unsplash.com/photo-1579293676244-953f569610cd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGF1dGhvcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-                    alt='hello'
+                    className="img-fluid author-img"
+                    src="https://images.unsplash.com/photo-1579293676244-953f569610cd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGF1dGhvcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="hello"
                     style={{
                       height: '300px',
                       width: '300px',
                     }}
                   />
                 </figure>
-                <div className='d-flex justify-content-center flex-column align-items-center pb-5'>
+                <div className="d-flex justify-content-center flex-column align-items-center pb-5">
                   <p>{blog.authorName}</p>
-                  <a href='#' className='button-author'>
+                  <a href="#" className="button-author">
                     Read More
                   </a>
                 </div>
-                <div className='py-4'>
+                <div className="py-4">
                   <p
-                    className='author ps-3 ms-3'
+                    className="author ps-3 ms-3"
                     style={{
                       position: 'relative',
                       fontWeight: 'bold',
@@ -262,61 +266,61 @@ const Blog = () => {
                   >
                     SOCIAL SHARE
                   </p>
-                  <ul className='d-flex' style={{ listStyle: 'none' }}>
-                    <li className='px-1'>
+                  <ul className="d-flex" style={{ listStyle: 'none' }}>
+                    <li className="px-1">
                       <TwitterShareButton
                         url={window.location.href}
                         quote={blog.title}
                       >
                         <TwitterIcon
-                          logoFillColor='white'
-                          size='53'
+                          logoFillColor="white"
+                          size="53"
                           round={true}
                         ></TwitterIcon>
                       </TwitterShareButton>
                     </li>
-                    <li className='px-1'>
+                    <li className="px-1">
                       <FacebookShareButton
                         url={window.location.href}
                         quote={blog.title}
                       >
                         <FacebookIcon
-                          logoFillColor='white'
-                          size='53'
+                          logoFillColor="white"
+                          size="53"
                           round={true}
                         ></FacebookIcon>
                       </FacebookShareButton>
                     </li>
-                    <li className='px-1'>
+                    <li className="px-1">
                       <WhatsappShareButton
                         url={window.location.href}
                         quote={blog.title}
                       >
                         <WhatsappIcon
-                          logoFillColor='white'
-                          size='53'
+                          logoFillColor="white"
+                          size="53"
                           round={true}
                         ></WhatsappIcon>
                       </WhatsappShareButton>
                     </li>
 
-                    <li className='px-1'>
+                    <li className="px-1">
                       <TelegramShareButton
                         url={window.location.href}
                         quote={blog.title}
                       >
                         <TelegramIcon
-                          logoFillColor='white'
-                          size='53'
+                          logoFillColor="white"
+                          size="53"
                           round={true}
                         ></TelegramIcon>
                       </TelegramShareButton>
                     </li>
                   </ul>
                 </div>
-                <div className='popular-posts py-4'>
+                <div className="popular-posts py-4">
                   <p
-                    className='author ps-3 ms-3 '
+                    className="author ps-3 ms-3 "
                     style={{
                       position: 'relative',
                       fontWeight: 'bold',
@@ -329,15 +333,15 @@ const Blog = () => {
                   </p>
 
                   {/* add dynamic data and link to correct blog */}
-                  <div className='post ps-3 '>
+                  <div className="post ps-3 ">
                     {/* blog1 */}
-                    <div className='d-flex flex-row single-post'>
-                      <Link to='/blogs' style={{ textDecoration: 'none' }}>
-                        <figure className='mb-4'>
+                    <div className="d-flex flex-row single-post">
+                      <Link to="/blogs" style={{ textDecoration: 'none' }}>
+                        <figure className="mb-4">
                           <img
-                            className='img-fluid'
+                            className="img-fluid"
                             src={blog.images[0]}
-                            alt='hello'
+                            alt="hello"
                             style={{
                               height: '100px',
                               width: '100px',
@@ -346,9 +350,9 @@ const Blog = () => {
                           />
                         </figure>
                       </Link>
-                      <div className='p-3'>
-                        <p className='popular-blog-title'>{blog.title}</p>
-                        <p className='popular-blog-comment'>
+                      <div className="p-3">
+                        <p className="popular-blog-title">{blog.title}</p>
+                        <p className="popular-blog-comment">
                           BY - &nbsp;
                           <span style={{ fontWeight: 'bold' }}>
                             {blog.authorName}
@@ -358,13 +362,13 @@ const Blog = () => {
                     </div>
 
                     {/* blog2 */}
-                    <div className='d-flex flex-row single-post'>
-                      <Link to='/blogs' style={{ textDecoration: 'none' }}>
-                        <figure className='mb-4'>
+                    <div className="d-flex flex-row single-post">
+                      <Link to="/blogs" style={{ textDecoration: 'none' }}>
+                        <figure className="mb-4">
                           <img
-                            className='img-fluid'
+                            className="img-fluid"
                             src={blog.images[0]}
-                            alt='hello'
+                            alt="hello"
                             style={{
                               height: '100px',
                               width: '100px',
@@ -373,9 +377,9 @@ const Blog = () => {
                           />
                         </figure>
                       </Link>
-                      <div className='p-3'>
-                        <p className='popular-blog-title'>{blog.title}</p>
-                        <p className='popular-blog-comment'>
+                      <div className="p-3">
+                        <p className="popular-blog-title">{blog.title}</p>
+                        <p className="popular-blog-comment">
                           BY - &nbsp;
                           <span style={{ fontWeight: 'bold' }}>
                             {blog.authorName}
@@ -384,13 +388,13 @@ const Blog = () => {
                       </div>
                     </div>
                     {/* blog3  */}
-                    <div className='d-flex flex-row single-post'>
-                      <Link to='/blogs' style={{ textDecoration: 'none' }}>
-                        <figure className='mb-4'>
+                    <div className="d-flex flex-row single-post">
+                      <Link to="/blogs" style={{ textDecoration: 'none' }}>
+                        <figure className="mb-4">
                           <img
-                            className='img-fluid'
+                            className="img-fluid"
                             src={blog.images[0]}
-                            alt='hello'
+                            alt="hello"
                             style={{
                               height: '100px',
                               width: '100px',
@@ -399,9 +403,9 @@ const Blog = () => {
                           />
                         </figure>
                       </Link>
-                      <div className='p-3'>
-                        <p className='popular-blog-title'>{blog.title}</p>
-                        <p className='popular-blog-comment'>
+                      <div className="p-3">
+                        <p className="popular-blog-title">{blog.title}</p>
+                        <p className="popular-blog-comment">
                           BY - &nbsp;
                           <span style={{ fontWeight: 'bold' }}>
                             {blog.authorName}
@@ -410,13 +414,13 @@ const Blog = () => {
                       </div>
                     </div>
                     {/* blog4 */}
-                    <div className='d-flex flex-row single-post'>
-                      <Link to='/blogs' style={{ textDecoration: 'none' }}>
-                        <figure className='mb-4'>
+                    <div className="d-flex flex-row single-post">
+                      <Link to="/blogs" style={{ textDecoration: 'none' }}>
+                        <figure className="mb-4">
                           <img
-                            className='img-fluid'
+                            className="img-fluid"
                             src={blog.images[0]}
-                            alt='hello'
+                            alt="hello"
                             style={{
                               height: '100px',
                               width: '100px',
@@ -425,9 +429,9 @@ const Blog = () => {
                           />
                         </figure>
                       </Link>
-                      <div className='p-3'>
-                        <p className='popular-blog-title'>{blog.title}</p>
-                        <p className='popular-blog-comment'>
+                      <div className="p-3">
+                        <p className="popular-blog-title">{blog.title}</p>
+                        <p className="popular-blog-comment">
                           BY - &nbsp;
                           <span style={{ fontWeight: 'bold' }}>
                             {blog.authorName}
@@ -439,9 +443,9 @@ const Blog = () => {
                 </div>
               </div>
 
-              <div className='d-flex flex-column border py-3 my-3'>
+              <div className="d-flex flex-column border py-3 my-3">
                 <p
-                  className='author ps-3 ms-3'
+                  className="author ps-3 ms-3"
                   style={{
                     position: 'relative',
                     fontWeight: 'bold',
@@ -452,37 +456,37 @@ const Blog = () => {
                 >
                   MORE
                 </p>
-                <div className='card-body'>
-                  <div className='col-12'>
-                    <ul className='list-unstyled d-flex flex-wrap justify-content-start flex-row'>
-                      <li className='px-2'>
-                        <Link to='/blogs' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Blogs</p>
+                <div className="card-body">
+                  <div className="col-12">
+                    <ul className="list-unstyled d-flex flex-wrap justify-content-start flex-row">
+                      <li className="px-2">
+                        <Link to="/blogs" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Blogs</p>
                         </Link>
                       </li>
-                      <li className='px-2'>
-                        <Link to='/shayaris' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Shayaris</p>
+                      <li className="px-2">
+                        <Link to="/shayaris" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Shayaris</p>
                         </Link>
                       </li>
 
-                      <li className='px-2'>
-                        <Link to='/kavitas' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Kavitas</p>
+                      <li className="px-2">
+                        <Link to="/kavitas" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Kavitas</p>
                         </Link>
                       </li>
-                      <li className='px-2'>
-                        <Link to='/quotes' style={{ textDecoration: 'none' }}>
-                          <p className='button-author'>Quotes</p>
+                      <li className="px-2">
+                        <Link to="/quotes" style={{ textDecoration: 'none' }}>
+                          <p className="button-author">Quotes</p>
                         </Link>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className='d-flex flex-column border py-3 my-3'>
+              <div className="d-flex flex-column border py-3 my-3">
                 <p
-                  className='author ps-3 ms-3'
+                  className="author ps-3 ms-3"
                   style={{
                     position: 'relative',
                     fontWeight: 'bold',
@@ -495,21 +499,21 @@ const Blog = () => {
                 </p>
                 {success && (
                   <span>
-                    <div class='alert alert-success' role='alert'>
+                    <div class="alert alert-success" role="alert">
                       Comment posted
                     </div>
                   </span>
                 )}
                 {error && (
                   <span>
-                    <div class='alert alert-danger' role='alert'>
+                    <div class="alert alert-danger" role="alert">
                       oops something went wrong!
                     </div>
                   </span>
                 )}
                 <form
-                  action='POST'
-                  className='p-3'
+                  action="POST"
+                  className="p-3"
                   style={{
                     color: '#222',
                     fontFamily: 'sans-serif',
@@ -517,27 +521,27 @@ const Blog = () => {
                   }}
                   onSubmit={addComment}
                 >
-                  <div class='form-group py-3'>
-                    <label className='pb-1' for='exampleFormControlTextarea1'>
+                  <div class="form-group py-3">
+                    <label className="pb-1" for="exampleFormControlTextarea1">
                       Comment
                     </label>
                     <textarea
-                      class='form-control'
-                      id='exampleFormControlTextarea1'
-                      rows='3'
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
                       onChange={(e) => setComment(e.target.value)}
                     ></textarea>
                   </div>
 
                   <p
-                    className='button-author py-1'
+                    className="button-author py-1"
                     style={{
                       width: '50%',
                     }}
                   >
                     <button
-                      type='submit'
-                      className='btn'
+                      type="submit"
+                      className="btn"
                       style={{ fontWeight: 'bold' }}
                     >
                       Post Comment
@@ -549,9 +553,9 @@ const Blog = () => {
           </div>
         </div>
       ) : (
-        <div class='text-center'>
-          <div class='spinner-border' role='status'>
-            <span class='sr-only'>Loading...</span>
+        <div class="text-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
           </div>
         </div>
       )}
