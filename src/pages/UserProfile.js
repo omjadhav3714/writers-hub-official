@@ -697,14 +697,11 @@ const UserProfile = () => {
             </div>
           )}
         </div>
-        <div className="p-5">
+        <div className="pt-5">
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Shayaris</h2>
           </div>
-          <div
-            className="container d-flex flex-direction-row flex-wrap justify-content-center my-3"
-            style={{ width: '160px' }}
-          >
+          <div className="container d-flex flex-direction-row flex-wrap justify-content-center my-3">
             {userShayris.length > 0 ? (
               userShayris.map(
                 ({
@@ -717,19 +714,17 @@ const UserProfile = () => {
                   updated_on,
                 }) => {
                   return (
-                    <div>
-                      <Card
-                        img={img}
-                        content={description}
-                        title={title}
-                        date={updated_on}
-                        url={`/shayaris/${id}`}
-                        author={authorName}
-                        deleteOption={true}
-                        collection={'Shayris'}
-                        id={id}
-                      />
-                    </div>
+                    <Card
+                      img={img}
+                      content={description}
+                      title={title}
+                      date={updated_on}
+                      url={`/shayaris/${id}`}
+                      author={authorName}
+                      deleteOption={true}
+                      collection={'Shayris'}
+                      id={id}
+                    />
                   );
                 }
               )
@@ -738,7 +733,7 @@ const UserProfile = () => {
             )}
           </div>
         </div>
-        <div className="p-5">
+        <div className="pt-5">
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Blogs</h2>
           </div>
@@ -764,33 +759,35 @@ const UserProfile = () => {
             <div className="d-flex justify-content-center">No posts yet</div>
           )}
         </div>
-        <div className="p-5">
+        <div className="pt-5">
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My kavitas</h2>
           </div>
-          {userKavitas.length > 0 ? (
-            userKavitas.map(
-              ({ img, description, title, updated_on, id, authorName }) => {
-                return (
-                  <Card
-                    img={img}
-                    content={description}
-                    title={title}
-                    date={updated_on}
-                    url={`/kavitas/${id}`}
-                    author={authorName}
-                    deleteOption={true}
-                    collection={'Poems'}
-                    id={id}
-                  />
-                );
-              }
-            )
-          ) : (
-            <div className="d-flex justify-content-center">No posts yet</div>
-          )}
+          <div className=" d-flex flex-direction-row flex-wrap justify-content-center my-3">
+            {userKavitas.length > 0 ? (
+              userKavitas.map(
+                ({ img, description, title, updated_on, id, authorName }) => {
+                  return (
+                    <Card
+                      img={img}
+                      content={description}
+                      title={title}
+                      date={updated_on}
+                      url={`/kavitas/${id}`}
+                      author={authorName}
+                      deleteOption={true}
+                      collection={'Poems'}
+                      id={id}
+                    />
+                  );
+                }
+              )
+            ) : (
+              <div className="d-flex justify-content-center">No posts yet</div>
+            )}
+          </div>
         </div>
-        <div className="p-5">
+        <div className="pt-5">
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My quotesc</h2>
           </div>
