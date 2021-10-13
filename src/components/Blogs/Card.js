@@ -51,11 +51,6 @@ const Card = ({
         </p>
         <div className="d-fles justify-content-between m-2">
           <p className="small text-dark"> {date}</p>
-          {deleteOption && (
-            <button className="btn btn-danger" onClick={deletePost}>
-              <Trash />
-            </button>
-          )}
         </div>
         <p
           className="card-text content py-1 mt-0 mb-4 pt-0 text-dark"
@@ -71,7 +66,14 @@ const Card = ({
             Read more
           </Link>
         </div>
-        {!isApproved && <p className="text-danger"> Awaiting approval</p>}
+        <div className="d-flex justify-content-between">
+          {!isApproved && <p className="text-danger"> Awaiting approval</p>}
+          {deleteOption && (
+            <button className="btn btn-danger" onClick={deletePost}>
+              <Trash />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

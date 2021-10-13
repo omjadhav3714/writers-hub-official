@@ -10,6 +10,7 @@ import './UserProfile.css';
 import gravatar from 'gravatar';
 import Avatar from 'react-avatar';
 import { clippingParents } from '@popperjs/core';
+import { PlusCircle } from 'react-bootstrap-icons';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
@@ -295,7 +296,7 @@ const UserProfile = () => {
                       {currentUser.email}
                     </span>{' '}
                     <br />
-                    <div className="d-flex justify-content-center align-items-center mt-4 px-4">
+                    <div className="container d-flex  justify-content-center mt-4 px-4">
                       <div className="stats">
                         <h6
                           class="mb-0 text-dark"
@@ -305,10 +306,26 @@ const UserProfile = () => {
                           }}
                         >
                           Blogs
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showBlogForm) {
+                                  setShowBlogForm(false);
+                                } else {
+                                  setShowBlogForm(true);
+                                  setShowShayriForm(false);
+                                  setShowKavitaForm(false);
+                                  setShowQuoteForm(false);
+                                }
+                              }}
+                            />
+                          </div>
                         </h6>{' '}
                         <span className="fs-5">{userBlogs.length}</span>
                       </div>
-                      <div class="stats p-3">
+                      <div class="stats" style={{ marginLeft: '22px' }}>
                         <h6
                           className="mb-0 text-dark"
                           style={{
@@ -317,22 +334,57 @@ const UserProfile = () => {
                           }}
                         >
                           Kavitas
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showKavitaForm) {
+                                  setShowKavitaForm(false);
+                                } else {
+                                  setShowKavitaForm(true);
+                                  setShowBlogForm(false);
+                                  setShowShayriForm(false);
+                                  setShowQuoteForm(false);
+                                }
+                              }}
+                            />
+                          </div>
                         </h6>{' '}
                         <span>{userKavitas.length}</span>
                       </div>
-                      <div class="stats">
+                      <div class="stats" style={{ marginLeft: '22px' }}>
                         <h6
-                          className="mb-0 text-dark m-2"
+                          className="mb-0 text-dark"
                           style={{
                             fontSize: '28px',
                             fontFamily: 'Dancing Script',
                           }}
                         >
                           Shayris
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showShayriForm) {
+                                  setShowShayriForm(false);
+                                } else {
+                                  setShowShayriForm(true);
+                                  setShowBlogForm(false);
+                                  setShowKavitaForm(false);
+                                  setShowQuoteForm(false);
+                                }
+                              }}
+                            />
+                          </div>
                         </h6>{' '}
                         <span>{userShayris.length}</span>
                       </div>
-                      <div class="stats text-dark">
+                      <div
+                        class="stats text-dark"
+                        style={{ marginLeft: '22px' }}
+                      >
                         <h6
                           class="mb-0"
                           style={{
@@ -341,6 +393,22 @@ const UserProfile = () => {
                           }}
                         >
                           Quotes
+                          <div>
+                            <PlusCircle
+                              fontSize={20}
+                              color="green"
+                              onClick={() => {
+                                if (showQuoteForm) {
+                                  setShowQuoteForm(false);
+                                } else {
+                                  setShowQuoteForm(true);
+                                  setShowBlogForm(false);
+                                  setShowShayriForm(false);
+                                  setShowKavitaForm(false);
+                                }
+                              }}
+                            />
+                          </div>
                         </h6>{' '}
                         <span>{userQuotes.length}</span>
                       </div>
@@ -351,7 +419,7 @@ const UserProfile = () => {
 
               <br />
               <br />
-              <div className="d-flex flex-column justify-content-center align-items-center">
+              <div className="container d-flex flex-column justify-content-center">
                 {currentUser.isAdmin && (
                   <button
                     className="btn btn-primary ms-3 mt-2"
@@ -363,7 +431,7 @@ const UserProfile = () => {
                   </button>
                 )}
 
-                <button
+                {/* <button
                   className="btn btn-success ms-3 mt-2"
                   onClick={() => {
                     if (showBlogForm) {
@@ -423,7 +491,7 @@ const UserProfile = () => {
                   }}
                 >
                   Add Quote
-                </button>
+                </button> */}
               </div>
               <div>
                 {showBlogForm && (
