@@ -206,10 +206,10 @@ const Shayri = () => {
                 </header>
 
                 <section
-                  className="mb-5 "
-                  style={{ textAlign: 'justify', width: '500px' }}
+                  className="mb-5 d-flex justify-content-center "
+                  style={{ textAlign: 'justify', width: 'auto' }}
                 >
-                  <p className="fs-5 mb-4">
+                  <p className="fs-5 mb-4 w-75">
                     <div
                       dangerouslySetInnerHTML={{ __html: quote.description }}
                     />
