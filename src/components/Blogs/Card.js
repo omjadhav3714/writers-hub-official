@@ -15,9 +15,11 @@ const Card = ({
   isApproved,
   deleteOption,
   collection,
+  removeData,
 }) => {
   const deletePost = async () => {
     try {
+      removeData(id);
       await db.collection(`${collection}`).doc(id).delete();
       console.log(id);
     } catch (error) {
@@ -69,9 +71,7 @@ const Card = ({
         <div className="d-flex justify-content-between">
           {!isApproved && <p className="text-danger"> Awaiting approval</p>}
           {deleteOption && (
-            <button className="btn btn-danger" onClick={deletePost}>
-              <Trash />
-            </button>
+            <Trash onClick={deletePost} fontSize={25} color="red" />
           )}
         </div>
       </div>

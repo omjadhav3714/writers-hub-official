@@ -11,6 +11,7 @@ import gravatar from 'gravatar';
 import Avatar from 'react-avatar';
 import { clippingParents } from '@popperjs/core';
 import { PlusCircle } from 'react-bootstrap-icons';
+import Footer from '../components/Footer';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
@@ -265,6 +266,12 @@ const UserProfile = () => {
         setError(false);
       }, 3000);
     }
+  };
+
+  const removeShayri = (id) => {
+    userShayris.filter((shayri) => {
+      return id === shayri.id;
+    });
   };
 
   return (
@@ -792,6 +799,7 @@ const UserProfile = () => {
                       deleteOption={true}
                       collection={'Shayris'}
                       id={id}
+                      removeData={(id) => removeShayri(id)}
                     />
                   );
                 }
@@ -805,27 +813,29 @@ const UserProfile = () => {
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My Blogs</h2>
           </div>
-          {userBlogs.length > 0 ? (
-            userBlogs.map(
-              ({ id, image, description, title, authorName, updated_on }) => {
-                return (
-                  <Card
-                    img={image}
-                    content={description}
-                    title={title}
-                    author={authorName}
-                    date={updated_on}
-                    url={`/blogs/${id}`}
-                    deleteOption={true}
-                    collection={'Blogs'}
-                    id={id}
-                  />
-                );
-              }
-            )
-          ) : (
-            <div className="d-flex justify-content-center">No posts yet</div>
-          )}
+          <div className="container d-flex flex-direction-row flex-wrap justify-content-center my-3">
+            {userBlogs.length > 0 ? (
+              userBlogs.map(
+                ({ id, image, description, title, authorName, updated_on }) => {
+                  return (
+                    <Card
+                      img={image}
+                      content={description}
+                      title={title}
+                      author={authorName}
+                      date={updated_on}
+                      url={`/blogs/${id}`}
+                      deleteOption={true}
+                      collection={'Blogs'}
+                      id={id}
+                    />
+                  );
+                }
+              )
+            ) : (
+              <div className="d-flex justify-content-center">No posts yet</div>
+            )}
+          </div>
         </div>
         <div className="pt-5">
           <div className="container d-flex justify-content-center p-4">
@@ -859,38 +869,43 @@ const UserProfile = () => {
           <div className="container d-flex justify-content-center p-4">
             <h2 style={{ fontFamily: 'Dancing Script' }}>My quotesc</h2>
           </div>
-          {userQuotes.length > 0 ? (
-            userQuotes.map(
-              ({
-                img,
-                description,
-                title,
-                updated_on,
-                id,
-                authorName,
-                isApproved,
-              }) => {
-                return (
-                  <Card
-                    img={img}
-                    id={id}
-                    content={description}
-                    title={title}
-                    date={updated_on}
-                    url={`/quotes/${id}`}
-                    author={authorName}
-                    isApproved={isApproved}
-                    deleteOption={true}
-                    collection={'Quotes'}
-                  />
-                );
-              }
-            )
-          ) : (
-            <div className="d-flex justify-content-center">No posts yet</div>
-          )}
+          <div className="container d-flex flex-direction-row flex-wrap justify-content-center my-3">
+            {userQuotes.length > 0 ? (
+              userQuotes.map(
+                ({
+                  img,
+                  description,
+                  title,
+                  updated_on,
+                  id,
+                  authorName,
+                  isApproved,
+                }) => {
+                  return (
+                    <Card
+                      img={img}
+                      id={id}
+                      content={description}
+                      title={title}
+                      date={updated_on}
+                      url={`/quotes/${id}`}
+                      author={authorName}
+                      isApproved={isApproved}
+                      deleteOption={true}
+                      collection={'Quotes'}
+                    />
+                  );
+                }
+              )
+            ) : (
+              <div className="d-flex justify-content-center pb-5">
+                No posts yet
+              </div>
+            )}
+          </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
