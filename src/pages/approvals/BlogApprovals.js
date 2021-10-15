@@ -68,14 +68,10 @@ const BlogApprovals = () => {
         <div className="container mt-5">
           <figure className="mb-4">
             <img
-              className="img-fluid"
+              className="img-fluid rounded"
               src={blog.images[0]}
               alt="hello"
-              style={{
-                height: '100px',
-                width: '100px',
-                borderRadius: '5%',
-              }}
+              style={{ height: '520px', width: '800px' }}
             />
           </figure>
           <div>
@@ -105,7 +101,7 @@ const BlogApprovals = () => {
 
               <section
                 className="mb-5 "
-                style={{ textAlign: 'justify', width: '300px' }}
+                style={{ textAlign: 'justify', width: '800px' }}
               >
                 <p className="fs-5 mb-4">
                   <div dangerouslySetInnerHTML={{ __html: blog.description }} />

@@ -191,10 +191,11 @@ const Blog = () => {
                     </div>
                   </div>
 
-                  {blog.catagories &&
+                  {blog.categories &&
                     blog.categories.map((c) => (
                       <p
-                        className="badge bg-secondary text-decoration-none link-light"
+                        className="badge bg-secondary text-decoration-none link-light fs-6 mt-3"
+                        style={{ marginRight: '5px' }}
                         href="#!"
                       >
                         {c}
