@@ -19,8 +19,8 @@ const Card = ({
 }) => {
   const deletePost = async () => {
     try {
-      removeData(id);
       await db.collection(`${collection}`).doc(id).delete();
+      removeData(id);
       console.log(id);
     } catch (error) {
       console.log(error);

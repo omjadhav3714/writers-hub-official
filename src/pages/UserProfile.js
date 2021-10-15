@@ -207,7 +207,7 @@ const UserProfile = () => {
         authorName: currentUser.username,
         isFeatured: false,
         isApproved: false,
-        description: quoteContent.current.value,
+        description: quoteContent,
         updated_on: new Date().toString(),
         userId: currentUser.userId,
       };
@@ -269,9 +269,19 @@ const UserProfile = () => {
   };
 
   const removeShayri = (id) => {
-    userShayris.filter((shayri) => {
-      return id === shayri.id;
-    });
+    setUserShayris(userShayris.filter((shayri) => shayri.id !== id));
+  };
+
+  const removeBlog = (id) => {
+    setUserBlogs(userBlogs.filter((blog) => blog.id !== id));
+  };
+
+  const removeKavita = (id) => {
+    setUserKavitas(userKavitas.filter((kavita) => kavita.id !== id));
+  };
+
+  const removeQuote = (id) => {
+    setUserQuotes(userQuotes.filter((quote) => quote.id !== id));
   };
 
   return (
@@ -828,6 +838,7 @@ const UserProfile = () => {
                       deleteOption={true}
                       collection={'Blogs'}
                       id={id}
+                      removeData={(id) => removeBlog(id)}
                     />
                   );
                 }
@@ -856,6 +867,7 @@ const UserProfile = () => {
                       deleteOption={true}
                       collection={'Poems'}
                       id={id}
+                      removeData={(id) => removeKavita(id)}
                     />
                   );
                 }
@@ -893,6 +905,7 @@ const UserProfile = () => {
                       isApproved={isApproved}
                       deleteOption={true}
                       collection={'Quotes'}
+                      removeData={(id) => removeQuote(id)}
                     />
                   );
                 }
