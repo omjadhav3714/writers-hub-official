@@ -12,6 +12,7 @@ import Avatar from 'react-avatar';
 import { clippingParents } from '@popperjs/core';
 import { PlusCircle } from 'react-bootstrap-icons';
 import Footer from '../components/Footer';
+import { Line, Circle } from 'rc-progress';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
@@ -25,6 +26,8 @@ const UserProfile = () => {
   const [userBlogs, setUserBlogs] = useState([]);
   const [userKavitas, setUserKavitas] = useState([]);
   const [userQuotes, setUserQuotes] = useState([]);
+  const [showProgress, setShowProgress] = useState(false);
+  const [done, setDone] = useState(0);
   const history = useHistory();
 
   const shayriTitle = useRef();
@@ -141,6 +144,8 @@ const UserProfile = () => {
   }, [currentUser]);
 
   const addShayri = async (e) => {
+    setShowProgress(true);
+    setDone(55);
     e.preventDefault();
     try {
       const data = {
@@ -156,11 +161,14 @@ const UserProfile = () => {
       };
       await db.collection('Shayris').add(data);
       console.log(data);
+      setDone(100);
       setUserShayris([data, ...userShayris]);
       setSuccess(true);
       setError(false);
       setTimeout(() => {
         setSuccess(false);
+        setShowProgress(false);
+        setDone(0);
       }, 3000);
     } catch (error) {
       console.log(error);
@@ -173,6 +181,8 @@ const UserProfile = () => {
   };
   const addKavita = async (e) => {
     e.preventDefault();
+    setShowProgress(true);
+    setDone(55);
     try {
       const data = {
         authorName: currentUser.username,
@@ -186,11 +196,14 @@ const UserProfile = () => {
         userId: currentUser.userId,
       };
       await db.collection('Poems').add(data);
+      setDone(100);
       setUserKavitas([data, ...userKavitas]);
       setSuccess(true);
       setError(false);
       setTimeout(() => {
         setSuccess(false);
+        setShowProgress(false);
+        setDone(0);
       }, 3000);
     } catch (error) {
       setError(true);
@@ -202,6 +215,8 @@ const UserProfile = () => {
   };
   const addQuote = async (e) => {
     e.preventDefault();
+    showProgress(true);
+    setDone(55);
     try {
       const data = {
         authorName: currentUser.username,
@@ -212,11 +227,14 @@ const UserProfile = () => {
         userId: currentUser.userId,
       };
       await db.collection('Quotes').add(data);
+      setDone(100);
       setUserQuotes([data, ...userQuotes]);
       setSuccess(true);
       setError(false);
       setTimeout(() => {
         setSuccess(false);
+        setShowProgress(false);
+        setDone(0);
       }, 3000);
     } catch (error) {
       setError(true);
@@ -229,6 +247,8 @@ const UserProfile = () => {
 
   const addBlog = async (e) => {
     e.preventDefault();
+    setShowProgress(true);
+    setDone(55);
     try {
       const data = new FormData();
       data.append('file', blogImg);
@@ -254,10 +274,13 @@ const UserProfile = () => {
             userId: currentUser.userId,
           });
         });
+      setDone(100);
       setSuccess(true);
       setError(false);
       setTimeout(() => {
         setSuccess(false);
+        setShowProgress(false);
+        setDone(0);
       }, 3000);
     } catch (error) {
       setError(true);
@@ -524,6 +547,16 @@ const UserProfile = () => {
                         opps something went wrong!
                       </div>
                     )}
+                    {showProgress && (
+                      <div className="d-flex">
+                        <Line
+                          percent={done}
+                          strokeWidth="2"
+                          strokeColor="green"
+                        />
+                        <span>{done}%</span>
+                      </div>
+                    )}
                     <div>
                       <label for="exampleInputEmail1">image:</label>
                       <input
@@ -621,6 +654,16 @@ const UserProfile = () => {
                         opps something went wrong!
                       </div>
                     )}
+                    {showProgress && (
+                      <div className="d-flex">
+                        <Line
+                          percent={done}
+                          strokeWidth="2"
+                          strokeColor="green"
+                        />
+                        <span>{done}%</span>
+                      </div>
+                    )}
                     <div class="form-group">
                       <br />
                       <input
@@ -689,6 +732,16 @@ const UserProfile = () => {
                         opps something went wrong!
                       </div>
                     )}
+                    {showProgress && (
+                      <div className="d-flex">
+                        <Line
+                          percent={done}
+                          strokeWidth="2"
+                          strokeColor="green"
+                        />
+                        <span>{done}%</span>
+                      </div>
+                    )}
                     <div class="form-group">
                       <br />
                       <input
@@ -754,6 +807,16 @@ const UserProfile = () => {
                     {error && (
                       <div class="alert alert-error" role="alert">
                         Opps something went wrong!
+                      </div>
+                    )}
+                    {showProgress && (
+                      <div className="d-flex">
+                        <Line
+                          percent={done}
+                          strokeWidth="2"
+                          strokeColor="green"
+                        />
+                        <span>{done}%</span>
                       </div>
                     )}
                     <div class="form-group">
