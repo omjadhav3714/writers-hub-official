@@ -24,7 +24,7 @@ const Navbar = ({ backButton }) => {
           </span>
           <Link
             className="navbar-brand d-flex align-items-center"
-            to="#"
+            to="/"
             style={{ fontFamily: 'Dancing Script', fontSize: '24px' }}
           >
             Writers Hub
@@ -43,11 +43,11 @@ const Navbar = ({ backButton }) => {
             </span>
           </button>
           {currentUser && (
-            <div
-              class="collapse navbar-collapse justify-content-start bg-light"
-              id="navbarNav"
-            >
-              <ul class="navbar-nav ml-auto" style={{ fontSize: '16px' }}>
+            <div class="collapse navbar-collapse bg-light" id="navbarNav">
+              <ul
+                class="navbar-nav ml-auto justify-content-start"
+                style={{ fontSize: '16px' }}
+              >
                 <li class="nav-item">
                   <Link
                     class="nav-link"
@@ -73,9 +73,6 @@ const Navbar = ({ backButton }) => {
                     quotes
                   </Link>
                 </li>
-              </ul>
-
-              <ul class="navbar-nav ml-auto" style={{ fontSize: '16px' }}>
                 <li class="nav-item">
                   <Link class="nav-link" to="/">
                     Home
@@ -85,10 +82,7 @@ const Navbar = ({ backButton }) => {
             </div>
           )}
 
-          <div
-            class="collapse navbar-collapse justify-content-end bg-light"
-            id="navbarNav"
-          >
+          <div class="collapse navbar-collapse  bg-light" id="navbarNav">
             <ul class="navbar-nav ml-auto" style={{ fontSize: '16px' }}>
               {currentUser && currentUser.username ? (
                 <>
