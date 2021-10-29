@@ -250,38 +250,64 @@ const UserProfile = () => {
     setShowProgress(true);
     setDone(55);
     try {
-      const data = new FormData();
-      data.append('file', blogImg);
-      data.append('upload_preset', 'blog_img_store');
-      data.append('cloud_name', 'writers-hub');
-      await fetch('https://api.cloudinary.com/v1_1/writers-hub/image/upload', {
-        method: 'post',
-        body: data,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          db.collection('Blogs').add({
-            authorName: currentUser.username,
-            isFeatured: false,
-            isApproved: false,
-            title: blogTitle.current.value,
-            description: blogContent,
-            categories: blogCategories.current.value.split(','),
-            social_link: blogSocialLink.current.value,
-            images: [data.url],
-            rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
-            updated_on: new Date().toString(),
-            userId: currentUser.userId,
-          });
+      if (!blogImg) {
+        await db.collection('Blogs').add({
+          authorName: currentUser.username,
+          isFeatured: false,
+          isApproved: false,
+          title: blogTitle.current.value,
+          description: blogContent,
+          categories: blogCategories.current.value.split(','),
+          social_link: blogSocialLink.current.value,
+          rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
+          updated_on: new Date().toString(),
+          userId: currentUser.userId,
         });
-      setDone(100);
-      setSuccess(true);
-      setError(false);
-      setTimeout(() => {
-        setSuccess(false);
-        setShowProgress(false);
-        setDone(0);
-      }, 3000);
+        setDone(100);
+        setSuccess(true);
+        setError(false);
+        setTimeout(() => {
+          setSuccess(false);
+          setShowProgress(false);
+          setDone(0);
+        }, 3000);
+      } else {
+        const data = new FormData();
+        data.append('file', blogImg);
+        data.append('upload_preset', 'blog_img_store');
+        data.append('cloud_name', 'writers-hub');
+        await fetch(
+          'https://api.cloudinary.com/v1_1/writers-hub/image/upload',
+          {
+            method: 'post',
+            body: data,
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            db.collection('Blogs').add({
+              authorName: currentUser.username,
+              isFeatured: false,
+              isApproved: false,
+              title: blogTitle.current.value,
+              description: blogContent,
+              categories: blogCategories.current.value.split(','),
+              social_link: blogSocialLink.current.value,
+              images: [data.url],
+              rating: [{ 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }, { 0: 0 }],
+              updated_on: new Date().toString(),
+              userId: currentUser.userId,
+            });
+          });
+        setDone(100);
+        setSuccess(true);
+        setError(false);
+        setTimeout(() => {
+          setSuccess(false);
+          setShowProgress(false);
+          setDone(0);
+        }, 3000);
+      }
     } catch (error) {
       setError(true);
       setSuccess(false);
