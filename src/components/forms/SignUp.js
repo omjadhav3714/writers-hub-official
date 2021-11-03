@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import './signup.css';
 import writer from '../../images/writer.png';

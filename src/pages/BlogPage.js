@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Card from '../components/Blogs/Card';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import Typed from 'react-typed';
+
 import { db } from '../firebase';
 
 const BlogPage = () => {
@@ -49,11 +49,11 @@ const BlogPage = () => {
         }}
       >
         <Navbar backButton={true} />
-        <div className='container d-flex justify-content-center p-4'>
+        <div className="container d-flex justify-content-center p-4">
           <h1 style={{ fontFamily: 'Dancing Script' }}>Blogs</h1>
         </div>
         <div
-          className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+          className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
           style={{ width: '100vw' }}
         >
           {blogs.map(

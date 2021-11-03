@@ -4,9 +4,7 @@ import { PersonFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import writer from '../images/writer.png';
 import { useAuth } from '../context/AuthContext';
-import { MusicNoteBeamed } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router';
-import { Button } from 'bootstrap';
 
 const Navbar = ({ backButton }) => {
   const { currentUser, SignOut } = useAuth();

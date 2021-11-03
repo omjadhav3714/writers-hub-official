@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import './Blog.css';
-import { SocialIcon } from 'react-social-icons';
+
 import Comments from '../components/Comments/Comments';
 import { useAuth } from '../context/AuthContext';
 import { useHistory } from 'react-router';
@@ -26,8 +26,6 @@ const Blog = () => {
 
   const [blog, setBlog] = useState();
 
-  const [commentName, setCommentName] = useState('');
-  const [commentEmail, setCommentEmail] = useState('');
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [success, setSuccess] = useState(false);
@@ -68,7 +66,7 @@ const Blog = () => {
         });
         setComments(comm);
       });
-  }, []);
+  }, [id]);
 
   useState(() => {
     db.collection('Blogs')
@@ -250,9 +248,6 @@ const Blog = () => {
                 </figure>
                 <div className="d-flex justify-content-center flex-column align-items-center pb-5">
                   <p>{blog.authorName}</p>
-                  <a href="#" className="button-author">
-                    Read More
-                  </a>
                 </div>
                 <div className="py-4">
                   <p

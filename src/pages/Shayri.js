@@ -1,12 +1,9 @@
-import { data } from 'browserslist';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import { SocialIcon } from 'react-social-icons';
-import Comments from '../components/Comments/Comments';
 import { format } from 'timeago.js';
 import {
   WhatsappShareButton,
@@ -111,29 +108,6 @@ const Shayri = () => {
         setError(true);
       }
     }
-  };
-
-  const deleteComment = async () => {
-    await db
-      .collection('Shayris')
-      .doc(`/${id}/comment/${currentUser.id}`)
-      .delete();
-    db.collection('Shayris')
-      .doc(id)
-      .collection('comment')
-      .get()
-      .then((snapshot) => {
-        const comm = [];
-        snapshot.forEach((doc) => {
-          comm.push({
-            id: doc.id,
-            name: doc.data().username,
-            email: doc.data().email,
-            created_at: doc.data.created_at,
-          });
-        });
-        setComments(comm);
-      });
   };
 
   const AddLike = async (e) => {
@@ -247,7 +221,6 @@ const Shayri = () => {
                                   <span
                                     style={{
                                       fontWeight: 'bold',
-                                      fontWeight: 'bold',
                                       fontFamily: 'sans-serif',
                                       fontSize: '1rem',
                                     }}
@@ -322,9 +295,6 @@ const Shayri = () => {
                 </figure>
                 <div className="d-flex justify-content-center flex-column align-items-center pb-5">
                   <p>{shayri.authorName}</p>
-                  <a href="#" className="button-author">
-                    Read More
-                  </a>
                 </div>
                 <div className="py-4">
                   <p

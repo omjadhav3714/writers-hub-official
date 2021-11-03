@@ -14,7 +14,7 @@ const KavitaPage = () => {
       .then((snapshot) => {
         const kavitas = [];
         snapshot.forEach((doc) => {
-          if (doc.data().isApproved == true) {
+          if (doc.data().isApproved === true) {
             const data = {
               id: doc.id,
               title: doc.data().title,
@@ -39,11 +39,11 @@ const KavitaPage = () => {
     >
       <div style={{ width: '100vw', backgroundColor: '#efefef' }}>
         <Navbar backButton={true} />
-        <div className='container d-flex justify-content-center p-4'>
+        <div className="container d-flex justify-content-center p-4">
           <h2 style={{ fontFamily: 'Dancing Script' }}>Kavitas</h2>
         </div>
         <div
-          className='container d-flex flex-direction-row flex-wrap justify-content-center my-3'
+          className="container d-flex flex-direction-row flex-wrap justify-content-center my-3"
           style={{ width: '100vw' }}
         >
           {kavitas.map(

@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import { motion } from 'framer-motion';
 import { db } from '../firebase';
 import Card from '../components/Blogs/Card';
-import SignUp from '../components/forms/SignUp';
+
 import { useAuth } from '../context/AuthContext';
 import { useHistory } from 'react-router';
 
@@ -18,9 +18,7 @@ const HomePage = () => {
 
   const [featuredQuotes, setFeaturedQuotes] = useState([]);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const { currentUser, SignOut } = useAuth();
+  const { currentUser } = useAuth();
 
   const history = useHistory();
 
@@ -121,15 +119,6 @@ const HomePage = () => {
   if (!currentUser) {
     history.push('/login');
   }
-
-  const handleSignOut = async () => {
-    try {
-      await SignOut();
-      history.push('/signup');
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   return (
     <motion.div

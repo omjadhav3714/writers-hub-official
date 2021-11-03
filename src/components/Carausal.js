@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./Carausal.css";
-import ReactDOM from "react-dom";
-import Typist from "react-typist";
+import React, { useEffect, useState } from 'react';
+import './Carausal.css';
+import Typist from 'react-typist';
 
 const Carausal = () => {
   const [count, setCount] = useState(1);
@@ -14,7 +13,7 @@ const Carausal = () => {
       id="carouselExampleCaptions"
       className="carousel slide carousal-height scrollable-div"
       data-bs-ride="carousel"
-      style={{ height: "90vh" }}
+      style={{ height: '90vh' }}
     >
       <div class="carousel-indicators">
         <button
@@ -38,20 +37,20 @@ const Carausal = () => {
           aria-label="Slide 3"
         ></button>
       </div>
-      <div className="carousel-inner" style={{ height: "90vh" }}>
+      <div className="carousel-inner" style={{ height: '90vh' }}>
         <div class="carousel-item active">
           <div
             class="carousel-caption d-none d-md-block"
-            style={{ position: "absolute", top: "70%" }}
+            style={{ position: 'absolute', top: '70%' }}
           >
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
                   style={{
-                    fontWeight: "bold",
+                    fontWeight: 'bold',
 
-                    color: "#000",
-                    fontSize: "3rem",
+                    color: '#000',
+                    fontSize: '3rem',
                   }}
                 >
                   Welcome to Writers Hub...
@@ -59,7 +58,7 @@ const Carausal = () => {
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
             ) : (
-              ""
+              ''
             )}
           </div>
           <img
@@ -68,20 +67,20 @@ const Carausal = () => {
             alt="sdajkhfjkdas"
           />
         </div>
-        <div class="carousel-item" style={{ height: "90vh" }}>
+        <div class="carousel-item" style={{ height: '90vh' }}>
           <div
             class="carousel-caption d-none d-md-block"
-            style={{ position: "absolute", top: "30%" }}
+            style={{ position: 'absolute', top: '30%' }}
           >
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
                   style={{
-                    fontWeight: "bold",
+                    fontWeight: 'bold',
 
-                    color: "#000",
-                    fontSize: "3rem",
-                    fontFamily: "Dacing Script",
+                    color: '#000',
+                    fontSize: '3rem',
+                    fontFamily: 'Dacing Script',
                   }}
                 >
                   Here you can read various Blogs, Shayaris, etc!
@@ -89,7 +88,7 @@ const Carausal = () => {
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
             ) : (
-              ""
+              ''
             )}
           </div>
           <img
@@ -98,19 +97,19 @@ const Carausal = () => {
             alt="..."
           />
         </div>
-        <div class="carousel-item" style={{ height: "90vh" }}>
+        <div class="carousel-item" style={{ height: '90vh' }}>
           <div
             class="carousel-caption d-none d-md-block"
-            style={{ position: "absolute", top: "75%" }}
+            style={{ position: 'absolute', top: '75%' }}
           >
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
                   style={{
-                    fontWeight: "bold",
+                    fontWeight: 'bold',
 
-                    color: "#000",
-                    fontSize: "3rem",
+                    color: '#000',
+                    fontSize: '3rem',
                   }}
                 >
                   Welcome to Writers Hub!
@@ -118,7 +117,7 @@ const Carausal = () => {
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
             ) : (
-              ""
+              ''
             )}
           </div>
           <img

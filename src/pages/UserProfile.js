@@ -7,12 +7,11 @@ import Card from '../components/Blogs/Card';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './UserProfile.css';
-import gravatar from 'gravatar';
 import Avatar from 'react-avatar';
-import { clippingParents } from '@popperjs/core';
+
 import { PlusCircle } from 'react-bootstrap-icons';
 import Footer from '../components/Footer';
-import { Line, Circle } from 'rc-progress';
+import { Line } from 'rc-progress';
 
 const UserProfile = () => {
   const { currentUser } = useAuth();
@@ -594,6 +593,7 @@ const UserProfile = () => {
                         <img
                           style={{ height: '120px' }}
                           src={URL.createObjectURL(blogImg)}
+                          alt="error"
                         />
                       )}
                     </div>
