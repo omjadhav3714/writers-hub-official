@@ -14,9 +14,6 @@
     padding: 68px 15px 72px !important;
 }
 
-/* .container {
-    width: 1630px;
-} */
 .parallax {
     background-attachment: inherit !important;
 }
@@ -272,18 +269,6 @@ img {
     font-size: 42px;
 }
 
-/* .btn-solodev-red-reversed {
-    background-color: #fff;
-    color: #1161a8;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    padding: 12px 35px;
-} */
-
-/* .btn,
-.btn-blk {
-    font-size: 18px !Important;
-} */
 
 a:hover,
 a:focus {
@@ -298,21 +283,7 @@ a:hover {
     color: #000;
 }
 
-/* section.clients-home .clients-logos .client-logos-repeater {
-    height: 260px;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    cursor: pointer;
-}
 
-section.clients-home .clients-logos .client-logos-repeater img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 0;
-    right: 0;
-} */
 
 .logo-title {
     position: absolute;
@@ -372,14 +343,6 @@ section.clients-home .clients-logos .client-logos-repeater img {
 }
 
 
-
-
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 
 
 .list {
@@ -495,9 +458,6 @@ section.clients-home .clients-logos .client-logos-repeater img {
     font-size: 13px;
 }
 
-/* #card span {
-    font-family: courier;
-  } */
 
 .react-multiple-carousel__arrow {
     z-index: 0 !important;
@@ -614,38 +574,7 @@ section.clients-home .clients-logos .client-logos-repeater img {
     }
 }
 
-/* .ant-select {
-width:max-content !important;
-    margin-right: 10vw !important;
-} */
 
-/* h1 {
-	font-family: 'Dancing Script', cursive;
-	font-size: 80px;
-	margin-bottom: 30px;
-} */
-
-.subh {
-    font-family: 'Open Sans', sans-serif;
-    color: whitesmoke;
-    font-weight: bolder;
-    margin-bottom: 30px;
-}
-
-
-/* button {
-	border: none;
-	outline: none;
-	padding: 10px 20px;
-	border-radius: 50px;
-	color: #333;
-	background: #fff;
-	margin-bottom: 50px;
-	box-shadow: 0 3px 20px 0 #0000003b;
-}
-button:hover{
-	cursor: pointer;
-} */
 
 .serv {
     padding-right: 11px;
@@ -763,8 +692,6 @@ button:hover{
 }
 
 
-/* Demo styles */
-
 
 .ab2 {
     display: flex;
@@ -792,12 +719,6 @@ button:hover{
         height: 45vh;
     }
 
-    /* #card{
-    margin-right: 2vw;
-} */
-    /* .react-multi-carousel-item {
-    margin-left: 10vw;
-} */
 
     .crads3 {
         margin-left: 12vw;
@@ -807,13 +728,6 @@ button:hover{
 
 
     }
-
-    /* .cont2{
-
-}
-.card3:hover{
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 16px 0 rgb(0 0 0 / 19%);
-} */
 
 
     .imge {
