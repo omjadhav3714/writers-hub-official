@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link, Redirect } from 'react-router-dom';

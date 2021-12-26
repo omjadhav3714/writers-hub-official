@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import React, { useRef, useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
@@ -913,7 +915,7 @@ const UserProfile = () => {
         </div>
         <div className="pt-5">
           <div className="container d-flex justify-content-center p-4">
-            <h2 style={{ fontFamily: 'Dancing Script' }}>My kavitas</h2>
+            <h2 style={{ fontFamily: 'Dancing Script' }}>My Kavitas</h2>
           </div>
           <div className=" d-flex flex-direction-row flex-wrap justify-content-center my-3">
             {userKavitas.length > 0 ? (
@@ -942,7 +944,7 @@ const UserProfile = () => {
         </div>
         <div className="pt-5">
           <div className="container d-flex justify-content-center p-4">
-            <h2 style={{ fontFamily: 'Dancing Script' }}>My quotesc</h2>
+            <h2 style={{ fontFamily: 'Dancing Script' }}>My Quotes</h2>
           </div>
           <div className="container d-flex flex-direction-row flex-wrap justify-content-center my-3">
             {userQuotes.length > 0 ? (

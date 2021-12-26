@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { MenuDown } from 'react-bootstrap-icons';
 import { PersonFill } from 'react-bootstrap-icons';
@@ -49,6 +50,11 @@ const Navbar = ({ backButton }) => {
                 style={{ fontSize: '16px' }}
               >
                 <li class="nav-item">
+                  <Link class="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li class="nav-item">
                   <Link
                     class="nav-link"
                     to="/blogs"
@@ -60,24 +66,30 @@ const Navbar = ({ backButton }) => {
                 </li>
                 <li class="nav-item">
                   <Link class="nav-link" to="/shayaris">
-                    Sayari
+                    Shayaris
                   </Link>
                 </li>
                 <li class="nav-item">
                   <Link class="nav-link" to="/kavitas">
-                    kavita
+                    Kavitas
                   </Link>
                 </li>
                 <li class="nav-item">
                   <Link class="nav-link" to="/quotes">
-                    quotes
+                    Quotes
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link class="nav-link" to="/">
-                    Home
+                  <Link class="nav-link" to="/about">
+                    About
                   </Link>
                 </li>
+                <li class="nav-item">
+                  <Link class="nav-link" to="/contact">
+                    Contact
+                  </Link>
+                </li>
+
               </ul>
             </div>
           )}

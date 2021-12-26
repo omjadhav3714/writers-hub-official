@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { data } from 'browserslist';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
@@ -246,7 +249,6 @@ const Shayri = () => {
                                 <p className="popular-blog-comment pb-1 mb-0">
                                   <span
                                     style={{
-                                      fontWeight: 'bold',
                                       fontWeight: 'bold',
                                       fontFamily: 'sans-serif',
                                       fontSize: '1rem',

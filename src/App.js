@@ -1,3 +1,5 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './pages/HomePage';
@@ -24,6 +26,8 @@ import ShayriApprovals from './pages/approvals/ShayriApproval';
 import BlogApprovals from './pages/approvals/BlogApprovals';
 import ProtectedRoute from './components/ProtectedRoute';
 import { useAuth } from './context/AuthContext';
+import about from './components/About/about';
+import Contact1 from './components/Contact/Contacts';
 import { Flag } from 'react-bootstrap-icons';
 
 const App = () => {
@@ -45,18 +49,25 @@ const App = () => {
         <Route path="/resetpassword" component={ForgetPassword} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={LogIn} />
+        <Route path="/about" component={about} />
+        <Route path="/contact" component={Contact1} />
         <Route exact path="/" component={HomePage} />
+        <Route path="/approvals/blogs/:id" component={BlogApprovals} />
+        <Route path="/approvals/shayris/:id" component={ShayriApprovals} />
+        <Route path="/approvals/quotes/:id" component={QuoteApprovals} />
+        <Route path="/approvals/kavitas/:id" component={KavitaApprovals} />
+
         <ProtectedRoute
           path="/approvals"
           component={Approvals}
           auth={currentUser ? true : false}
         />
-        <ProtectedRoute
+        {/* <ProtectedRoute
           path="/approvals/blogs/:id"
           component={BlogApprovals}
           auth={currentUser ? true : false}
-        />
-        <ProtectedRoute
+        /> */}
+        {/* <ProtectedRoute
           path="/approvals/shayris/:id"
           component={ShayriApprovals}
           auth={currentUser ? true : false}
@@ -70,7 +81,7 @@ const App = () => {
           path="/approvals/kavitas/:id"
           component={KavitaApprovals}
           auth={currentUser ? true : false}
-        />
+        /> */}
         <ProtectedRoute
           path="/users/:id"
           component={UserProfile}

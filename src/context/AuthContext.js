@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
 import { useHistory } from 'react-router';

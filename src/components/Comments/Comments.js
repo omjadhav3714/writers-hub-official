@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import './Comments.css';
 import { db } from '../../firebase';
@@ -31,7 +32,6 @@ const Comments = ({ comments, deleteComment, currentUser }) => {
                     <p className='popular-blog-comment pb-1 mb-0'>
                       <span
                         style={{
-                          fontWeight: 'bold',
                           fontWeight: 'bold',
                           fontFamily: 'sans-serif',
                           fontSize: '1rem',

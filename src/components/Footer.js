@@ -21,17 +21,18 @@ const Footer = () => {
                   fontFamily: "sans-serif",
                 }}
               >
-                ABOUT US
+                WRITERS HUB OFFICIAL
               </p>
 
               <p
                 className="s-3"
                 style={{ fontSize: "17px", textAlign: "justify" }}
               >
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-                atque ea quis molestias. Fugiat pariatur maxime quis culpa
-                corporis vitae repudiandae aliquam voluptatem veniam, est atque
-                cumque eum delectus sint!
+                The WRITERS-HUB is found to give end user a trusted and verified
+                platform to add their own written content which can be a blog ,
+                shayari,  kavita, quote, joke, etc. Here the user can enjoy
+                emotional and heart-touching shayaris , motivational quotes ,
+                laughter cracking jokes and much more
               </p>
             </div>
 
@@ -46,7 +47,7 @@ const Footer = () => {
               <ul className="list-unstyled text-light">
                 <li className="py-2">
                   <Link
-                    href="#!"
+                    to="/about"
                     className="text-light text-capitalize"
                     style={{ textDecoration: "none" }}
                   >
@@ -55,22 +56,14 @@ const Footer = () => {
                 </li>
                 <li className="py-2">
                   <Link
-                    href="#!"
+                    to="/contact"
                     className="text-light text-capitalize"
                     style={{ textDecoration: "none" }}
                   >
                     contact us
                   </Link>
                 </li>
-                <li className="py-2">
-                  <Link
-                    href="#!"
-                    class="text-light"
-                    style={{ textDecoration: "none" }}
-                  >
-                    Contribute
-                  </Link>
-                </li>
+
                 <li className="py-2">
                   <Link
                     href="#!"
@@ -86,10 +79,12 @@ const Footer = () => {
         </div>
         <hr style={{ color: "#e07624" }} />
         <div class="text-center p-3" style={{ fontSize: "17px" }}>
-          ©2020 Copyright : &nbsp;
-          <Link class="text-light" href="#" style={{ textDecoration: "none" }}>
-            Writers Hub official
+          ©2022 Copyright : &nbsp;
+          <Link class="text-light" to="/" style={{ textDecoration: "none" }}>
+            Writers Hub official | &nbsp;
           </Link>
+          Made By <a className="text-light text-capitalize"
+            style={{ textDecoration: "none" }} href="https://vocalslocal.com/">Vocalslocal</a>
         </div>
       </footer>
     </div>

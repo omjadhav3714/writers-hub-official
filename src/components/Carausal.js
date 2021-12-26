@@ -1,7 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import "./Carausal.css";
 import ReactDOM from "react-dom";
 import Typist from "react-typist";
+import img1 from './../images/img1.jpg';
+import img2 from './../images/img2.jpg';
+import img3 from './../images/img3.jpg';
+import img4 from './../images/img4.jpg';
 
 const Carausal = () => {
   const [count, setCount] = useState(1);
@@ -37,6 +42,12 @@ const Carausal = () => {
           data-bs-slide-to="2"
           aria-label="Slide 3"
         ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
       </div>
       <div className="carousel-inner" style={{ height: "90vh" }}>
         <div class="carousel-item active">
@@ -47,12 +58,7 @@ const Carausal = () => {
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
-                  style={{
-                    fontWeight: "bold",
-
-                    color: "#000",
-                    fontSize: "3rem",
-                  }}
+                  className="caraText"
                 >
                   Welcome to Writers Hub...
                 </h1>
@@ -63,7 +69,7 @@ const Carausal = () => {
             )}
           </div>
           <img
-            src="https://images.unsplash.com/photo-1473186505569-9c61870c11f9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ldHJ5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+            src={img3}
             class="d-block w-100 carousal-height"
             alt="sdajkhfjkdas"
           />
@@ -76,13 +82,7 @@ const Carausal = () => {
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
-                  style={{
-                    fontWeight: "bold",
-
-                    color: "#000",
-                    fontSize: "3rem",
-                    fontFamily: "Dacing Script",
-                  }}
+                  className="caraText"
                 >
                   Here you can read various Blogs, Shayaris, etc!
                 </h1>
@@ -93,7 +93,7 @@ const Carausal = () => {
             )}
           </div>
           <img
-            src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVuJTIwYW5kJTIwcGFwZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+            src={img2}
             class="d-block w-100 carousal-height"
             alt="..."
           />
@@ -106,14 +106,9 @@ const Carausal = () => {
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
-                  style={{
-                    fontWeight: "bold",
-
-                    color: "#000",
-                    fontSize: "3rem",
-                  }}
+                  className="caraText"
                 >
-                  Welcome to Writers Hub!
+                  Join with us and
                 </h1>
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
@@ -122,7 +117,31 @@ const Carausal = () => {
             )}
           </div>
           <img
-            src="https://images.unsplash.com/photo-1580127645995-d43fe9598711?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm91bnRhaW4lMjBwZW58ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+            src={img1}
+            class="d-block w-100 carousal-height"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item" style={{ height: "90vh" }}>
+          <div
+            class="carousel-caption d-none d-md-block"
+            style={{ position: "absolute", top: "75%" }}
+          >
+            {count ? (
+              <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
+                <h1
+                  className="caraText"
+                >
+                  Write with us !
+                </h1>
+                <Typist.Backspace count={20} delay={800} />
+              </Typist>
+            ) : (
+              ""
+            )}
+          </div>
+          <img
+            src={img4}
             class="d-block w-100 carousal-height"
             alt="..."
           />
