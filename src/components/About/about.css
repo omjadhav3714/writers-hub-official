@@ -42,11 +42,11 @@
     margin-left: auto;
 }
 
-.btn:hover {
+/* .btn:hover {
     color: white;
     background-color: #1161a8;
     border-color: white;
-}
+} */
 
 
 .company-heading h1 {
@@ -272,18 +272,18 @@ img {
     font-size: 42px;
 }
 
-.btn-solodev-red-reversed {
+/* .btn-solodev-red-reversed {
     background-color: #fff;
     color: #1161a8;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     padding: 12px 35px;
-}
+} */
 
-.btn,
+/* .btn,
 .btn-blk {
     font-size: 18px !Important;
-}
+} */
 
 a:hover,
 a:focus {
