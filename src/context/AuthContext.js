@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
 import { auth, db } from '../firebase';
-import { useHistory } from 'react-router';
 
 const AuthContext = React.createContext();
 
@@ -11,7 +10,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const history = useHistory();
+
   const SignUp = (username, email, password) => {
     return auth.createUserWithEmailAndPassword(email, password).then((data) => {
       db.collection('users').add({

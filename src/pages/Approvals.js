@@ -9,7 +9,6 @@ const Approvals = () => {
   const [shayriApprovals, setShayriApprovals] = useState([]);
   const [blogApprovals, setBlogApprovals] = useState([]);
   const [quoteApprovals, setQuoteApprovals] = useState([]);
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     db.collection('Poems')
@@ -111,11 +110,11 @@ const Approvals = () => {
         {blogApprovals.length > 0 && (
           <div style={{ zIndex: '2' }}>
             <div
-              className='d-flex flex-column align-items-center justify-content-center py-5'
+              className="d-flex flex-column align-items-center justify-content-center py-5"
               style={{ width: '100vw', backgroundColor: 'white' }}
             >
               <h2
-                className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
+                className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
                 style={{
                   paddingLeft: '20px',
                   fontFamily: 'Dancing Script',
@@ -127,7 +126,7 @@ const Approvals = () => {
               </h2>
 
               <div
-                className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+                className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
                 style={{ width: '100vw' }}
               >
                 {blogApprovals.map(
@@ -158,11 +157,11 @@ const Approvals = () => {
         {shayriApprovals.length > 0 && (
           <div>
             <div
-              className='d-flex flex-column align-items-center justify-content-center py-5'
+              className="d-flex flex-column align-items-center justify-content-center py-5"
               style={{ width: '100vw', backgroundColor: 'white' }}
             >
               <h2
-                className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
+                className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
                 style={{
                   paddingLeft: '20px',
                   fontFamily: 'Dancing Script',
@@ -174,7 +173,7 @@ const Approvals = () => {
               </h2>
 
               <div
-                className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+                className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
                 style={{ width: '100vw' }}
               >
                 {shayriApprovals.map(
@@ -206,11 +205,11 @@ const Approvals = () => {
         )}
         {kavitaApprovals.length > 0 && (
           <div
-            className='d-flex flex-column align-items-center justify-content-center py-5'
+            className="d-flex flex-column align-items-center justify-content-center py-5"
             style={{ width: '100vw', backgroundColor: 'white' }}
           >
             <h2
-              className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
+              className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
               style={{
                 paddingLeft: '20px',
                 fontFamily: 'Dancing Script',
@@ -222,7 +221,7 @@ const Approvals = () => {
             </h2>
 
             <div
-              className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+              className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
               style={{ width: '100vw' }}
             >
               {kavitaApprovals.map(
@@ -253,11 +252,11 @@ const Approvals = () => {
         )}
         {quoteApprovals.length > 0 && (
           <div
-            className='d-flex flex-column align-items-center justify-content-center py-5'
+            className="d-flex flex-column align-items-center justify-content-center py-5"
             style={{ width: '100vw', backgroundColor: 'white' }}
           >
             <h2
-              className='pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 '
+              className="pt-3 text-dark text-capitalize font-weight-bold fs-1 p-0 m-0 "
               style={{
                 paddingLeft: '20px',
                 fontFamily: 'Dancing Script',
@@ -269,7 +268,7 @@ const Approvals = () => {
             </h2>
 
             <div
-              className='container d-flex flex-direction-row flex-wrap justify-content-center my-5'
+              className="container d-flex flex-direction-row flex-wrap justify-content-center my-5"
               style={{ width: '100vw' }}
             >
               {quoteApprovals.map(

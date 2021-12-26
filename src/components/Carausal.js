@@ -7,6 +7,7 @@ import img1 from './../images/img1.jpg';
 import img2 from './../images/img2.jpg';
 import img3 from './../images/img3.jpg';
 import img4 from './../images/img4.jpg';
+import './Carausal.css';
 
 const Carausal = () => {
   const [count, setCount] = useState(1);
@@ -19,7 +20,7 @@ const Carausal = () => {
       id="carouselExampleCaptions"
       className="carousel slide carousal-height scrollable-div"
       data-bs-ride="carousel"
-      style={{ height: "90vh" }}
+      style={{ height: '90vh' }}
     >
       <div class="carousel-indicators">
         <button
@@ -49,23 +50,29 @@ const Carausal = () => {
           aria-label="Slide 4"
         ></button>
       </div>
-      <div className="carousel-inner" style={{ height: "90vh" }}>
+      <div className="carousel-inner" style={{ height: '90vh' }}>
         <div class="carousel-item active">
           <div
             class="carousel-caption d-none d-md-block"
-            style={{ position: "absolute", top: "70%" }}
+            style={{ position: 'absolute', top: '70%' }}
           >
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
                   className="caraText"
+                  style={{
+                    fontWeight: 'bold',
+
+                    color: '#000',
+                    fontSize: '3rem',
+                  }}
                 >
                   Welcome to Writers Hub...
                 </h1>
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
             ) : (
-              ""
+              ''
             )}
           </div>
           <img
@@ -74,22 +81,29 @@ const Carausal = () => {
             alt="sdajkhfjkdas"
           />
         </div>
-        <div class="carousel-item" style={{ height: "90vh" }}>
+        <div class="carousel-item" style={{ height: '90vh' }}>
           <div
             class="carousel-caption d-none d-md-block"
-            style={{ position: "absolute", top: "30%" }}
+            style={{ position: 'absolute', top: '30%' }}
           >
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
                   className="caraText"
+                  style={{
+                    fontWeight: 'bold',
+
+                    color: '#000',
+                    fontSize: '3rem',
+                    fontFamily: 'Dacing Script',
+                  }}
                 >
                   Here you can read various Blogs, Shayaris, etc!
                 </h1>
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
             ) : (
-              ""
+              ''
             )}
           </div>
           <img
@@ -98,17 +112,17 @@ const Carausal = () => {
             alt="..."
           />
         </div>
-        <div class="carousel-item" style={{ height: "90vh" }}>
+        <div class="carousel-item" style={{ height: '90vh' }}>
           <div
             class="carousel-caption d-none d-md-block"
-            style={{ position: "absolute", top: "75%" }}
+            style={{ position: 'absolute', top: '75%' }}
           >
             {count ? (
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
                   className="caraText"
                 >
-                  Join with us and
+                  Join with us and 
                 </h1>
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
@@ -131,13 +145,19 @@ const Carausal = () => {
               <Typist avgTypingDelay={100} onTypingDone={() => setCount(0)}>
                 <h1
                   className="caraText"
+                  style={{
+                    fontWeight: 'bold',
+
+                    color: '#000',
+                    fontSize: '3rem',
+                  }}
                 >
                   Write with us !
                 </h1>
                 <Typist.Backspace count={20} delay={800} />
               </Typist>
             ) : (
-              ""
+              ''
             )}
           </div>
           <img

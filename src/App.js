@@ -3,20 +3,18 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './pages/HomePage';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import BlogPage from './pages/BlogPage';
 import ShayariPage from './pages/ShayariPage';
 import QuotePage from './pages/QuotePage';
 import { AnimatePresence } from 'framer-motion';
 import KavitaPage from './pages/KavitaPage';
-import { db } from './firebase';
 import Shayri from './pages/Shayri';
 import Quotes from './pages/Quotes';
 import Kavita from './pages/Kavita';
 import Blog from './pages/Blog';
 import SignUp from './components/forms/SignUp';
 import LogIn from './components/forms/LogIn';
-//import { AuthProvider } from './context/AuthContext';
 import ForgetPassword from './components/forms/ForgetPassword';
 import UserProfile from './pages/UserProfile';
 import Approvals from './pages/Approvals';
@@ -32,9 +30,7 @@ import { Flag } from 'react-bootstrap-icons';
 
 const App = () => {
   const { currentUser } = useAuth();
-  {
-    console.log(currentUser);
-  }
+
   return (
     <AnimatePresence>
       <Switch>
