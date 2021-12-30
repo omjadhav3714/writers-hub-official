@@ -216,7 +216,7 @@ const UserProfile = () => {
   };
   const addQuote = async (e) => {
     e.preventDefault();
-    showProgress(true);
+    setShowProgress(true);
     setDone(55);
     try {
       const data = {
@@ -847,8 +847,8 @@ const UserProfile = () => {
                         <span>{done}%</span>
                       </div>
                     )}
+                    <label htmlFor="">Quote Content</label>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Content</label>
                       <ReactQuill
                         type="text"
                         class="form-control"
