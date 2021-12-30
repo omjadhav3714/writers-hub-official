@@ -8,6 +8,7 @@ import { useAuth } from '../context/AuthContext';
 import { MusicNoteBeamed } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router';
 import { Button } from 'bootstrap';
+import './Nav.css';
 
 const Navbar = ({ backButton }) => {
   const { currentUser, SignOut } = useAuth();
@@ -43,56 +44,55 @@ const Navbar = ({ backButton }) => {
               <MenuDown />
             </span>
           </button>
-          {currentUser && (
-            <div class="collapse navbar-collapse bg-light" id="navbarNav">
-              <ul
-                class="navbar-nav ml-auto justify-content-start"
-                style={{ fontSize: '16px' }}
-              >
-                <li class="nav-item">
-                  <Link class="nav-link" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link
-                    class="nav-link"
-                    to="/blogs"
-                    smooth={true}
-                    duration={500}
-                  >
-                    Blogs
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/shayaris">
-                    Shayaris
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/kavitas">
-                    Kavitas
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/quotes">
-                    Quotes
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/about">
-                    About
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="/contact">
-                    Contact
-                  </Link>
-                </li>
+          <div class="collapse navbar-collapse bg-light" id="navbarNav">
+            <ul
+              class="navbar-nav ml-auto justify-content-start"
+              style={{ fontSize: '16px' }}
+            >
+              <li class="nav-item">
+                <Link class="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link
+                  class="nav-link"
+                  to="/blogs"
+                  smooth={true}
+                  duration={500}
+                >
+                  Blogs
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/shayaris">
+                  Shayaris
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/kavitas">
+                  Kavitas
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/quotes">
+                  Quotes
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/about">
+                  About
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/contact">
+                  Contact
+                </Link>
+              </li>
 
-              </ul>
-            </div>
-          )}
+            </ul>
+          </div>
+
 
           <div class="collapse navbar-collapse  bg-light" id="navbarNav">
             <ul class="navbar-nav ml-auto" style={{ fontSize: '16px' }}>
@@ -119,6 +119,7 @@ const Navbar = ({ backButton }) => {
                     >
                       Sign out
                     </button>
+                    Powered By <a href="https://vocalslocal.com/" className='vl' target="_blank" rel="noopener noreferrer"><b>Vocalslocal</b></a>
                   </li>
                 </>
               ) : (
@@ -129,6 +130,7 @@ const Navbar = ({ backButton }) => {
                   >
                     Sign in
                   </button>
+                  Powered By <a href="https://vocalslocal.com/" className='vl' target="_blank" rel="noopener noreferrer"><b>Vocalslocal</b></a>
                 </li>
               )}
             </ul>

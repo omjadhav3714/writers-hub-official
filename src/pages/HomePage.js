@@ -117,9 +117,9 @@ const HomePage = () => {
       });
   }, []);
 
-  if (!currentUser) {
-    history.push('/login');
-  }
+  // if (!currentUser) {
+  //   history.push('/login');
+  // }
 
   return (
     <motion.div

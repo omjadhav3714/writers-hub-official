@@ -94,7 +94,7 @@ const Kavita = () => {
     e.preventDefault();
 
     if (!currentUser) {
-      history.push('/lgoin');
+      history.push('/login');
       setSuccess(false);
       setError(true);
     } else {

@@ -21,7 +21,7 @@ import {
 } from 'react-share';
 import { useAuth } from '../context/AuthContext';
 import { HandThumbsDownFill, HandThumbsUpFill } from 'react-bootstrap-icons';
-const history = useHistory;
+
 
 const Shayri = () => {
   const { id } = useParams();
@@ -33,6 +33,7 @@ const Shayri = () => {
   const [error, setError] = useState(false);
   const [tlikes, setTlikes] = useState([]);
   const { currentUser } = useAuth();
+  const history = useHistory();
 
   useEffect(() => {
     const single = db.collection('Shayris').doc(id);
