@@ -1,0 +1,32 @@
+.lottieStyleTrend {
+    pointer-events: none;
+    opacity: 0.2;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 16rem;
+    width: 16rem;
+    transform: translate(-40%, 20px);
+    z-index: 10;
+}
+
+.lottieContentBlobTrend {
+    pointer-events: none;
+    opacity: 0.4;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 16rem;
+    transform: translate(50%, -400px);
+}
+
+@media (max-width: 640px) {
+    .lottieStyleTrend {
+        transform: translate(-50%, -10px);
+    }
+
+    .lottieContentBlobTrend {
+        position: absolute;
+        transform: translate(-100%, -800px);
+    }
+}

@@ -5,8 +5,8 @@ import { data } from 'browserslist';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import { db } from '../firebase';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 import {
@@ -181,7 +181,7 @@ const Shayri = () => {
                     </button>
 
                     {tlikes && (
-                      <span class="badge rounded-pill bg-secondary">
+                      <span class="badge rounded-pill">
                         {tlikes.length}
                       </span>
                     )}
@@ -192,7 +192,7 @@ const Shayri = () => {
                 </header>
                 <section
                   className="mb-5 "
-                  style={{ textAlign: 'justify', width: '300px' }}
+                  style={{ textAlign: 'justify', width: 'auto' }}
                 >
                   <p className="fs-5 mb-4">
                     <div
@@ -210,13 +210,13 @@ const Shayri = () => {
                         fontSize: '18px',
                         fontFamily: 'sans-serif',
                         color: '#222',
+                        paddingLeft: '20px',
                       }}
                     >
                       TOP COMMENTS
                     </p>
 
                     <div className="d-flex flex-row flex-wrap">
-                      {/* single comment 1 */}
                       {comments.map((comment) => (
                         <div className="col-lg-6 col-md-6 col-sm-12 pb-3">
                           <div className="d-flex flex-row single-post flex-wrap col-12">
@@ -256,19 +256,9 @@ const Shayri = () => {
                           </div>
                         </div>
                       ))}
-
-                      {/* end of comment 1 */}
-
-                      {/* single comment 2 */}
-
-                      {/* end of single comment */}
-                      {/* single comment 2 */}
-
-                      {/* end of single comment */}
                     </div>
                   </div>
                 </div>
-                )
               </article>
             </div>
 
@@ -283,6 +273,7 @@ const Shayri = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   AUTHOR WIDGETS
@@ -310,6 +301,7 @@ const Shayri = () => {
                       fontSize: '18px',
                       fontFamily: 'sans-serif',
                       color: '#222',
+                      paddingLeft: '20px',
                     }}
                   >
                     SOCIAL SHARE
@@ -377,6 +369,7 @@ const Shayri = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   MORE
@@ -418,6 +411,7 @@ const Shayri = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   LEAVE A COMMENT
@@ -441,6 +435,7 @@ const Shayri = () => {
                   className="p-3"
                   style={{
                     color: '#222',
+                    paddingLeft: '20px',
                     fontFamily: 'sans-serif',
                     fontWeight: '600',
                   }}
@@ -457,21 +452,13 @@ const Shayri = () => {
                       onChange={(e) => setComment(e.target.value)}
                     ></textarea>
                   </div>
-
-                  <p
-                    className="button-author py-1"
-                    style={{
-                      width: '50%',
-                    }}
+                  <button
+                    type="submit"
+                    className="btn combtn rounded"
+                    style={{ fontWeight: 'bold' }}
                   >
-                    <button
-                      type="submit"
-                      className="btn"
-                      style={{ fontWeight: 'bold' }}
-                    >
-                      Post Comment
-                    </button>
-                  </p>
+                    Post Comment
+                  </button>
                 </form>
               </div>
             </div>

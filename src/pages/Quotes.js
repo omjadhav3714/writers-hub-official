@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { db } from '../firebase';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import Comments from '../components/Comments/Comments';
 import {
@@ -196,7 +196,7 @@ const Shayri = () => {
                       <HandThumbsUpFill />
                     </button>
                     {tlikes && (
-                      <span class="badge rounded-pill bg-secondary">
+                      <span class="badge rounded-pill bg-gray">
                         {tlikes.length}
                       </span>
                     )}
@@ -205,12 +205,11 @@ const Shayri = () => {
                     </button>
                   </div>
                 </header>
-
                 <section
-                  className="mb-5 d-flex justify-content-center "
+                  className="mb-5 d-flex justify-content"
                   style={{ textAlign: 'justify', width: 'auto' }}
                 >
-                  <p className="fs-5 mb-4 w-75">
+                  <p className="fs-5 mb-3">
                     <div
                       dangerouslySetInnerHTML={{ __html: quote.description }}
                     />
@@ -231,6 +230,7 @@ const Shayri = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   AUTHOR WIDGETS
@@ -258,6 +258,7 @@ const Shayri = () => {
                       fontSize: '18px',
                       fontFamily: 'sans-serif',
                       color: '#222',
+                      paddingLeft: '20px',
                     }}
                   >
                     SOCIAL SHARE
@@ -325,6 +326,7 @@ const Shayri = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   MORE
@@ -366,6 +368,7 @@ const Shayri = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   LEAVE A COMMENT
@@ -389,6 +392,7 @@ const Shayri = () => {
                   className="p-3"
                   style={{
                     color: '#222',
+                    paddingLeft: '20px',
                     fontFamily: 'sans-serif',
                     fontWeight: '600',
                   }}
@@ -406,20 +410,14 @@ const Shayri = () => {
                     ></textarea>
                   </div>
 
-                  <p
-                    className="button-author py-1"
-                    style={{
-                      width: '50%',
-                    }}
+
+                  <button
+                    type="submit"
+                    className="btn combtn rounded"
+                    style={{ fontWeight: 'bold' }}
                   >
-                    <button
-                      type="submit"
-                      className="btn"
-                      style={{ fontWeight: 'bold' }}
-                    >
-                      Post Comment
-                    </button>
-                  </p>
+                    Post Comment
+                  </button>
                 </form>
               </div>
             </div>

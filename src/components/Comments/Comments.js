@@ -15,6 +15,7 @@ const Comments = ({ comments, deleteComment, currentUser }) => {
             fontSize: '18px',
             fontFamily: 'sans-serif',
             color: '#222',
+            paddingLeft: '20px',
           }}
         >
           TOP COMMENTS

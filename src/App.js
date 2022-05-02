@@ -1,7 +1,6 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './pages/HomePage';
 import { Route, Switch } from 'react-router-dom';
 import BlogPage from './pages/BlogPage';
@@ -27,6 +26,8 @@ import { useAuth } from './context/AuthContext';
 import about from './components/About/about';
 import Contact1 from './components/Contact/Contacts';
 import { Flag } from 'react-bootstrap-icons';
+import Users from 'pages/Users';
+import EditProfile from 'pages/EditProfile';
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -34,10 +35,11 @@ const App = () => {
   return (
     <AnimatePresence>
       <Switch>
-        <Route path="/blogs/:id" component={Blog} />
-        <Route path="/kavitas/:id" component={Kavita} />
-        <Route path="/quotes/:id" component={Quotes} />
-        <Route path="/shayaris/:id" component={Shayri} />
+        <Route path="/blogs/:authorName/:id" component={Blog} />
+        <Route path="/kavitas/:authorName/:id" component={Kavita} />
+        <Route path="/quotes/:authorName/:id" component={Quotes} />
+        <Route path="/shayaris/:authorName/:id" component={Shayri} />
+        <Route path="/user/:id" component={Users} />
         <Route path="/quotes" component={QuotePage} />
         <Route path="/kavitas" component={KavitaPage} />
         <Route path="/shayaris" component={ShayariPage} />
@@ -81,6 +83,11 @@ const App = () => {
         <ProtectedRoute
           path="/users/:id"
           component={UserProfile}
+          auth={currentUser ? true : false}
+        />
+        <ProtectedRoute
+          path="/edituser/:id"
+          component={EditProfile}
           auth={currentUser ? true : false}
         />
       </Switch>

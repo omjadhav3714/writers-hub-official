@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { useHistory } from 'react-router';
@@ -10,9 +10,9 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './UserProfile.css';
 import Avatar from 'react-avatar';
-
+import { Link } from 'react-router-dom';
 import { PlusCircle } from 'react-bootstrap-icons';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/Footer';
 import { Line } from 'rc-progress';
 
 const UserProfile = () => {
@@ -335,7 +335,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100vw' }}>
+    <div>
       <Navbar />
       <div className="container">
         <div>
@@ -363,6 +363,8 @@ const UserProfile = () => {
                       {currentUser.email}
                     </span>{' '}
                     <br />
+                    <Link to={`/edituser/${currentUser.userId}`}> Edit Profile </Link> <br />
+                    <Link to={`/user/${currentUser.userId}`} className='text-decoration-none'> View Profile </Link>
                     <div className="container d-flex  justify-content-center mt-4 px-4">
                       <div className="stats">
                         <h6

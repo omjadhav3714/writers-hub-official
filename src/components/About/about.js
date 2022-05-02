@@ -2,8 +2,8 @@
 import React from 'react'
 import './about.css'
 import { motion } from "framer-motion";
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 
 const about = () => {
   return (
@@ -66,21 +66,21 @@ const about = () => {
               <div class="row ct-u-paddingBoth20">
                 <div class="col-xs-6 col-md-4">
                   <div class="company-icons-white">
-                    <i class="fas fa-pen-alt fa" aria-hidden="true"></i>
+                    <i class="fas fa-pen-alt" aria-hidden="true"></i>
                     <p>Blogs</p>
                     <p className="company-icons-subtext hidden-xs">Entertainig and Educational Blogs.</p>
                   </div>
                 </div>
                 <div class="col-xs-6 col-md-4">
                   <div class="company-icons-white">
-                    <i class="fas fa-highlighter fa" arial-hidden="true"></i>
+                    <i class="fas fa-highlighter" arial-hidden="true"></i>
                     <p>Kavitas</p>
                     <p className="company-icons-subtext hidden-xs">Deep and Meaningful Kavitas.</p>
                   </div>
                 </div>
                 <div class="col-xs-6 col-md-4">
                   <div class="company-icons-white">
-                    <i class="fa fas fa-feather-alt" aria-hidden="true"></i>
+                    <i class="fas fa-feather-alt" aria-hidden="true"></i>
                     <p>Shayaris</p>
                     <p className="company-icons-subtext hidden-xs"> Heart-Touching Shayaris.</p>
                   </div>
@@ -89,21 +89,21 @@ const about = () => {
               <div class="row ct-u-paddingBoth20">
                 <div class="col-xs-6 col-md-4">
                   <div class="company-icons-white">
-                    <i class="fa fas fa-pen-fancy" aria-hidden="true"></i>
+                    <i class="fas fa-pen-fancy" aria-hidden="true"></i>
                     <p>Quotes</p>
                     <p className="company-icons-subtext hidden-xs">Own Motivational Quotes.</p>
                   </div>
                 </div>
                 <div class="col-xs-6 col-md-4">
                   <div class="company-icons-white">
-                    <i class="fa fas fa-pencil-alt" aria-hidden="true"></i>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                     <p>Jokes</p>
                     <p class="company-icons-subtext hidden-xs">Laugh Cracking Jokes.</p>
                   </div>
                 </div>
                 <div class="col-xs-6 col-md-4">
                   <div class="company-icons-white">
-                    <i class="fa fas fa-user-edit" aria-hidden="true"></i>
+                    <i class="fas fa-user-edit" aria-hidden="true"></i>
                     <p>User Content</p>
                     <p className="company-icons-subtext hidden-xs">Clean and verified user content with credits.</p>
                   </div>

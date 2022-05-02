@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { db } from '../firebase';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import './Blog.css';
 
@@ -65,6 +65,7 @@ const Blog = () => {
             email: doc.data().email,
             comment: doc.data().comment,
             created_at: doc.data().created_at,
+            
           });
         });
         setComments(comm);
@@ -182,7 +183,7 @@ const Blog = () => {
                       </button>
 
                       {tlikes && (
-                        <span class="badge rounded-pill bg-secondary">
+                        <span class="badge rounded-pill ">
                           {tlikes.length}
                         </span>
                       )}
@@ -234,6 +235,7 @@ const Blog = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   AUTHOR WIDGETS
@@ -261,6 +263,7 @@ const Blog = () => {
                       fontSize: '18px',
                       fontFamily: 'sans-serif',
                       color: '#222',
+                      paddingLeft: '20px',
                     }}
                   >
                     SOCIAL SHARE
@@ -326,6 +329,7 @@ const Blog = () => {
                       fontSize: '18px',
                       fontFamily: 'sans-serif',
                       color: '#222',
+                      paddingLeft: '20px',
                     }}
                   >
                     POPULAR POSTS
@@ -451,6 +455,7 @@ const Blog = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   MORE
@@ -492,6 +497,7 @@ const Blog = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   LEAVE A COMMENT
@@ -515,6 +521,7 @@ const Blog = () => {
                   className="p-3"
                   style={{
                     color: '#222',
+                    paddingLeft: '20px',
                     fontFamily: 'sans-serif',
                     fontWeight: '600',
                   }}
@@ -532,20 +539,14 @@ const Blog = () => {
                     ></textarea>
                   </div>
 
-                  <p
-                    className="button-author py-1"
-                    style={{
-                      width: '50%',
-                    }}
+
+                  <button
+                    type="submit"
+                    className="btn combtn rounded"
+                    style={{ fontWeight: 'bold' }}
                   >
-                    <button
-                      type="submit"
-                      className="btn"
-                      style={{ fontWeight: 'bold' }}
-                    >
-                      Post Comment
-                    </button>
-                  </p>
+                    Post Comment
+                  </button>
                 </form>
               </div>
             </div>

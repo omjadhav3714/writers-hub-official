@@ -1,13 +1,41 @@
+/* eslint-disable import/no-anonymous-default-export */
 /* eslint-disable no-whitespace-before-property */
 import React, { useState } from 'react';
 import { db } from './../../firebase';
-import './contact.css'
-import { motion } from "framer-motion";
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import Navbar from '../Navbar/Navbar';
+import Footer from 'components/Footer/Footer';
+import tw from "twin.macro";
+import styled from "styled-components";
+import { css } from "styled-components/macro"; //eslint-disable-line
+import { SectionHeading, Subheading as SubheadingBase } from "./../misc/Headings.js";
+import { PrimaryButton as PrimaryButtonBase } from "./../misc/Buttons.js";
+import Lottie from 'react-lottie';
+import animationData from './../../lottie/contact';
 
-const Contact1 = () => {
+const Container = tw.div`relative`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
+const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
+const ImageColumn = tw(Column)`md:w-5/12 flex-shrink-0 h-80 md:h-auto`;
+const TextColumn = styled(Column)(props => [
+  tw`md:w-7/12 mt-16 md:mt-0`,
+  props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
+]);
 
+const TextContent = tw.div`lg:py-8 text-center md:text-left`;
+
+const Subheading = tw(SubheadingBase)`text-center md:text-left text-blue-400`;
+const Heading = tw(SectionHeading)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+// const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`
+
+const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col max-w-sm mx-auto md:mx-0`
+const Input = tw.input`mt-6 first:mt-0 outline-none py-3 font-medium transition duration-300`
+const Textarea = styled(Input).attrs({ as: "textarea" })`
+  ${tw`h-24`}
+`
+
+const SubmitButton = tw(PrimaryButtonBase)`mt-8 border-none outline-none rounded ml-2`
+
+const Contact = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [phone, setPhone] = useState();
@@ -35,66 +63,76 @@ const Contact1 = () => {
       alert("Message sent Failed");
     }
   };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
   return (
     <>
       <Navbar />
-      <motion.div
+      <Container>
+        <TwoColumn>
+          <ImageColumn>
+            <Lottie
+              options={defaultOptions}
+            />
+          </ImageColumn>
+          <TextColumn textOnLeft={true}>
+            <TextContent>
+              {<Subheading>Contact Us</Subheading>}
+              <Heading>Feel free to <span tw="text-blue-500">get in touch</span><wbr /> with us.</Heading>
+              {/* <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Description> */}
+              <Form onSubmit={handlesubmit}>
 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <div className="con">
-          <div class="container">
-            <div class="content">
-              <div class="left-side">
-                {/* <div class="address details">
-                <i class="fas fa-map-marker-alt"></i>
-                <div class="topic">Address</div>
-                <div class="text-one">Shop no 4, Shri Malang</div>
-                <div class="text-two">Road, Kalyan(E) 421306</div>
-              </div> */}
-                <div class="phone details">
-                  <i class="fas fa-phone-alt"></i>
-                  <div class="topic">Phone</div>
-                  <div class="text-one"><a href="tel:+91 92095 22812" style={{ textDecoration: "none" }}>+91 92095 22812</a></div>
-                  <div class="text-two"><a href="tel:+91 90291 80518" style={{ textDecoration: "none" }}>+91 90291 80518</a></div>
-                </div>
-                <div class="email details">
-                  <i class="fas fa-envelope"></i>
-                  <div class="topic">Email</div>
-                  <div class="text-one"><a href="mailto:crodersofficial@gmail.com" style={{ textDecoration: "none" }}>crodersofficial@gmail.com</a> </div>
-                  <div class="text-two"><a href="mailto:writershubofficial@gmail.com" style={{ textDecoration: "none" }}>writershubofficial@gmail.com</a></div>
-                </div>
-              </div>
-              <div class="right-side">
-                <div class="topic-text">Send us a message</div>
-                <p>If you have any work from us or any types of quries, feel free to reach out to us from here. It's our pleasure to help you.</p>
-                <form onSubmit={handlesubmit}>
-                  <div class="input-box">
-                    <input type="text" placeholder="Enter your name" value={name} onChange={(e) => setname(e.target.value)} required />
-                  </div>
-                  <div class="input-box">
-                    <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setemail(e.target.value)} required />
-                  </div>
-                  <div class="input-box">
-                    <input type="number" placeholder="Enter your phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-                  </div>
-                  <div class="input-box message-box">
-                    <textarea placeholder="Enter your message" value={message} onChange={(e) => setmessage(e.target.value)} required />
-                  </div>
-                  <div class="button">
-                    <input style={{ color: "black" }} type="button" onClick={handlesubmit} value="Submit" />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+                <Input
+                  style={{ "borderTop": "1px", "borderRight": "1px", "borderLeft": "1px" }}
+                  type="text"
+                  className='form-control'
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setname(e.target.value)}
+                  required />
+                <Input
+                  style={{ "borderTop": "1px", "borderRight": "1px", "borderLeft": "1px" }}
+                  type="email"
+                  className='form-control'
+                  placeholder="Your Email Address"
+                  value={email}
+                  onChange={(e) => setemail(e.target.value)}
+                  required
+                />
+                <Input
+                  style={{ "borderTop": "1px", "borderRight": "1px", "borderLeft": "1px" }}
+                  type="number"
+                  className='form-control'
+                  placeholder="Phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+                <Textarea
+                  style={{ "borderTop": "1px", "borderRight": "1px", "borderLeft": "1px", "border-bottom": "1px solid #9ca3af" }}
+                  placeholder="Your Message Here"
+                  className='form-control'
+                  value={message}
+                  onChange={(e) => setmessage(e.target.value)}
+                  required
+                />
+                <SubmitButton style={{ "width": "25%" }} type="submit">Send</SubmitButton>
+              </Form>
+            </TextContent>
+          </TextColumn>
+        </TwoColumn>
+      </Container>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Contact1
+export default Contact;

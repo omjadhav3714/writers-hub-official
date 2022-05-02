@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import Card from '../components/Blogs/Card';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/Footer';
 import { motion } from 'framer-motion';
 
 import { db } from '../firebase';
@@ -28,6 +28,7 @@ const BlogPage = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
             logs.push(data);
           }
@@ -67,6 +68,7 @@ const BlogPage = () => {
               authorName,
               updated_on,
               isApproved,
+              userId
             }) => {
               return (
                 <Card
@@ -75,8 +77,9 @@ const BlogPage = () => {
                   title={title}
                   author={authorName}
                   date={updated_on}
-                  url={`/blogs/${id}`}
+                  url={`/blogs/${authorName}/${id}`}
                   isApproved={isApproved}
+                  userId={userId}
                 />
               );
             }

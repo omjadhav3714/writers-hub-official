@@ -1,0 +1,16 @@
+.lottieContentBlob {
+    pointer-events: none;
+    opacity: 0.4;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 16rem;
+    transform: translate(50%, -120px);
+}
+
+@media (max-width: 640px) {
+    .lottieContentBlob {
+        position: absolute;
+        transform: translate(-100%, -500px);
+    }
+}

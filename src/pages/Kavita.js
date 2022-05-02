@@ -4,8 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { db } from '../firebase';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import './Blog.css';
 import Comments from '../components/Comments/Comments';
@@ -190,7 +190,7 @@ const Kavita = () => {
                     </button>
 
                     {tlikes && (
-                      <span class="badge rounded-pill bg-secondary">
+                      <span class="badge rounded-pill">
                         {tlikes.length}
                       </span>
                     )}
@@ -202,7 +202,7 @@ const Kavita = () => {
 
                 <section
                   className="mb-5 "
-                  style={{ textAlign: 'justify', width: '300px' }}
+                  style={{ textAlign: 'justify', width: 'auto' }}
                 >
                   <p className="fs-5 mb-4">
                     <div
@@ -225,6 +225,7 @@ const Kavita = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   AUTHOR WIDGETS
@@ -252,6 +253,7 @@ const Kavita = () => {
                       fontSize: '18px',
                       fontFamily: 'sans-serif',
                       color: '#222',
+                      paddingLeft: '20px',
                     }}
                   >
                     SOCIAL SHARE
@@ -319,6 +321,7 @@ const Kavita = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   MORE
@@ -360,6 +363,7 @@ const Kavita = () => {
                     fontSize: '18px',
                     fontFamily: 'sans-serif',
                     color: '#222',
+                    paddingLeft: '20px',
                   }}
                 >
                   LEAVE A COMMENT
@@ -383,6 +387,7 @@ const Kavita = () => {
                   className="p-3"
                   style={{
                     color: '#222',
+                    paddingLeft: '20px',
                     fontFamily: 'sans-serif',
                     fontWeight: '600',
                   }}
@@ -399,21 +404,13 @@ const Kavita = () => {
                       onChange={(e) => setComment(e.target.value)}
                     ></textarea>
                   </div>
-
-                  <p
-                    className="button-author py-1"
-                    style={{
-                      width: '50%',
-                    }}
+                  <button
+                    type="submit"
+                    className="btn combtn rounded"
+                    style={{ fontWeight: 'bold' }}
                   >
-                    <button
-                      type="submit"
-                      className="btn"
-                      style={{ fontWeight: 'bold' }}
-                    >
-                      Post Comment
-                    </button>
-                  </p>
+                    Post Comment
+                  </button>
                 </form>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import Card from '../components/Blogs/Card';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer/Footer';
 import { motion } from 'framer-motion';
 import { db } from '../firebase';
 
@@ -23,6 +23,7 @@ const ShayariPage = () => {
               isFeatured: doc.data().isFeatured,
               updated_on: doc.data().updated_on,
               isApproved: doc.data().isApproved,
+              userId: doc.data().userId,
             };
 
             shayris.push(data);
@@ -58,6 +59,7 @@ const ShayariPage = () => {
               isFeatured,
               updated_on,
               isApproved,
+              userId
             }) => {
               return (
                 <div>
@@ -66,9 +68,10 @@ const ShayariPage = () => {
                     content={description}
                     title={title}
                     date={updated_on}
-                    url={`/shayaris/${id}`}
+                    url={`/shayaris/${authorName}/${id}`}
                     author={authorName}
                     isApproved={isApproved}
+                    userId={userId}
                   />
                 </div>
               );

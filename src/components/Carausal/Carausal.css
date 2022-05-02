@@ -1,0 +1,17 @@
+.lottieStyle {
+  pointer-events: none;
+  opacity: 0.2;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 16rem;
+  width: 16rem;
+  transform: translate(-40%, 20px);
+  z-index: 10;
+}
+
+@media (max-width: 640px) {
+  .lottieStyle {
+    transform: translate(-50%, -250px);
+  }
+}
