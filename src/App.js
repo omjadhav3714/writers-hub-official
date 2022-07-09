@@ -28,6 +28,7 @@ import Contact1 from './components/Contact/Contacts';
 import { Flag } from 'react-bootstrap-icons';
 import Users from 'pages/Users';
 import EditProfile from 'pages/EditProfile';
+import Privacy from 'pages/Privacy';
 
 const App = () => {
   const { currentUser } = useAuth();
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/approvals/shayris/:id" component={ShayriApprovals} />
         <Route path="/approvals/quotes/:id" component={QuoteApprovals} />
         <Route path="/approvals/kavitas/:id" component={KavitaApprovals} />
+        <Route path="/privacy-policy" component={Privacy} />
 
         <ProtectedRoute
           path="/approvals"

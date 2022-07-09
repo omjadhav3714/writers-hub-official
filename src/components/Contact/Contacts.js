@@ -25,7 +25,6 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 
 const Subheading = tw(SubheadingBase)`text-center md:text-left text-blue-400`;
 const Heading = tw(SectionHeading)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
-// const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`
 
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col max-w-sm mx-auto md:mx-0`
 const Input = tw.input`mt-6 first:mt-0 outline-none py-3 font-medium transition duration-300`
@@ -87,7 +86,6 @@ const Contact = () => {
             <TextContent>
               {<Subheading>Contact Us</Subheading>}
               <Heading>Feel free to <span tw="text-blue-500">get in touch</span><wbr /> with us.</Heading>
-              {/* <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Description> */}
               <Form onSubmit={handlesubmit}>
 
                 <Input

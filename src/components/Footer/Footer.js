@@ -94,8 +94,8 @@ export const Footer = () => {
                   <h3 class="f-title f_600 t_color f_size_18">Help</h3>
                   <ul class="list-unstyled f_list">
                     <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Term &amp; conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="/">Term &amp; conditions</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
                   </ul>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export const Footer = () => {
                 <p class="forcp">Copyright @ 2022 WritersHub All rights reserved.</p>
               </div>
               <div class="col-lg-5 col-md-6 ">
-                <p class="forcp">Terms and Services . Privacy Policy </p>
+                <p class="forcp">Terms and Services . <a href="/privacy-policy">Privacy Policy</a> </p>
               </div>
 
             </div>

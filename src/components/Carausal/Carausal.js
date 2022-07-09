@@ -65,8 +65,7 @@ export default ({ roundedHeaderButton }) => {
             </Paragraph>
             <PrimaryButton style={buttonStyle}>Lets Read</PrimaryButton>
             <CustomersLogoStrip>
-              <p>Powered by <a target="_blank" href="https://vocalslocal.com/" rel="noreferrer">VOCALSLOCAL</a></p>
-              {/* <img src={CustomersLogoStripImage} alt="Our Customers" /> */}
+              <p>Powered by <a target="_blank" href="https://vocalslocal.in/" rel="noreferrer">VOCALSLOCAL</a></p>
             </CustomersLogoStrip>
           </LeftColumn>
           <RightColumn>
